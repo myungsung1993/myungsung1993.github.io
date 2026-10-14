@@ -1,0 +1,113 @@
+---
+# 이 줄들은 Jekyll이 이 파일을 CSS로 변환하게 해줍니다
+---
+
+// 한글 글꼴 (Pretendard)
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
+
+$base-font-family: "Pretendard", -apple-system, BlinkMacSystemFont, "Malgun Gothic", "Apple SD Gothic Neo", sans-serif;
+$base-font-size: 17px;
+$base-line-height: 1.8;
+$brand-color: #1a6fd1;
+
+@import "minima";
+
+// ---------- 본문 ----------
+body {
+  word-break: keep-all;       // 한글 단어 중간에서 줄바꿈하지 않기
+  overflow-wrap: break-word;  // 긴 영문·주소는 줄바꿈 허용
+  color: #222;
+}
+
+.post-title {
+  font-size: 30px;
+  line-height: 1.35;
+  font-weight: 700;
+  @media (max-width: 600px) { font-size: 24px; }
+}
+
+.post-content {
+  h2 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-top: 2.2em;
+    padding-bottom: 0.3em;
+    border-bottom: 2px solid #e8eef6;
+    @media (max-width: 600px) { font-size: 21px; }
+  }
+  h3 {
+    font-size: 19px;
+    font-weight: 700;
+    margin-top: 1.6em;
+  }
+}
+
+// ---------- 표: 휴대폰에서는 표 안에서만 가로 스크롤 ----------
+.post-content table {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border-collapse: collapse;
+  font-size: 15px;
+  line-height: 1.6;
+
+  th, td {
+    padding: 10px 12px;
+    border: 1px solid #e1e6ec;
+    vertical-align: top;
+  }
+  th {
+    background: #f2f6fb;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+  // 첫 번째 열(항목 이름)은 줄바꿈하지 않음
+  td:first-child {
+    white-space: nowrap;
+    font-weight: 600;
+    background: #fafbfd;
+  }
+  tr:nth-child(even) td { background-color: transparent; }
+  tr:nth-child(even) td:first-child { background: #fafbfd; }
+}
+
+// ---------- 안내 박스 (인용문) ----------
+.post-content blockquote {
+  font-style: normal;
+  font-size: 16px;
+  color: #333;
+  letter-spacing: normal;
+  background: #f4f8fd;
+  border-left: 4px solid $brand-color;
+  border-radius: 6px;
+  padding: 14px 16px;
+  margin: 1.2em 0;
+  > :last-child { margin-bottom: 0; }
+}
+
+// ---------- 목차 ----------
+.toc-box {
+  background: #fafbfd;
+  border: 1px solid #e1e6ec;
+  border-radius: 8px;
+  padding: 14px 18px;
+  margin: 1.5em 0 2em;
+  font-size: 16px;
+
+  .toc-title {
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  ul { margin: 0 0 0 1.2em; }
+  ul ul { display: none; }  // 큰 제목만 표시
+  li { margin: 2px 0; }
+}
+
+// ---------- 휴대폰 여백 ----------
+@media (max-width: 600px) {
+  .wrapper {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
