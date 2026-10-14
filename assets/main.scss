@@ -60,11 +60,10 @@ body {
   th {
     background: #f2f6fb;
     font-weight: 700;
-    white-space: nowrap;
   }
-  // 첫 번째 열(항목 이름)은 줄바꿈하지 않음
+  // 첫 번째 열(항목 이름): 너무 좁아지지 않게 최소 너비만 지정
   td:first-child {
-    white-space: nowrap;
+    min-width: 5.5em;
     font-weight: 600;
     background: #fafbfd;
   }
