@@ -24,7 +24,6 @@ permalink: /privacy/
 
 ## 4. 문의
 
-<!-- TODO: 문의용 이메일 주소를 적어 주세요 -->
-개인정보 관련 문의: 준비 중
+개인정보 관련 문의: [smyungsung@gmail.com](mailto:smyungsung@gmail.com)
 
 시행일: 2026년 10월 14일

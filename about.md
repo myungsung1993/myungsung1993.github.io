@@ -17,5 +17,4 @@ permalink: /about/
 
 ## 문의
 
-<!-- TODO: 문의용 이메일 주소를 적어 주세요 -->
-문의: 준비 중
+문의: [smyungsung@gmail.com](mailto:smyungsung@gmail.com)
