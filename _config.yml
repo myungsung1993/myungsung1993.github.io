@@ -1,0 +1,28 @@
+# 블로그 기본 설정
+title: 정책 지원금 길잡이
+description: 놓치기 쉬운 정부 정책과 지원금을 공식 자료를 바탕으로 쉽게 정리합니다.
+lang: ko
+url: "https://myungsung1993.github.io"
+baseurl: ""
+
+# GitHub Pages가 지원하는 기본 테마
+theme: minima
+
+# 위쪽 메뉴에 보일 페이지 순서
+header_pages:
+  - about.md
+  - privacy.md
+
+# 글 주소 형식: /2026/10/14/글제목/
+permalink: /:year/:month/:day/:title/
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+timezone: Asia/Seoul
+
+# 사이트에 올라가면 안 되는 파일
+exclude:
+  - CLAUDE.md
