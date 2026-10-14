@@ -67,6 +67,8 @@ body {
     font-weight: 600;
     background: #fafbfd;
   }
+  // 굵게 표시한 금액("100만 원")은 중간에서 줄바꿈하지 않음
+  td strong { white-space: nowrap; }
   tr:nth-child(even) td { background-color: transparent; }
   tr:nth-child(even) td:first-child { background: #fafbfd; }
 }
