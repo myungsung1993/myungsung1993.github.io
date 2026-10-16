@@ -26,7 +26,9 @@ timezone: Asia/Seoul
 # 검색엔진 소유 확인 (jekyll-seo-tag가 <meta> 태그로 넣어 줌)
 webmaster_verifications:
   google: SpIGW0i_E0NrgPOLTvvfp0Ua7mbp4NZQ24uCFFY_Fjw
-  naver: e4c9ce30ab761a96f124fc74c5b74124f3cbe519
+
+# 네이버 서치어드바이저 소유 확인 (_includes/head.html에서 <meta> 태그로 넣음)
+naver_site_verification: e4c9ce30ab761a96f124fc74c5b74124f3cbe519
 
 # 사이트에 올라가면 안 되는 파일
 exclude:

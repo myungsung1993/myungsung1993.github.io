@@ -1,0 +1,15 @@
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {%- seo -%}
+  {%- comment -%} minima 2.5.1 head.html 복사본. jekyll-seo-tag가 네이버를 지원하지 않아 아래 한 줄만 추가함 {%- endcomment -%}
+  {%- if site.naver_site_verification %}
+  <meta name="naver-site-verification" content="{{ site.naver_site_verification }}" />
+  {%- endif %}
+  <link rel="stylesheet" href="{{ "/assets/main.css" | relative_url }}">
+  {%- feed_meta -%}
+  {%- if jekyll.environment == 'production' and site.google_analytics -%}
+    {%- include google-analytics.html -%}
+  {%- endif -%}
+</head>
