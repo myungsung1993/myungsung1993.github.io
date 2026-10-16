@@ -22,7 +22,7 @@
            padding: 8px 22px; border-radius: 10px; }
   h1 { margin-top: 26px; font-size: 56px; line-height: 1.25; font-weight: 800; letter-spacing: -1px; }
   .stats { display: flex; gap: 22px; margin-top: 52px; }
-  .stat { flex: 1; border: 2px solid var(--line); border-radius: 18px; padding: 34px 28px; background: #fafbfd; }
+  .stat { flex: 1; min-width: 0; border: 2px solid var(--line); border-radius: 18px; padding: 34px 28px; background: #fafbfd; }
   .stat .v { font-size: 50px; font-weight: 800; color: var(--brand); letter-spacing: -1.5px; line-height: 1.15; white-space: nowrap; }
   .stat .k { margin-top: 14px; font-size: 28px; font-weight: 600; color: var(--sub); line-height: 1.3; }
   .foot { position: absolute; left: 64px; right: 64px; bottom: 34px; display: flex; justify-content: space-between;
@@ -50,6 +50,96 @@ const cards = {
     title: "부모와 따로 사는 무주택 청년 월세 지원",
     stats: [["월 20만 원", "최대 · 낸 월세 범위 안"], ["24개월", "최대 · 생애 1회"], ["19~34세", "만 나이 · 매년 새로 모집"]],
     foot: "2026.10.16 기준 · 출처: 국토교통부·복지로"
+  },
+  "birth-support-2026": {
+    label: "2026 출산지원금",
+    title: "아이가 태어나면 받는 정부 지원금",
+    stats: [["200만 원", "첫만남이용권 · 첫째"], ["월 100만 원", "부모급여 · 0세"], ["60일 안에", "출생 후 신청 기한"]],
+    foot: "2026.10.14 기준 · 출처: 보건복지부·복지로"
+  },
+  "leave-pay-2026": {
+    label: "2026 출산휴가·육아휴직 급여",
+    title: "직장인 부모가 받는 고용보험 급여",
+    stats: [["220만 원", "출산휴가 급여 상한 · 30일"], ["월 250만 원", "육아휴직 첫 3개월 최대"], ["출산 50일 전", "배우자 출산휴가 시작"]],
+    foot: "2026.10.14 기준 · 출처: 고용노동부·고용24"
+  },
+  "child-care-service-2026": {
+    label: "2026 아이돌봄서비스",
+    title: "돌보미가 집으로 오는 정부 돌봄",
+    stats: [["1만 2,790원", "시간당 이용요금 · 기본형"], ["최대 85%", "소득별 정부지원"], ["연 960시간", "정부지원 시간"]],
+    foot: "2026.10.16 기준 · 출처: 성평등가족부"
+  },
+  "ev-purchase-subsidy-2026": {
+    label: "2026 전기차 구매보조금",
+    title: "전기승용차 국비 보조금",
+    stats: [["최대 580만 원", "중·대형 승용 · 국비"], ["최대 680만 원", "내연차에서 바꿀 때"], ["30% 이상", "지자체 추가 지원"]],
+    foot: "2026.10.14 기준 · 출처: 기후에너지환경부"
+  },
+  "startup-support-2026": {
+    label: "2026 창업지원사업",
+    title: "정부·지자체 창업지원 한눈에",
+    stats: [["3조 4,645억", "2026년 총예산"], ["508개", "지원사업 수"], ["41.1%", "융자·보증 비중"]],
+    foot: "2026.10.14 기준 · 출처: 중소벤처기업부"
+  },
+  "pre-startup-package-2026": {
+    label: "2026 예비창업패키지",
+    title: "사업자등록 전 창업자 사업화 자금",
+    stats: [["평균 4천만 원", "사업화 자금"], ["0원", "자기부담금"], ["300명 내외", "2026년 선정 규모"]],
+    foot: "2026.10.14 기준 · 출처: 중소벤처기업부 공고"
+  },
+  "early-startup-package-2026": {
+    label: "2026 초기창업패키지",
+    title: "창업 3년 이내 기업 사업화 자금",
+    stats: [["최대 1억 원", "일반형 · 평균 0.5억 원"], ["400개사 내외", "일반형 선정 규모"], ["10~30% 이상", "자기부담금 · 지역별"]],
+    foot: "2026.10.14 기준 · 출처: 중소벤처기업부 공고"
+  },
+  "youth-startup-academy-2026": {
+    label: "2026 청년창업사관학교",
+    title: "39세 이하 창업자 자금·공간·교육",
+    stats: [["최대 1억 원", "사업화 자금 · 평균 0.7억"], ["39세 이하", "창업 3년 이내"], ["650명", "전국 18곳 모집"]],
+    foot: "2026.10.14 기준 · 출처: 중소벤처기업부"
+  },
+  "small-business-policy-loan-2026": {
+    label: "2026 소상공인 정책자금",
+    title: "창업 초기 사장님이 보는 정책 대출",
+    stats: [["3조 3,620억", "2026년 당초 공급 규모"], ["7천만 원", "일반경영안정 · 연간"], ["기준금리+0.6%p", "일반경영안정 금리"]],
+    foot: "2026.10.14 기준 · 출처: 중소벤처기업부"
+  },
+  "startup-tax-reduction-2026": {
+    label: "창업중소기업 세액감면",
+    title: "창업 후 소득세·법인세 감면",
+    stats: [["5년", "소득이 처음 생긴 해부터"], ["100%", "청년 · 수도권 밖 등"], ["25%", "수도권 일반 창업"]],
+    foot: "2026.10.14 기준 · 출처: 조세특례제한법"
+  },
+  "youth-housing-support-2026": {
+    label: "2026 청년 주거 지원",
+    title: "월세·전세·공공임대·청약 한눈에",
+    stats: [["월 20만 원", "청년월세 지원 · 최대"], ["연 2.2~3.3%", "버팀목 전세대출"], ["시세 40~50%", "청년 매입임대"]],
+    foot: "2026.10.16 기준 · 출처: 국토교통부·LH"
+  },
+  "youth-jeonse-loan-2026": {
+    label: "2026 청년 전세자금대출",
+    title: "청년전용 버팀목전세자금",
+    stats: [["연 2.2~3.3%", "소득별 금리"], ["최대 1.5억 원", "보증금 80% 이내"], ["3억 원 이하", "대상 보증금"]],
+    foot: "2026.10.16 기준 · 출처: 주택도시기금"
+  },
+  "youth-wolse-loan-2026": {
+    label: "2026 청년전용 보증부월세대출",
+    title: "월세 보증금과 월세를 낮은 금리로",
+    stats: [["연 0%", "월세 대출 · 20만 원까지"], ["연 1.3%", "보증금 대출"], ["4,500만 원", "보증금 최대"]],
+    foot: "2026.10.16 기준 · 출처: 주택도시기금"
+  },
+  "youth-dream-account-2026": {
+    label: "2026 청년 주택드림 청약통장",
+    title: "만 19~34세 무주택 청년 청약통장",
+    stats: [["연 4.5%", "가입 2년 이상"], ["5천만 원 이하", "연소득 기준"], ["500만 원", "이자소득 비과세"]],
+    foot: "2026.10.16 기준 · 출처: 주택도시기금"
+  },
+  "youth-public-rental-2026": {
+    label: "2026 청년 공공임대",
+    title: "매입임대·행복주택·전세임대",
+    stats: [["시세 40~50%", "청년 매입임대"], ["시세 60~80%", "행복주택"], ["19~39세", "미혼 무주택 청년"]],
+    foot: "2026.10.16 기준 · 출처: LH·마이홈포털"
   }
 };
 const c = cards[decodeURIComponent(location.hash.slice(1))];
@@ -58,6 +148,17 @@ document.getElementById("title").textContent = c.title;
 document.getElementById("foot").textContent = c.foot;
 document.getElementById("stats").innerHTML = c.stats
   .map(([v, k]) => `<div class="stat"><div class="v">${v}</div><div class="k">${k}</div></div>`).join("");
+// 칸보다 긴 글자는 한 줄에 들어갈 때까지 글씨를 줄인다 (글꼴을 다 불러온 뒤)
+function fit(el, min) {
+  let size = parseFloat(getComputedStyle(el).fontSize);
+  el.style.whiteSpace = "nowrap";
+  while (el.scrollWidth > el.clientWidth && size > min) { size -= 1; el.style.fontSize = size + "px"; }
+}
+document.fonts.ready.then(() => {
+  fit(document.getElementById("title"), 40);
+  document.querySelectorAll(".stat .v").forEach(el => fit(el, 30));
+  document.querySelectorAll(".stat .k").forEach(el => fit(el, 22));
+});
 </script>
 </body>
 </html>
