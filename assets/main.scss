@@ -113,3 +113,13 @@ body {
     padding-right: 16px;
   }
 }
+
+// ---------- 글 요약 카드 이미지 ----------
+.post-content img.summary-card {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 1.2em 0 1.4em;
+  border: 1px solid #e1e6ec;
+  border-radius: 12px;
+}
