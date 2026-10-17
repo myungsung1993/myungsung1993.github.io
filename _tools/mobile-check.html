@@ -5,7 +5,7 @@ const posts=["2026/10/14/ev-purchase-subsidy-2026","2026/10/14/birth-support-202
 const out=document.getElementById('out');
 window.addEventListener('message',e=>{out.textContent+=e.data+"\n";});
 posts.forEach(p=>{
-  const url="https://myungsung1993.github.io/"+p+"/";
+  const url="https://jiwongil.kr/"+p+"/";
   fetch(url+"?c="+Date.now()).then(r=>r.text()).then(html=>{
     const probe=`<script>window.addEventListener('load',()=>setTimeout(()=>{
       const t=[...document.querySelectorAll('.post-content table')];
