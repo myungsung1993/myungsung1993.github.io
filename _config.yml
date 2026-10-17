@@ -25,7 +25,11 @@ timezone: Asia/Seoul
 
 # 검색엔진 소유 확인 (jekyll-seo-tag가 <meta> 태그로 넣어 줌)
 webmaster_verifications:
-  google: SpIGW0i_E0NrgPOLTvvfp0Ua7mbp4NZQ24uCFFY_Fjw
+  google: QFk_Pt5OnsifsAWKhyrCh_kw2FnOXW2zKGZPZuBu6Oo   # https://jiwongil.kr/ 속성
+
+# 옛 주소(myungsung1993.github.io) 속성 확인용. 서치 콘솔 '주소 변경'에 필요하니 지우지 않는다.
+google_site_verification_extra:
+  - SpIGW0i_E0NrgPOLTvvfp0Ua7mbp4NZQ24uCFFY_Fjw
 
 # 네이버 서치어드바이저 소유 확인 (_includes/head.html에서 <meta> 태그로 넣음)
 naver_site_verification: e4c9ce30ab761a96f124fc74c5b74124f3cbe519

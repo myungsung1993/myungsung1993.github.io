@@ -4,6 +4,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   {%- seo -%}
   {%- comment -%} minima 2.5.1 head.html 복사본. jekyll-seo-tag가 네이버를 지원하지 않아 아래 한 줄만 추가함 {%- endcomment -%}
+  {%- for token in site.google_site_verification_extra %}
+  <meta name="google-site-verification" content="{{ token }}" />
+  {%- endfor %}
   {%- if site.naver_site_verification %}
   <meta name="naver-site-verification" content="{{ site.naver_site_verification }}" />
   {%- endif %}
