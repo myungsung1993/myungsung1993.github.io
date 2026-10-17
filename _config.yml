@@ -20,6 +20,7 @@ plugins:
   - jekyll-feed
   - jekyll-seo-tag
   - jekyll-sitemap
+  - jekyll-redirect-from   # 옛 주소 → 새 주소 자동 이동 (예: 환영 글 → 소개)
 
 timezone: Asia/Seoul
 
