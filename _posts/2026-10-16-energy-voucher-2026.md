@@ -169,6 +169,12 @@ image: /assets/images/cards/energy-voucher-2026.png
 
 ---
 
+## 함께 보면 좋은 글
+
+- [2026 문화누리카드 총정리]({% post_url 2026-10-17-culture-nuri-card-2026 %}): 수급자·차상위 1인 15만 원 문화·여행비, 11월 30일 발급 마감
+
+---
+
 ## 출처
 
 1. [에너지바우처 누리집 - 에너지바우처란?](https://www.energyv.or.kr/info/support_info.do) - 지원 대상, 제외 대상, 2026년 지원 금액, 신청·사용 기간, 중복 지원 제한, 처리 절차 (확인일: 2026-10-16)
