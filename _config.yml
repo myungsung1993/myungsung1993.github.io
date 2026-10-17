@@ -32,7 +32,10 @@ google_site_verification_extra:
   - SpIGW0i_E0NrgPOLTvvfp0Ua7mbp4NZQ24uCFFY_Fjw
 
 # 네이버 서치어드바이저 소유 확인 (_includes/head.html에서 <meta> 태그로 넣음)
-naver_site_verification: e4c9ce30ab761a96f124fc74c5b74124f3cbe519
+# (위: 새 주소 jiwongil.kr, 아래: 옛 주소 github.io)
+naver_site_verification:
+  - 7095bb9c439dc95a5dfbc5f53f67b023bc0b1181
+  - e4c9ce30ab761a96f124fc74c5b74124f3cbe519
 
 # 사이트에 올라가면 안 되는 파일
 exclude:

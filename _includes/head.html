@@ -7,9 +7,9 @@
   {%- for token in site.google_site_verification_extra %}
   <meta name="google-site-verification" content="{{ token }}" />
   {%- endfor %}
-  {%- if site.naver_site_verification %}
-  <meta name="naver-site-verification" content="{{ site.naver_site_verification }}" />
-  {%- endif %}
+  {%- for token in site.naver_site_verification %}
+  <meta name="naver-site-verification" content="{{ token }}" />
+  {%- endfor %}
   <link rel="stylesheet" href="{{ "/assets/main.css" | relative_url }}">
   {%- feed_meta -%}
   {%- if jekyll.environment == 'production' and site.google_analytics -%}
