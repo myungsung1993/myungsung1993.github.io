@@ -154,6 +154,12 @@ image: /assets/images/cards/tomorrow-learning-card-2026.png
 
 ---
 
+## 함께 보면 좋은 글
+
+- [2026 국민취업지원제도 총정리]({% post_url 2026-10-18-national-employment-support-2026 %}): 구직촉진수당 월 60만 원 + 취업 상담. 참여자는 내일배움카드 본인부담이 없거나 낮아요
+
+---
+
 ## 출처
 
 1. [고용노동부 - 국민내일배움카드 (정책 소개 및 첨부 자료)](https://www.moel.go.kr/policyitrd/policyItrdView.do?policy_itrd_sn=216) - 사업 목적, 지원 대상·제외 대상 요약, 지원 한도, 유효기간, 문의처 (확인일: 2026-10-18)
