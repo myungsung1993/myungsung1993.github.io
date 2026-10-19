@@ -2,6 +2,7 @@
 layout: post
 title: "2026 청년 전세자금대출(청년전용 버팀목) 총정리: 금리 연 2.2~3.3%, 최대 1.5억 원 (자격 조건·한도·신청 방법)"
 date: 2026-10-16 15:00:00 +0900
+topic: 청년 주거
 image: /assets/images/cards/youth-jeonse-loan-2026.png
 ---
 

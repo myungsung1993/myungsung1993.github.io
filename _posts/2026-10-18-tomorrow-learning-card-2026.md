@@ -2,6 +2,7 @@
 layout: post
 title: "2026 국민내일배움카드 총정리: 5년간 훈련비 300만~500만 원 (대상·제외 대상·본인부담·훈련장려금)"
 date: 2026-10-18 00:10:00 +0900
+topic: 일자리
 image: /assets/images/cards/tomorrow-learning-card-2026.png
 ---
 

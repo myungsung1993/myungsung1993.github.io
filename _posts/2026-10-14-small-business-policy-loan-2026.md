@@ -2,6 +2,7 @@
 layout: post
 title: "2026 소상공인 정책자금 총정리: 창업 초기 사장님이 볼 대출 종류·한도·금리·신청법"
 date: 2026-10-14 13:40:00 +0900
+topic: 창업
 image: /assets/images/cards/small-business-policy-loan-2026.png
 ---
 

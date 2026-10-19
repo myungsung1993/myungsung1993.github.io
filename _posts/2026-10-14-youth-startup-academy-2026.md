@@ -2,6 +2,7 @@
 layout: post
 title: "2026 청년창업사관학교 총정리: 39세 이하 창업자 최대 1억 원 + 사무공간·교육 (자격·지역별 모집)"
 date: 2026-10-14 13:30:00 +0900
+topic: 창업
 image: /assets/images/cards/youth-startup-academy-2026.png
 ---
 

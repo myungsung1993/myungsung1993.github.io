@@ -1,0 +1,74 @@
+---
+layout: default
+---
+{%- comment -%}
+  minima 기본 home 레이아웃을 대신하는 홈 화면.
+  글 머리말의 topic(분야), hub(총정리 글 여부), image(요약 카드)를 사용한다.
+{%- endcomment -%}
+{%- assign topics = "청년 주거,창업,출산·육아,생활비,일자리,자동차" | split: "," -%}
+
+<div class="home">
+  <section class="home-hero">
+    <p class="home-hero-title">정부 지원금, 공식 자료로 쉽게</p>
+    <div class="home-hero-text">{{ content }}</div>
+  </section>
+
+  <nav class="topic-filter" aria-label="분야별 글 보기">
+    <button type="button" class="topic-chip is-active" data-topic="all">전체</button>
+    {%- for t in topics %}
+    {%- assign n = site.posts | where: "topic", t | size %}
+    {%- if n > 0 %}
+    <button type="button" class="topic-chip" data-topic="{{ t }}">{{ t }} <span class="topic-count">{{ n }}</span></button>
+    {%- endif %}
+    {%- endfor %}
+  </nav>
+
+  <h2 class="post-list-heading">최신 글</h2>
+  <ul class="post-cards">
+    {%- for post in site.posts %}
+    {%- assign parts = post.title | split: ": " %}
+    {%- assign main_title = parts | first %}
+    {%- assign sub_title = post.title | remove_first: main_title | remove_first: ": " %}
+    <li class="post-card" data-topic="{{ post.topic | default: '기타' }}">
+      <a class="post-card-link" href="{{ post.url | relative_url }}">
+        {%- if post.image %}
+        <img class="post-card-thumb" src="{{ post.image | relative_url }}" alt="" loading="lazy" width="1200" height="630">
+        {%- endif %}
+        <div class="post-card-body">
+          <div class="post-card-meta">
+            {%- if post.topic %}<span class="post-card-topic">{{ post.topic }}</span>{% endif %}
+            {%- if post.hub %}<span class="post-card-hub">총정리</span>{% endif %}
+            <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y.%m.%d" }}</time>
+          </div>
+          <h3 class="post-card-title">{{ main_title | escape }}</h3>
+          {%- if sub_title != "" %}
+          <p class="post-card-sub">{{ sub_title | escape }}</p>
+          {%- endif %}
+        </div>
+      </a>
+    </li>
+    {%- endfor %}
+  </ul>
+  <p class="post-cards-empty" hidden>이 분야의 글이 아직 없어요.</p>
+</div>
+
+<script>
+  (function () {
+    var chips = document.querySelectorAll(".topic-chip");
+    var cards = document.querySelectorAll(".post-card");
+    var empty = document.querySelector(".post-cards-empty");
+    chips.forEach(function (chip) {
+      chip.addEventListener("click", function () {
+        var t = chip.getAttribute("data-topic");
+        chips.forEach(function (c) { c.classList.toggle("is-active", c === chip); });
+        var shown = 0;
+        cards.forEach(function (card) {
+          var on = t === "all" || card.getAttribute("data-topic") === t;
+          card.hidden = !on;
+          if (on) shown++;
+        });
+        empty.hidden = shown > 0;
+      });
+    });
+  })();
+</script>

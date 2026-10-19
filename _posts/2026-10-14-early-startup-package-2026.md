@@ -2,6 +2,7 @@
 layout: post
 title: "2026 초기창업패키지 총정리: 창업 3년 이내 기업 최대 1억 원 (자부담 비율·유형별 차이)"
 date: 2026-10-14 13:20:00 +0900
+topic: 창업
 image: /assets/images/cards/early-startup-package-2026.png
 ---
 

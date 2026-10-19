@@ -2,6 +2,7 @@
 layout: post
 title: "2026 에너지바우처 총정리: 최대 70만 1,300원 난방비 지원, 12월 31일까지 신청 (대상·사용 방법)"
 date: 2026-10-16 17:30:00 +0900
+topic: 생활비
 image: /assets/images/cards/energy-voucher-2026.png
 ---
 

@@ -41,3 +41,7 @@ naver_site_verification:
 # 사이트에 올라가면 안 되는 파일
 exclude:
   - CLAUDE.md
+
+# 날짜 표시 형식 (minima 테마)
+minima:
+  date_format: "%Y.%m.%d"

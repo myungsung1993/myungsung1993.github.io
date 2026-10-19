@@ -2,6 +2,8 @@
 layout: post
 title: "2026 청년 주거 지원 총정리: 월세 지원·전월세 대출·공공임대·청약통장 한눈에 (상황별 찾기)"
 date: 2026-10-16 16:00:00 +0900
+topic: 청년 주거
+hub: true
 image: /assets/images/cards/youth-housing-support-2026.png
 ---
 

@@ -2,6 +2,7 @@
 layout: post
 title: "창업중소기업 세액감면 총정리 (2026년 개정): 청년·지역별 감면율, 대상 업종, 주의할 점"
 date: 2026-10-14 13:50:00 +0900
+topic: 창업
 image: /assets/images/cards/startup-tax-reduction-2026.png
 ---
 

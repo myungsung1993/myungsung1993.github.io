@@ -2,6 +2,7 @@
 layout: post
 title: "2026 청년 공공임대 총정리: 매입임대·행복주택·전세임대 자격 조건과 임대료 비교 (만 39세까지)"
 date: 2026-10-16 17:00:00 +0900
+topic: 청년 주거
 image: /assets/images/cards/youth-public-rental-2026.png
 ---
 

@@ -2,6 +2,7 @@
 layout: post
 title: "2026 전기차 구매보조금(국고) 총정리: 지원 대상, 신청 기간, 금액과 근거"
 date: 2026-10-14 10:00:00 +0900
+topic: 자동차
 image: /assets/images/cards/ev-purchase-subsidy-2026.png
 ---
 

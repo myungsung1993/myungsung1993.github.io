@@ -2,6 +2,7 @@
 layout: post
 title: "2026 아이돌봄서비스 총정리: 시간당 1만 2,790원, 소득별 정부지원 최대 85% (자격·본인부담금·신청 방법)"
 date: 2026-10-16 17:20:00 +0900
+topic: 출산·육아
 image: /assets/images/cards/child-care-service-2026.png
 ---
 

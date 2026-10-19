@@ -2,6 +2,7 @@
 layout: post
 title: "2026 문화누리카드 총정리: 1인 15만 원, 11월 30일 발급 마감·12월 31일 사용 마감 (대상·신청·사용처)"
 date: 2026-10-17 23:30:00 +0900
+topic: 생활비
 image: /assets/images/cards/culture-nuri-card-2026.png
 ---
 

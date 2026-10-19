@@ -2,6 +2,8 @@
 layout: post
 title: "2026 창업지원사업 총정리: 3조 4,645억 원, 508개 사업 한눈에 보기"
 date: 2026-10-14 13:00:00 +0900
+topic: 창업
+hub: true
 image: /assets/images/cards/startup-support-2026.png
 ---
 

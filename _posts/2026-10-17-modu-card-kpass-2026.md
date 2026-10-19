@@ -2,6 +2,7 @@
 layout: post
 title: "2026 모두의카드(K-패스) 총정리: 대중교통비 기준금액 넘으면 전액 환급 (지역·대상별 금액표, 시차 출퇴근 혜택)"
 date: 2026-10-17 23:50:00 +0900
+topic: 생활비
 image: /assets/images/cards/modu-card-kpass-2026.png
 ---
 

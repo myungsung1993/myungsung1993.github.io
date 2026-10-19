@@ -2,6 +2,7 @@
 layout: post
 title: "2026 청년월세 지원 총정리: 월 최대 20만 원, 24개월 (자격 조건·신청 방법·다음 모집 준비)"
 date: 2026-10-16 10:00:00 +0900
+topic: 청년 주거
 image: /assets/images/cards/youth-monthly-rent-2026.png
 ---
 
