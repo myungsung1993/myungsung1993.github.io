@@ -173,6 +173,7 @@ image: /assets/images/cards/youth-future-savings-2026.png
 
 ## 함께 보면 좋은 글
 
+- [2026 청년내일저축계좌 총정리]({% post_url 2026-10-19-youth-tomorrow-savings-2026 %}): 수급자·차상위 청년이라면 정부가 매달 30만 원을 더해 주는 통장
 - [2026 청년 주택드림 청약통장 총정리]({% post_url 2026-10-16-youth-dream-account-2026 %}): 청년 자산 만들기의 또 다른 축, 최고 연 4.5% 청약통장
 - [2026 청년 주거 지원 총정리]({% post_url 2026-10-16-youth-housing-support-2026 %}): 월세·전세·공공임대 등 청년 주거 지원 한눈에
 
