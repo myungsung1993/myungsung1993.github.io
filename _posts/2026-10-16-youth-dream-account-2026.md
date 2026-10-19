@@ -211,6 +211,7 @@ image: /assets/images/cards/youth-dream-account-2026.png
 
 - [2026 청년 주거 지원 총정리]({% post_url 2026-10-16-youth-housing-support-2026 %}): 월세 지원·대출·공공임대·청약통장을 상황별로 정리한 전체 안내
 - [2026 청년 전세자금대출(청년전용 버팀목) 총정리]({% post_url 2026-10-16-youth-jeonse-loan-2026 %}): 청약을 준비하는 동안 전세로 산다면
+- [2026 청년미래적금 총정리]({% post_url 2026-10-19-youth-future-savings-2026 %}): 청약통장과 함께 쓰는 청년 자산 만들기 적금(정부기여금 6~12%)
 
 ---
 
