@@ -1,0 +1,112 @@
+<!doctype html>
+<!--
+  인스타그램 카드뉴스(세로 1080x1350) 만들기
+  1) 아래 decks에 글 슬러그를 키로 슬라이드를 추가한다. 숫자는 블로그 글(검토를 거친 값)과 똑같이 쓴다.
+  2) 장마다 캡처한다:  file:///.../_tools/insta.html#슬러그/번호  (번호는 1부터)
+     chrome --headless=new --hide-scrollbars --window-size=1080,1350 --virtual-time-budget=8000
+            --screenshot="assets/insta/슬러그/번호.png" "file:///.../_tools/insta.html#슬러그/1"
+  슬라이드 종류
+    cover: { type:"cover", label, title(줄바꿈은 \n), badge, sub }
+    rows : { type:"rows", step, title, rows:[[큰 글씨, 작은 글씨], ...], note }
+    end  : { type:"end", title, text, source }
+-->
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+  :root { --brand:#1a6fd1; --ink:#1b2430; --sub:#5b6676; --line:#e1e6ec; --soft:#f2f6fb; --warn:#b45309; --warnbg:#fff4e0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1080px; height: 1350px; overflow: hidden; }
+  body { font-family: "Pretendard","Malgun Gothic",sans-serif; color: var(--ink); word-break: keep-all; background:#fff; }
+  .slide { position: relative; width: 1080px; height: 1350px; padding: 96px 90px 0; }
+  .top { position:absolute; top:0; left:0; right:0; height:22px; background:var(--brand); }
+  .foot { position:absolute; left:90px; right:90px; bottom:56px; display:flex; justify-content:space-between; align-items:center;
+          font-size:30px; font-weight:600; color:var(--sub); }
+  .foot b { color: var(--ink); font-weight:800; }
+  .page { font-size:30px; color:var(--sub); font-weight:700; }
+
+  /* cover */
+  .cover { background: var(--brand); color:#fff; display:flex; flex-direction:column; justify-content:center; padding:0 90px; }
+  .cover .label { display:inline-block; align-self:flex-start; font-size:44px; font-weight:800; background:rgba(255,255,255,.18);
+                  padding:12px 28px; border-radius:14px; }
+  .cover h1 { margin-top:46px; font-size:118px; line-height:1.18; font-weight:900; letter-spacing:-4px; white-space:pre-line; }
+  .cover .badge { margin-top:58px; align-self:flex-start; font-size:52px; font-weight:800; color:var(--brand); background:#fff;
+                  padding:18px 34px; border-radius:18px; }
+  .cover .sub { margin-top:40px; font-size:40px; font-weight:600; opacity:.9; line-height:1.5; }
+  .cover .foot { color: rgba(255,255,255,.85); }
+  .cover .foot b { color:#fff; }
+  .cover .page { color: rgba(255,255,255,.85); }
+
+  /* rows */
+  .step { font-size:40px; font-weight:800; color:var(--brand); }
+  .rows h2 { margin-top:20px; font-size:90px; font-weight:900; letter-spacing:-2.5px; line-height:1.2; }
+  .list { margin-top:52px; display:flex; flex-direction:column; gap:26px; }
+  .row { border:3px solid var(--line); border-radius:28px; padding:34px 48px; background:#fafbfd; }
+  .row .big { font-size:68px; font-weight:900; color:var(--brand); letter-spacing:-1.5px; line-height:1.2; }
+  .row .small { margin-top:14px; font-size:42px; font-weight:600; color:var(--sub); line-height:1.45; }
+  .note { margin-top:40px; font-size:40px; font-weight:700; color:var(--warn); background:var(--warnbg); padding:26px 34px; border-radius:20px; line-height:1.45; }
+
+  /* end */
+  .end { background: var(--soft); }
+  .end h2 { font-size:84px; font-weight:900; letter-spacing:-2.5px; line-height:1.25; white-space:pre-line; }
+  .end .text { margin-top:56px; font-size:48px; font-weight:600; line-height:1.6; color:var(--ink); white-space:pre-line; }
+  .end .link { margin-top:56px; display:inline-block; font-size:56px; font-weight:900; color:#fff; background:var(--brand);
+               padding:22px 40px; border-radius:20px; }
+  .end .source { margin-top:90px; font-size:36px; font-weight:600; color:var(--sub); line-height:1.6; white-space:pre-line; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script>
+const decks = {
+  "culture-nuri-card-2026": {
+    date: "2026.10.21 기준",
+    slides: [
+      { type:"cover", label:"2026 문화누리카드", title:"1인 15만 원\n문화·여행·체육비", badge:"11월 30일 발급 마감",
+        sub:"기초생활수급자·차상위계층이라면\n올해 안에 꼭 받아서 쓰세요" },
+      { type:"rows", step:"01 · 누가", title:"누가 받을 수 있나요?",
+        rows:[["6세 이상", "2020년 12월 31일 이전 출생"], ["기초생활수급자", "생계·의료·주거·교육급여"], ["차상위계층", "자활근로, 장애수당, 저소득 한부모가족 등"]] },
+      { type:"rows", step:"02 · 얼마", title:"얼마를 받나요?",
+        rows:[["15만 원", "1인당 1년 기본 지원금"], ["16만 원", "청소년(13~18세) · 2008~2013년생"], ["16만 원", "준고령기(60~64세) · 1962~1966년생"]],
+        note:"추가지원금 예산이 떨어지면 15만 원만 받아요" },
+      { type:"rows", step:"03 · 언제", title:"언제까지 해야 하나요?",
+        rows:[["11월 30일(월)", "카드 발급·재충전 마감"], ["12월 31일(목)", "사용 마감 · 이후 남은 돈은 쓸 수 없어요"]],
+        note:"예산이 떨어지면 11월 30일 전에 마감될 수 있어요" },
+      { type:"rows", step:"04 · 어떻게", title:"어떻게 신청하나요?",
+        rows:[["주민센터 방문", "그 자리에서 카드 수령"], ["누리집·앱 (mnuri.kr)", "우편 3~5일 · 농협 수령(신규만) 약 2시간 후"], ["작년에 3만 원 이상 썼다면", "자격 유지 시 신청 없이 자동 충전"]] },
+      { type:"end", title:"자세한 조건과\n사용처는 블로그에서", text:"대상별 금액, 신청 단계,\n카드 분실 시 대처까지 정리했어요",
+        link:"jiwongil.kr", source:"출처: 문화누리카드 누리집, 문화체육관광부\n개인이 공식 자료를 정리한 정보예요" }
+    ]
+  }
+};
+
+const [slug, n] = decodeURIComponent(location.hash.slice(1)).split("/");
+const deck = decks[slug];
+const s = deck.slides[(Number(n) || 1) - 1];
+const total = deck.slides.length;
+const esc = t => String(t).replace(/[&<>]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
+const foot = `<div class="foot"><b>@jiwongil.kr</b><span>${esc(deck.date)} · <span class="page">${n}/${total}</span></span></div>`;
+let html = "";
+if (s.type === "cover") {
+  html = `<div class="slide cover"><div class="label">${esc(s.label)}</div><h1>${esc(s.title)}</h1>
+          <div class="badge">${esc(s.badge)}</div><div class="sub" style="white-space:pre-line">${esc(s.sub)}</div>${foot}</div>`;
+} else if (s.type === "rows") {
+  html = `<div class="slide rows"><div class="top"></div><div class="step">${esc(s.step)}</div><h2>${esc(s.title)}</h2>
+          <div class="list">${s.rows.map(([b, m]) => `<div class="row"><div class="big">${esc(b)}</div><div class="small">${esc(m)}</div></div>`).join("")}</div>
+          ${s.note ? `<div class="note">⚠️ ${esc(s.note)}</div>` : ""}${foot}</div>`;
+} else {
+  html = `<div class="slide end"><div class="top"></div><h2>${esc(s.title)}</h2><div class="text">${esc(s.text)}</div>
+          <div class="link">${esc(s.link)}</div><div class="source">${esc(s.source)}</div>${foot}</div>`;
+}
+document.getElementById("root").innerHTML = html;
+// 넘침 검사: 본문 마지막 요소가 아래 표시줄(foot)과 겹치면 제목에 OVERFLOW 표시 (dump-dom으로 확인)
+document.fonts.ready.then(() => {
+  const foot = document.querySelector(".foot").getBoundingClientRect();
+  const kids = [...document.querySelector(".slide").children].filter(e => !e.classList.contains("foot") && !e.classList.contains("top"));
+  const bottom = Math.max(...kids.map(e => e.getBoundingClientRect().bottom));
+  document.title = bottom > foot.top - 24 ? "OVERFLOW " + Math.round(bottom - foot.top + 24) : "OK";
+});
+</script>
+</body>
+</html>
