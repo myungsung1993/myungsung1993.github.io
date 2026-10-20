@@ -173,6 +173,7 @@ image: /assets/images/cards/energy-voucher-2026.png
 ## 함께 보면 좋은 글
 
 - [2026 문화누리카드 총정리]({% post_url 2026-10-17-culture-nuri-card-2026 %}): 수급자·차상위 1인 15만 원 문화·여행비, 11월 30일 발급 마감
+- [2026 스포츠강좌이용권 총정리]({% post_url 2026-10-20-sports-voucher-2026 %}): 수급자·차상위 가구 아이의 운동 수강료 월 10만 5천 원
 
 ---
 

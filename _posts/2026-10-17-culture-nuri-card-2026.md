@@ -153,6 +153,7 @@ image: /assets/images/cards/culture-nuri-card-2026.png
 ## 함께 보면 좋은 글
 
 - [2026 에너지바우처 총정리]({% post_url 2026-10-16-energy-voucher-2026 %}): 기초생활수급 가구 냉난방비 최대 70만 1,300원, 12월 31일까지 신청
+- [2026 스포츠강좌이용권 총정리]({% post_url 2026-10-20-sports-voucher-2026 %}): 수급자·차상위 가구 아이의 운동 수강료 월 10만 5천 원
 
 ---
 
