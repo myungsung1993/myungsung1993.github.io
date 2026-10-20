@@ -1,0 +1,36 @@
+<!doctype html>
+<!--
+  인스타그램 프로필 사진(1080x1080) 만들기
+  chrome --headless=new --hide-scrollbars --window-size=1080,1080 --virtual-time-budget=8000
+         --screenshot="assets/brand/insta-profile.png" "file:///.../_tools/profile.html"
+  인스타는 동그랗게 잘라서 보여 주므로, 중요한 요소는 가운데 원(지름 약 860px) 안에 둔다.
+-->
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1080px; height: 1080px; overflow: hidden; }
+  body {
+    background: #1a6fd1;
+    font-family: "Pretendard", "Malgun Gothic", sans-serif;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    color: #fff;
+  }
+  svg { width: 230px; height: 230px; margin-bottom: 10px; }
+  .name { font-size: 270px; font-weight: 900; letter-spacing: -14px; line-height: 1; }
+  .sub { margin-top: 34px; font-size: 64px; font-weight: 700; letter-spacing: -1px; opacity: 0.9; }
+</style>
+</head>
+<body>
+  <!-- 갈림길 표지판: 나에게 맞는 지원금으로 가는 길 -->
+  <svg viewBox="0 0 100 100" aria-hidden="true">
+    <rect x="46" y="10" width="8" height="84" rx="3" fill="#fff"/>
+    <path d="M18 20 H70 L82 30 L70 40 H18 Z" fill="#fff"/>
+    <path d="M82 50 H30 L18 60 L30 70 H82 Z" fill="#fff" opacity="0.75"/>
+  </svg>
+  <div class="name">지원길</div>
+  <div class="sub">정책 지원금 길잡이</div>
+</body>
+</html>
