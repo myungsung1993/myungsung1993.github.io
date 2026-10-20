@@ -22,19 +22,22 @@ ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 [ -s "$TOKEN_FILE" ] || { echo "토큰 파일이 비어 있거나 없습니다: $TOKEN_FILE" >&2; exit 1; }
 TOKEN="$(tr -d ' \r\n' < "$TOKEN_FILE")"
 
+# 일시적인 네트워크 끊김(curl 56 등)에 대비해 재시도한다. 게시 단계는 중복 게시를 막기 위해 재시도하지 않는다.
+cr() { curl --retry 4 --retry-delay 3 --retry-all-errors "$@"; }
+
 # JSON에서 "키":"값" 하나 꺼내기 (jq 없이)
 jget() { grep -o "\"$1\":\"[^\"]*\"" | head -1 | sed "s/\"$1\":\"//; s/\"$//"; }
 fail_if_error() { if printf '%s' "$1" | grep -q '"error"'; then echo "API 오류: $1" >&2; exit 1; fi; }
 
 ig_id() {
-  local r; r="$(curl -s -m 30 -G "$API/me" --data-urlencode "fields=user_id,username" --data-urlencode "access_token=$TOKEN")"
+  local r; r="$(cr -s -m 30 -G "$API/me" --data-urlencode "fields=user_id,username" --data-urlencode "access_token=$TOKEN")"
   fail_if_error "$r"; printf '%s' "$r" | jget user_id
 }
 
 wait_ready() {  # 컨테이너 처리 완료까지 대기
   local id="$1" r s
   for _ in $(seq 1 30); do
-    r="$(curl -s -m 30 -G "$API/$id" --data-urlencode "fields=status_code" --data-urlencode "access_token=$TOKEN")"
+    r="$(cr -s -m 30 -G "$API/$id" --data-urlencode "fields=status_code" --data-urlencode "access_token=$TOKEN")"
     s="$(printf '%s' "$r" | jget status_code)"
     [ "$s" = "FINISHED" ] && return 0
     [ "$s" = "ERROR" ] || [ "$s" = "EXPIRED" ] && { echo "컨테이너 처리 실패($id): $r" >&2; exit 1; }
@@ -64,14 +67,17 @@ case "${1:-}" in
     id="$(ig_id)"
     children=""
     for f in "${imgs[@]}"; do
-      r="$(curl -s -m 60 -X POST "$API/$id/media" --data-urlencode "image_url=$SITE/assets/insta/$slug/$f" \
+      r="$(cr -s -m 60 -X POST "$API/$id/media" --data-urlencode "image_url=$SITE/assets/insta/$slug/$f" \
             --data-urlencode "is_carousel_item=true" --data-urlencode "access_token=$TOKEN")"
       fail_if_error "$r"; cid="$(printf '%s' "$r" | jget id)"; wait_ready "$cid"
       children="${children:+$children,}$cid"; echo "이미지 준비 완료: $f"
     done
-    # 캡션은 파일에서 바로 읽어 보낸다(윈도우 curl의 한글 인자 인코딩 문제 회피)
-    r="$(curl -s -m 60 -X POST "$API/$id/media" --data-urlencode "media_type=CAROUSEL" \
-          --data-urlencode "children=$children" --data-urlencode "caption@$cap" --data-urlencode "access_token=$TOKEN")"
+    # 캡션은 파일에서 바로 읽어 보낸다(윈도우 curl의 한글 인자 인코딩 문제 회피).
+    # 윈도우 curl은 한글이 들어간 파일 경로도 못 읽으므로 영문 경로로 복사해서 넘긴다.
+    capcopy="$HOME/.policy-blog/caption_upload.txt"; cp "$cap" "$capcopy"
+    capw="$(cygpath -m "$capcopy" 2>/dev/null || echo "$capcopy")"
+    r="$(cr -s -m 60 -X POST "$API/$id/media" --data-urlencode "media_type=CAROUSEL" \
+          --data-urlencode "children=$children" --data-urlencode "caption@$capw" --data-urlencode "access_token=$TOKEN")"
     fail_if_error "$r"; carousel="$(printf '%s' "$r" | jget id)"; wait_ready "$carousel"
     r="$(curl -s -m 60 -X POST "$API/$id/media_publish" --data-urlencode "creation_id=$carousel" --data-urlencode "access_token=$TOKEN")"
     fail_if_error "$r"; mid="$(printf '%s' "$r" | jget id)"
