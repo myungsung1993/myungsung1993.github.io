@@ -17,6 +17,27 @@ STAMP="$DIR/insta_token_refreshed"
 TOOL="$(cd "$(dirname "$0")" && pwd)/insta_upload.sh"
 now() { date "+%Y-%m-%d %H:%M"; }
 
+# 0) 동시 실행 막기 — 컴퓨터를 늦게 켜면 놓친 아침·저녁 예약이 한꺼번에 실행된다.
+#    (2026-10-21 두 예약이 동시에 돌아 같은 글이 2번 올라감)
+LOCK="$DIR/insta.lock"
+if ! mkdir "$LOCK" 2>/dev/null; then
+  # 30분 넘은 잠금은 비정상 종료로 보고 지운다
+  if [ -n "$(find "$LOCK" -maxdepth 0 -mmin +30 2>/dev/null)" ]; then
+    rmdir "$LOCK" && mkdir "$LOCK" || exit 0
+  else
+    echo "$(now) 다른 실행이 진행 중이라 건너뜀" >> "$LOG"; exit 0
+  fi
+fi
+trap 'rmdir "$LOCK" 2>/dev/null' EXIT
+
+# 직전 게시 후 3시간이 안 지났으면 건너뛴다 (놓친 예약 2개가 연달아 올라가지 않게).
+# 직접 바로 올릴 때는 INSTA_FORCE=1 을 붙여 실행한다.
+LAST="$DIR/insta_last_post"
+if [ "${INSTA_FORCE:-0}" != 1 ] && [ -f "$LAST" ] && \
+   [ $(( $(date +%s) - $(cat "$LAST") )) -lt $(( 3 * 3600 )) ]; then
+  echo "$(now) 직전 게시 후 3시간 안이라 건너뜀" >> "$LOG"; exit 0
+fi
+
 # 1) 토큰 갱신 (마지막 갱신 후 30일 이상 지났으면)
 last="$(cat "$STAMP" 2>/dev/null || echo 0)"
 if [ $(( $(date +%s) - last )) -ge $(( 30 * 86400 )) ]; then
@@ -35,6 +56,7 @@ slug="$(grep -m1 -v '^\s*$' "$QUEUE" | tr -d '\r ')"
 if out="$(bash "$TOOL" post "$slug" 2>&1)"; then
   link="$(printf '%s\n' "$out" | grep '게시 완료' | sed 's/.*게시 완료: //')"
   echo "$(now) 게시 성공 $slug $link" >> "$LOG"
+  date +%s > "$LAST"
   # 게시한 슬러그만 대기열에서 뺀다
   grep -v -x "$slug" "$QUEUE" > "$QUEUE.tmp" && mv "$QUEUE.tmp" "$QUEUE"
 else
