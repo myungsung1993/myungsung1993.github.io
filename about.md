@@ -35,4 +35,4 @@ redirect_from:
 
 ## 문의
 
-문의: [smyungsung@gmail.com](mailto:smyungsung@gmail.com)
+문의: [smyungsung1993@gmail.com](mailto:smyungsung1993@gmail.com)

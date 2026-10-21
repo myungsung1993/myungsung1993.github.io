@@ -24,6 +24,6 @@ permalink: /privacy/
 
 ## 4. 문의
 
-개인정보 관련 문의: [smyungsung@gmail.com](mailto:smyungsung@gmail.com)
+개인정보 관련 문의: [smyungsung1993@gmail.com](mailto:smyungsung1993@gmail.com)
 
 시행일: 2026년 10월 14일
