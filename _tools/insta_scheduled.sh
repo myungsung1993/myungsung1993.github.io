@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-# 인스타 예약 게시 — 윈도우 작업 스케줄러가 하루 2번(21:30, 22:30) 실행한다. (2026-10-22 퇴근 후 시간에 맞춰 변경)
+# 인스타 대기열 게시 — 사용자가 "올려"라고 할 때 직접 실행한다. (2026-10-22 예약 작업 없앰)
+#   INSTA_FORCE=1 bash _tools/insta_scheduled.sh
 #
 # 대기열: ~/.policy-blog/insta_queue.txt  (한 줄에 슬러그 하나, 위에서부터 차례로 게시)
 # 기록  : ~/.policy-blog/insta_log.txt     (게시 결과·오류)
@@ -17,7 +18,7 @@ STAMP="$DIR/insta_token_refreshed"
 TOOL="$(cd "$(dirname "$0")" && pwd)/insta_upload.sh"
 now() { date "+%Y-%m-%d %H:%M"; }
 
-# 0) 동시 실행 막기 — 컴퓨터를 늦게 켜면 놓친 아침·저녁 예약이 한꺼번에 실행된다.
+# 0) 동시 실행 막기 — 두 번 겹쳐 실행되면 같은 글이 2번 올라간다.
 #    (2026-10-21 두 예약이 동시에 돌아 같은 글이 2번 올라감)
 LOCK="$DIR/insta.lock"
 if ! mkdir "$LOCK" 2>/dev/null; then
@@ -30,7 +31,7 @@ if ! mkdir "$LOCK" 2>/dev/null; then
 fi
 trap 'rmdir "$LOCK" 2>/dev/null' EXIT
 
-# 직전 게시 후 50분이 안 지났으면 건너뛴다 (놓친 예약 2개가 연달아 올라가지 않게).
+# 직전 게시 후 50분이 안 지났으면 건너뛴다 (같은 대기열이 연달아 올라가지 않게).
 # 직접 바로 올릴 때는 INSTA_FORCE=1 을 붙여 실행한다.
 LAST="$DIR/insta_last_post"
 if [ "${INSTA_FORCE:-0}" != 1 ] && [ -f "$LAST" ] && \
