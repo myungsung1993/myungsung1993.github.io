@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# 인스타 예약 게시 — 윈도우 작업 스케줄러가 하루 2번(08:30, 19:30) 실행한다.
+# 인스타 예약 게시 — 윈도우 작업 스케줄러가 하루 2번(21:30, 22:30) 실행한다. (2026-10-22 퇴근 후 시간에 맞춰 변경)
 #
 # 대기열: ~/.policy-blog/insta_queue.txt  (한 줄에 슬러그 하나, 위에서부터 차례로 게시)
 # 기록  : ~/.policy-blog/insta_log.txt     (게시 결과·오류)
@@ -30,12 +30,12 @@ if ! mkdir "$LOCK" 2>/dev/null; then
 fi
 trap 'rmdir "$LOCK" 2>/dev/null' EXIT
 
-# 직전 게시 후 3시간이 안 지났으면 건너뛴다 (놓친 예약 2개가 연달아 올라가지 않게).
+# 직전 게시 후 50분이 안 지났으면 건너뛴다 (놓친 예약 2개가 연달아 올라가지 않게).
 # 직접 바로 올릴 때는 INSTA_FORCE=1 을 붙여 실행한다.
 LAST="$DIR/insta_last_post"
 if [ "${INSTA_FORCE:-0}" != 1 ] && [ -f "$LAST" ] && \
-   [ $(( $(date +%s) - $(cat "$LAST") )) -lt $(( 3 * 3600 )) ]; then
-  echo "$(now) 직전 게시 후 3시간 안이라 건너뜀" >> "$LOG"; exit 0
+   [ $(( $(date +%s) - $(cat "$LAST") )) -lt $(( 50 * 60 )) ]; then
+  echo "$(now) 직전 게시 후 50분 안이라 건너뜀" >> "$LOG"; exit 0
 fi
 
 # 1) 토큰 갱신 (마지막 갱신 후 30일 이상 지났으면)
