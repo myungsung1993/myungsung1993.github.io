@@ -8,6 +8,7 @@
 # 사용법
 #   bash _tools/insta_upload.sh check            # 계정·게시 가능 횟수 확인 (게시하지 않음)
 #   bash _tools/insta_upload.sh post <슬러그>     # 캐러셀 게시 (반드시 사용자 확인 후 실행)
+#   bash _tools/insta_upload.sh reel <슬러그>     # 릴스 게시: assets/insta/<슬러그>/reel.mp4 (_tools/insta_reel.sh로 만듦, 사용자 확인 후 실행)
 #   bash _tools/insta_upload.sh refresh          # 장기 토큰 갱신 (60일 만료 전에 실행)
 #
 # 규칙: CLAUDE.md — 카드뉴스는 독립 팩트체크를 거치고, 사용자가 "올려"라고 한 뒤에만 post 를 실행한다.
@@ -34,9 +35,9 @@ ig_id() {
   fail_if_error "$r"; printf '%s' "$r" | jget user_id
 }
 
-wait_ready() {  # 컨테이너 처리 완료까지 대기
+wait_ready() {  # 컨테이너 처리 완료까지 대기 (두 번째 인자: 확인 횟수, 3초 간격)
   local id="$1" r s
-  for _ in $(seq 1 30); do
+  for _ in $(seq 1 "${2:-30}"); do
     r="$(cr -s -m 30 -G "$API/$id" --data-urlencode "fields=status_code" --data-urlencode "access_token=$TOKEN")"
     s="$(printf '%s' "$r" | jget status_code)"
     [ "$s" = "FINISHED" ] && return 0
@@ -80,6 +81,28 @@ case "${1:-}" in
           --data-urlencode "children=$children" --data-urlencode "caption@$capw" --data-urlencode "access_token=$TOKEN")"
     fail_if_error "$r"; carousel="$(printf '%s' "$r" | jget id)"; wait_ready "$carousel"
     r="$(curl -s -m 60 -X POST "$API/$id/media_publish" --data-urlencode "creation_id=$carousel" --data-urlencode "access_token=$TOKEN")"
+    fail_if_error "$r"; mid="$(printf '%s' "$r" | jget id)"
+    link="$(curl -s -m 30 -G "$API/$mid" --data-urlencode "fields=permalink" --data-urlencode "access_token=$TOKEN" | jget permalink | sed 's#\\/#/#g')"
+    echo "게시 완료: $link"
+    ;;
+  reel)
+    slug="${2:?슬러그를 넣어 주세요 (예: youth-housing-support-2026)}"
+    dir="$ROOT/assets/insta/$slug"
+    cap="$dir/caption.txt"
+    [ -s "$cap" ] || { echo "캡션 파일이 없습니다: $cap" >&2; exit 1; }
+    [ -s "$dir/reel.mp4" ] || { echo "영상이 없습니다: $dir/reel.mp4 (bash _tools/insta_reel.sh $slug)" >&2; exit 1; }
+    for f in reel.mp4 1.png; do   # 영상·표지가 사이트에 올라가 있는지 먼저 확인
+      c="$(curl -s -o /dev/null -w '%{http_code}' -m 30 "$SITE/assets/insta/$slug/$f")"
+      [ "$c" = 200 ] || { echo "사이트에 파일이 없습니다($c): $SITE/assets/insta/$slug/$f" >&2; exit 1; }
+    done
+    id="$(ig_id)"
+    capcopy="$HOME/.policy-blog/caption_upload.txt"; cp "$cap" "$capcopy"
+    capw="$(cygpath -m "$capcopy" 2>/dev/null || echo "$capcopy")"
+    r="$(cr -s -m 60 -X POST "$API/$id/media" --data-urlencode "media_type=REELS" \
+          --data-urlencode "video_url=$SITE/assets/insta/$slug/reel.mp4" --data-urlencode "cover_url=$SITE/assets/insta/$slug/1.png" \
+          --data-urlencode "share_to_feed=true" --data-urlencode "caption@$capw" --data-urlencode "access_token=$TOKEN")"
+    fail_if_error "$r"; cid="$(printf '%s' "$r" | jget id)"; echo "영상 처리 중..."; wait_ready "$cid" 100
+    r="$(curl -s -m 60 -X POST "$API/$id/media_publish" --data-urlencode "creation_id=$cid" --data-urlencode "access_token=$TOKEN")"
     fail_if_error "$r"; mid="$(printf '%s' "$r" | jget id)"
     link="$(curl -s -m 30 -G "$API/$mid" --data-urlencode "fields=permalink" --data-urlencode "access_token=$TOKEN" | jget permalink | sed 's#\\/#/#g')"
     echo "게시 완료: $link"
