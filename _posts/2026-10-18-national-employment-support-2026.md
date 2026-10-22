@@ -177,6 +177,7 @@ image: /assets/images/cards/national-employment-support-2026.png
 ## 함께 보면 좋은 글
 
 - [2026 국민내일배움카드 총정리]({% post_url 2026-10-18-tomorrow-learning-card-2026 %}): 참여 중 직업훈련을 받을 때 쓰는 훈련비 카드(5년간 최대 500만 원)
+- [2026 긴급복지지원 총정리]({% post_url 2026-10-22-emergency-welfare-support-2026 %}): 실직으로 당장 생계가 막막할 때 먼저 받는 생계지원(4인 월 199만 4,600원)
 
 ---
 
