@@ -8,6 +8,7 @@
   슬라이드 종류
     cover: { type:"cover", label, title(줄바꿈은 \n), badge, sub }
     rows : { type:"rows", step, title, rows:[[큰 글씨, 작은 글씨], ...], note }
+    hero : { type:"hero", label, who, pre, amt, badge }  ← 표지 A안(2026-10-22~): 대상 한 줄 + 큰 금액 + 마감(없으면 핵심 조건) 배지
     end  : { type:"end", title, text, source }
 -->
 <html lang="ko">
@@ -37,6 +38,16 @@
   .cover .foot { color: rgba(255,255,255,.85); }
   .cover .foot b { color:#fff; }
   .cover .page { color: rgba(255,255,255,.85); }
+
+  /* hero (표지 A안) */
+  .hero { background: var(--brand); color:#fff; display:flex; flex-direction:column; justify-content:center; padding:0 90px; }
+  .hero .label { align-self:flex-start; font-size:44px; font-weight:800; background:rgba(255,255,255,.18); padding:12px 28px; border-radius:14px; }
+  .hero .who { margin-top:56px; font-size:50px; font-weight:700; opacity:.95; line-height:1.4; }
+  .hero .pre { margin-top:14px; font-size:70px; font-weight:900; letter-spacing:-2px; line-height:1.2; }
+  .hero .amt { margin-top:6px; font-size:150px; font-weight:900; letter-spacing:-5px; line-height:1.12; }
+  .hero .amt.long { font-size:116px; letter-spacing:-4px; }
+  .hero .badge { margin-top:64px; align-self:flex-start; font-size:56px; font-weight:900; color:var(--brand); background:#fff; padding:20px 38px; border-radius:20px; }
+  .hero .foot { color: rgba(255,255,255,.85); } .hero .foot b { color:#fff; } .hero .page { color: rgba(255,255,255,.85); }
 
   /* rows */
   .step { font-size:40px; font-weight:800; color:var(--brand); }
@@ -185,8 +196,7 @@ const decks = {
   "youth-jeonse-loan-2026": {
     date: "2026.10.21 기준",
     slides: [
-      { type:"cover", label:"2026 청년 전세자금대출", title:"청년전용 버팀목\n연 2.2~3.3%", badge:"최대 1.5억 원",
-        sub:"만 19~34세 무주택 세대주를 위한\n주택도시기금 전세대출" },
+      { type:"hero", label:"2026 청년 전세자금대출", who:"만 19~34세 무주택 세대주", pre:"청년전용 버팀목 금리", amt:"연 2.2~3.3%", badge:"최대 1.5억 원" },
       { type:"rows", step:"01 · 누가", title:"누가 받을 수 있나요?",
         rows:[["만 19~34세 세대주", "예비 세대주도 가능"], ["부부합산 연소득 5천만 원 이하", "순자산 3.45억 원 이하 (2026년)"], ["무주택", "세대원 모두 집이 없어야 해요"]] },
       { type:"rows", step:"02 · 얼마", title:"얼마나 빌리나요?",
@@ -201,8 +211,7 @@ const decks = {
   "youth-wolse-loan-2026": {
     date: "2026.10.21 기준",
     slides: [
-      { type:"cover", label:"2026 청년전용 보증부월세대출", title:"월세 대출\n20만 원까지 연 0%", badge:"보증금 대출 연 1.3%",
-        sub:"월세 사는 청년의\n보증금과 월세를 함께 빌려줘요" },
+      { type:"hero", label:"2026 청년전용 보증부월세대출", who:"만 19~34세 단독세대주", pre:"매달 월세 20만 원까지", amt:"연 0%", badge:"보증금 대출 연 1.3%" },
       { type:"rows", step:"01 · 누가", title:"누가 받을 수 있나요?",
         rows:[["만 19~34세 단독세대주", "예비 세대주도 가능"], ["부부합산 연소득 5천만 원 이하", "순자산 3.45억 원 이하 (2026년)"], ["전용 60㎡ 이하 주택", "보증금 6,500만 원 · 월세 70만 원 이하"]] },
       { type:"rows", step:"02 · 얼마", title:"얼마나 빌리나요?",
@@ -218,8 +227,7 @@ const decks = {
   "youth-public-rental-2026": {
     date: "2026.10.21 기준",
     slides: [
-      { type:"cover", label:"2026 청년 공공임대", title:"시세보다 싸게\n사는 집", badge:"만 39세까지 신청",
-        sub:"매입임대·행복주택·전세임대\n임대료와 자격을 비교했어요" },
+      { type:"hero", label:"2026 청년 공공임대", who:"만 19~39세 무주택 청년 (소득·자산 기준)", pre:"매입임대·행복주택·전세임대", amt:"시세보다 싸게", badge:"만 39세까지 신청" },
       { type:"rows", step:"01 · 누가", title:"누가 신청할 수 있나요?",
         rows:[["만 19~39세", "무주택 청년 (매입임대·행복주택은 미혼)"], ["대학생 · 취업준비생", "졸업·중퇴 후 2년 이내 미취업자 포함"], ["순위별 소득 기준", "1순위 수급자·차상위 등"]] },
       { type:"rows", step:"02 · 얼마", title:"임대료는 얼마인가요?",
@@ -234,8 +242,7 @@ const decks = {
   "youth-dream-account-2026": {
     date: "2026.10.21 기준",
     slides: [
-      { type:"cover", label:"2026 청년 주택드림 청약통장", title:"최고 연 4.5%\n청년 청약통장", badge:"조건 맞으면 이자 500만 원 비과세",
-        sub:"만 19~34세 무주택 청년이\n내 집 마련을 준비하는 통장" },
+      { type:"hero", label:"2026 청년 주택드림 청약통장", who:"만 19~34세 · 연소득 5천만 원 이하 무주택", pre:"청년 청약통장 최고", amt:"연 4.5%", badge:"조건 맞으면 이자 500만 원 비과세" },
       { type:"rows", step:"01 · 누가", title:"누가 가입할 수 있나요?",
         rows:[["만 19~34세", "병역 기간 최대 6년 제외"], ["연소득 5천만 원 이하", "신고된 소득이 있어야 해요"], ["무주택자", "집이 없어야 해요"]] },
       { type:"rows", step:"02 · 금리", title:"금리는 얼마인가요?",
@@ -250,8 +257,7 @@ const decks = {
   "birth-support-2026": {
     date: "2026.10.21 기준",
     slides: [
-      { type:"cover", label:"2026 출산지원금", title:"아이가 태어나면\n받는 정부 지원금", badge:"부모급여·아동수당 60일 안에 신청",
-        sub:"부모 소득과 상관없이\n조건을 갖추면 누구나 받아요" },
+      { type:"hero", label:"2026 출산지원금", who:"아이가 태어난 가정 (부모 소득 무관)", pre:"첫만남이용권 (국민행복카드)", amt:"200~300만 원", badge:"부모급여·아동수당 60일 안 신청 권장" },
       { type:"rows", step:"01 · 임신·출생", title:"임신하고 낳으면",
         rows:[["진료비 바우처 100만 원", "단태아 기준 · 국민행복카드 포인트"], ["첫만남이용권 200만 원", "첫째 · 둘째 이상은 300만 원"]] },
       { type:"rows", step:"02 · 매달", title:"매달 받는 돈",
@@ -267,8 +273,7 @@ const decks = {
   "leave-pay-2026": {
     date: "2026.10.21 기준",
     slides: [
-      { type:"cover", label:"2026 출산휴가·육아휴직 급여", title:"직장인 부모가\n받는 고용보험 급여", badge:"육아휴직 첫 3개월 월 최대 250만 원 (일반)",
-        sub:"출산휴가, 배우자 출산휴가,\n육아휴직 급여를 정리했어요" },
+      { type:"hero", label:"2026 출산휴가·육아휴직 급여", who:"직장인 부모 (고용보험)", pre:"육아휴직 첫 3개월 (일반)", amt:"월 최대 250만 원", badge:"출산휴가 30일 기준 최대 220만 원" },
       { type:"rows", step:"01 · 출산휴가", title:"출산전후휴가 급여",
         rows:[["30일 기준 최대 220만 원", "통상임금 기준"], ["90일 · 다태아 120일", "대기업은 마지막 30일만 정부 지급"]] },
       { type:"rows", step:"02 · 배우자", title:"배우자 출산휴가 급여",
@@ -283,8 +288,7 @@ const decks = {
   "reduced-hours-childcare-2026": {
     date: "2026.10.21 기준",
     slides: [
-      { type:"cover", label:"2026 육아기 근로시간 단축", title:"근무시간 줄이고\n급여도 받기", badge:"자녀 만 12세까지",
-        sub:"주 15~35시간으로 줄이고\n줄어든 월급 일부를 보전받아요" },
+      { type:"hero", label:"2026 육아기 근로시간 단축", who:"만 12세(초6) 이하 자녀를 둔 근로자", pre:"근무시간을 줄이고", amt:"주 15~35시간", badge:"고용보험 급여 지원 (조건 있음)" },
       { type:"rows", step:"01 · 누가", title:"누가 쓸 수 있나요?",
         rows:[["만 12세 이하 자녀", "또는 초등학교 6학년 이하"], ["남녀 근로자 모두", "엄마·아빠가 각각 사용 가능"], ["회사는 원칙적으로 허용", "거부하면 500만 원 이하 과태료"]] },
       { type:"rows", step:"02 · 기간", title:"얼마나 쓸 수 있나요?",
@@ -299,8 +303,7 @@ const decks = {
   "child-care-service-2026": {
     date: "2026.10.21 기준",
     slides: [
-      { type:"cover", label:"2026 아이돌봄서비스", title:"돌보미가\n집으로 와요", badge:"소득별 정부지원 최대 85%",
-        sub:"만 12세 이하 아이를 돌보는\n정부 돌봄 서비스" },
+      { type:"hero", label:"2026 아이돌봄서비스", who:"만 12세 이하 · 양육공백 가정", pre:"소득에 따라 이용요금 정부지원", amt:"15~85%", badge:"중위소득 250% 이하 · 기본형 기준" },
       { type:"rows", step:"01 · 누가", title:"누가 정부지원을 받나요?",
         rows:[["양육공백 가정", "맞벌이, 한부모, 장애부모, 다자녀 등"], ["중위소득 250% 이하", "2026년부터 200% → 250%로 확대"]],
         note:"부모 한 명이 집에서 돌볼 수 있으면 지원 제외" },
@@ -316,8 +319,7 @@ const decks = {
   "tomorrow-learning-card-2026": {
     date: "2026.10.21 기준",
     slides: [
-      { type:"cover", label:"2026 국민내일배움카드", title:"직업훈련비\n5년간 최대 500만 원", badge:"1년 내내 신청 가능",
-        sub:"일하든 쉬든 직업훈련이 필요하면\n신청할 수 있어요 (일부 제외)" },
+      { type:"hero", label:"2026 국민내일배움카드", who:"직업훈련이 필요한 국민 (일부 제외)", pre:"훈련비 5년간 (본인부담 있음)", amt:"300~500만 원", badge:"1년 내내 신청 가능" },
       { type:"rows", step:"01 · 얼마", title:"얼마를 지원하나요?",
         rows:[["기본 300만 원", "카드 발급일부터 5년"], ["+200만 원 (1회)", "300만 원 소진 후 · 기간제·일용근로자, 수급자 등"], ["본인부담 0~55%", "과정과 개인 상황에 따라"]] },
       { type:"rows", step:"02 · 제외", title:"받을 수 없는 사람",
@@ -333,8 +335,7 @@ const decks = {
   "national-employment-support-2026": {
     date: "2026.10.21 기준",
     slides: [
-      { type:"cover", label:"2026 국민취업지원제도", title:"구직촉진수당\n월 60만 원 × 6개월", badge:"1년 내내 신청 가능",
-        sub:"일자리를 찾는 사람에게\n상담·훈련·수당을 지원해요" },
+      { type:"hero", label:"2026 국민취업지원제도", who:"만 15~69세 저소득 구직자 (1유형)", pre:"구직촉진수당", amt:"월 60만 원 × 6개월", badge:"1년 내내 신청 가능" },
       { type:"rows", step:"01 · 1유형", title:"1유형 (저소득 구직자)",
         rows:[["만 15~69세", "청년은 병역 기간 더해 최대 37세"], ["중위소득 60% 이하", "가구·본인 소득 각각 · 청년은 가구 120% 이하도 선발 가능"], ["재산 4억 원 이하", "청년은 5억 원 이하"]] },
       { type:"rows", step:"02 · 수당", title:"무엇을 받나요?",
@@ -350,8 +351,7 @@ const decks = {
   "small-business-policy-loan-2026": {
     date: "2026.10.21 기준",
     slides: [
-      { type:"cover", label:"2026 소상공인 정책자금", title:"창업 초기 사장님\n정책 대출", badge:"갚아야 하는 대출이에요",
-        sub:"업력·상황별로 고르는\n소상공인 정책자금 정리" },
+      { type:"hero", label:"2026 소상공인 정책자금", who:"소상공인 (업력 무관)", pre:"일반경영안정자금 한도 연간", amt:"7천만 원", badge:"갚아야 하는 대출이에요" },
       { type:"rows", step:"01 · 자금", title:"창업 초기에 볼 자금",
         rows:[["일반경영안정자금", "연간 7천만 원 · 기준금리 +0.6%p"], ["청년고용연계자금", "업력 3년 미만 청년 등 · 7천만 원"], ["일시적 경영애로 자금", "매출 15% 이상 감소 등 · 7천만 원"]] },
       { type:"rows", step:"02 · 한도", title:"한도와 금리",
@@ -366,8 +366,7 @@ const decks = {
   "startup-tax-reduction-2026": {
     date: "2026.10.21 기준",
     slides: [
-      { type:"cover", label:"창업중소기업 세액감면", title:"창업 후 5년\n소득세·법인세 감면", badge:"청년 최대 100%",
-        sub:"2026년부터 지역별 감면율이\n더 잘게 나뉘었어요" },
+      { type:"hero", label:"창업중소기업 세액감면", who:"소득이 생긴 해부터 5년간", pre:"지역·나이에 따라 감면율", amt:"25~100%", badge:"과밀억제권역 일반 창업은 감면 없음" },
       { type:"rows", step:"01 · 기간", title:"얼마나 감면되나요?",
         rows:[["5년", "소득이 처음 생긴 해부터"], ["감면율 25~100%", "청년 여부와 창업 지역에 따라"], ["연 5억 원 한도", "과세연도마다 감면세액 기준"]] },
       { type:"rows", step:"02 · 감면율", title:"이런 경우 감면율이 달라요",
@@ -383,8 +382,7 @@ const decks = {
   "startup-support-2026": {
     date: "2026.10.21 기준",
     slides: [
-      { type:"cover", label:"2026 창업지원사업", title:"창업지원 예산\n3조 4,645억 원", badge:"508개 사업 한눈에",
-        sub:"정부·지자체 창업지원사업\n어디서 어떻게 찾을까요?" },
+      { type:"hero", label:"2026 창업지원사업", who:"정부·지자체 창업지원사업", pre:"2026년 전체 예산", amt:"3조 4,645억 원", badge:"508개 사업 한눈에" },
       { type:"rows", step:"01 · 규모", title:"얼마나 많나요?",
         rows:[["3조 4,645억 원", "2026년 전체 예산"], ["508개 사업", "중앙부처 88개 · 지자체 420개"], ["111개 기관", "중앙부처 15개 · 지자체 96개"]] },
       { type:"rows", step:"02 · 주의", title:"꼭 알아두세요",
@@ -407,6 +405,10 @@ let html = "";
 if (s.type === "cover") {
   html = `<div class="slide cover"><div class="label">${esc(s.label)}</div><h1>${esc(s.title)}</h1>
           <div class="badge">${esc(s.badge)}</div><div class="sub" style="white-space:pre-line">${esc(s.sub)}</div>${foot}</div>`;
+} else if (s.type === "hero") {
+  html = `<div class="slide hero"><div class="label">${esc(s.label)}</div><div class="who">${esc(s.who)}</div>
+          <div class="pre">${esc(s.pre)}</div><div class="amt${[...s.amt].length > 9 ? " long" : ""}">${esc(s.amt)}</div>
+          <div class="badge">${esc(s.badge)}</div>${foot}</div>`;
 } else if (s.type === "rows") {
   html = `<div class="slide rows"><div class="top"></div><div class="step">${esc(s.step)}</div><h2>${esc(s.title)}</h2>
           <div class="list">${s.rows.map(([b, m]) => `<div class="row"><div class="big">${esc(b)}</div>${m ? `<div class="small">${esc(m)}</div>` : ""}</div>`).join("")}</div>
