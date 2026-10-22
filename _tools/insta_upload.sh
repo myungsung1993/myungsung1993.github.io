@@ -8,7 +8,9 @@
 # 사용법
 #   bash _tools/insta_upload.sh check            # 계정·게시 가능 횟수 확인 (게시하지 않음)
 #   bash _tools/insta_upload.sh post <슬러그>     # 캐러셀 게시 (반드시 사용자 확인 후 실행)
-#   bash _tools/insta_upload.sh reel <슬러그>     # 릴스 게시: assets/insta/<슬러그>/reel.mp4 (_tools/insta_reel.sh로 만듦, 사용자 확인 후 실행)
+#   bash _tools/insta_upload.sh reel <슬러그> [nofeed]  # 릴스 게시: assets/insta/<슬러그>/reel.mp4 (_tools/insta_reel.sh로 만듦, 사용자 확인 후 실행)
+#                                    nofeed: 프로필 격자에는 안 보이고 릴스 탭에만 (같은 세트 슬라이드와 겹치지 않게)
+#                                    표지는 영상 첫 장면(thumb_offset=0). 카드 이미지(4:5)를 표지로 주면 세로 화면에서 잘려 보인다.
 #   bash _tools/insta_upload.sh refresh          # 장기 토큰 갱신 (60일 만료 전에 실행)
 #
 # 규칙: CLAUDE.md — 카드뉴스는 독립 팩트체크를 거치고, 사용자가 "올려"라고 한 뒤에만 post 를 실행한다.
@@ -91,7 +93,8 @@ case "${1:-}" in
     cap="$dir/caption.txt"
     [ -s "$cap" ] || { echo "캡션 파일이 없습니다: $cap" >&2; exit 1; }
     [ -s "$dir/reel.mp4" ] || { echo "영상이 없습니다: $dir/reel.mp4 (bash _tools/insta_reel.sh $slug)" >&2; exit 1; }
-    for f in reel.mp4 1.png; do   # 영상·표지가 사이트에 올라가 있는지 먼저 확인
+    feed=true; [ "${3:-}" = nofeed ] && feed=false
+    for f in reel.mp4; do   # 영상이 사이트에 올라가 있는지 먼저 확인
       c="$(curl -s -o /dev/null -w '%{http_code}' -m 30 "$SITE/assets/insta/$slug/$f")"
       [ "$c" = 200 ] || { echo "사이트에 파일이 없습니다($c): $SITE/assets/insta/$slug/$f" >&2; exit 1; }
     done
@@ -99,8 +102,8 @@ case "${1:-}" in
     capcopy="$HOME/.policy-blog/caption_upload.txt"; cp "$cap" "$capcopy"
     capw="$(cygpath -m "$capcopy" 2>/dev/null || echo "$capcopy")"
     r="$(cr -s -m 60 -X POST "$API/$id/media" --data-urlencode "media_type=REELS" \
-          --data-urlencode "video_url=$SITE/assets/insta/$slug/reel.mp4" --data-urlencode "cover_url=$SITE/assets/insta/$slug/1.png" \
-          --data-urlencode "share_to_feed=true" --data-urlencode "caption@$capw" --data-urlencode "access_token=$TOKEN")"
+          --data-urlencode "video_url=$SITE/assets/insta/$slug/reel.mp4" --data-urlencode "thumb_offset=0" \
+          --data-urlencode "share_to_feed=$feed" --data-urlencode "caption@$capw" --data-urlencode "access_token=$TOKEN")"
     fail_if_error "$r"; cid="$(printf '%s' "$r" | jget id)"; echo "영상 처리 중..."; wait_ready "$cid" 100
     r="$(curl -s -m 60 -X POST "$API/$id/media_publish" --data-urlencode "creation_id=$cid" --data-urlencode "access_token=$TOKEN")"
     fail_if_error "$r"; mid="$(printf '%s' "$r" | jget id)"

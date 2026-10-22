@@ -6,8 +6,9 @@
 #   예) bash _tools/insta_reel.sh youth-housing-support-2026            # assets/insta/<슬러그>/reel.mp4
 #       bash _tools/insta_reel.sh youth-housing-support-2026 /tmp/a.mp4 5
 #
-# - 카드(1080x1350)를 세로 화면 위쪽에 두고 남는 칸은 카드 모서리 색으로 채운다.
-#   릴스 화면 아래쪽은 캡션·버튼이 덮으므로 카드를 위로 올려 둔다(위 170px, 아래 400px).
+# - 카드(1080x1350)를 세로 화면 가운데보다 조금 위에 두고 남는 칸은 카드 모서리 색으로 채운다.
+#   위 240px·아래 330px: 프로필 격자(3:4)는 위아래 240px씩 잘라 보이므로 카드 전체가 격자에 들어가고,
+#   릴스 화면 아래쪽 캡션·버튼은 대부분 빈 칸을 덮는다. (2026-10-22 170px일 때 표지가 잘려 보여 바꿈)
 # - 카드 사이는 0.4초 겹쳐 넘긴다. 카드당 기본 4.5초(글씨가 많아 3초는 읽기 어려움).
 # - 숫자는 카드 이미지 그대로다. 영상만 새로 만드는 것이라 카드 팩트체크를 다시 할 필요는 없다.
 
@@ -19,7 +20,7 @@ dir="$ROOT/assets/insta/$slug"
 out="${2:-$dir/reel.mp4}"
 per="${3:-4.5}"
 fade=0.4
-top=170
+top=240
 
 command -v ffmpeg >/dev/null || { echo "ffmpeg가 없습니다 (winget install Gyan.FFmpeg)" >&2; exit 1; }
 imgs=( $(ls "$dir" | grep -E '^[0-9]+\.png$' | sort -n) )

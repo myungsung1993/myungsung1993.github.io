@@ -8,6 +8,7 @@
 #
 # 대기열에는 독립 팩트체크를 통과하고 사용자가 게시를 승인한 슬러그만 넣는다.
 # 실행 1번에 최대 1개만 올린다. 실패하면 대기열에서 빼지 않고 다음 실행 때 다시 시도한다.
+# 슬라이드를 올린 뒤 assets/insta/<슬러그>/reel.mp4 가 있으면 같은 세트의 릴스도 올린다(2026-10-22 사용자 요청).
 
 set -uo pipefail
 
@@ -60,6 +61,14 @@ if out="$(bash "$TOOL" post "$slug" 2>&1)"; then
   date +%s > "$LAST"
   # 게시한 슬러그만 대기열에서 뺀다
   grep -v -x "$slug" "$QUEUE" > "$QUEUE.tmp" && mv "$QUEUE.tmp" "$QUEUE"
+  # 같은 세트의 릴스도 올린다 (격자에는 슬라이드만 보이게 nofeed). 실패해도 슬라이드 게시는 그대로 둔다.
+  if [ -s "$(dirname "$TOOL")/../assets/insta/$slug/reel.mp4" ]; then
+    if out="$(bash "$TOOL" reel "$slug" nofeed 2>&1)"; then
+      echo "$(now) 릴스 성공 $slug $(printf '%s\n' "$out" | grep '게시 완료' | sed 's/.*게시 완료: //')" >> "$LOG"
+    else
+      echo "$(now) 릴스 실패 $slug :: $(printf '%s' "$out" | tail -3 | tr '\n' ' ')" >> "$LOG"
+    fi
+  fi
 else
   echo "$(now) 게시 실패 $slug :: $(printf '%s' "$out" | tail -3 | tr '\n' ' ')" >> "$LOG"
   exit 1
