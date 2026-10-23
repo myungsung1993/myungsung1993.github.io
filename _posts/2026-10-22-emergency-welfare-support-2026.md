@@ -191,7 +191,7 @@ image: /assets/images/cards/emergency-welfare-support-2026.png
 
 ### 일자리를 잃었는데, 실업급여와 같이 알아봐야 하나요?
 
-실직은 긴급복지의 위기 사유 중 하나예요. (출처②) 다시 일자리를 찾는 동안 받을 수 있는 지원은 [국민취업지원제도 글]({% post_url 2026-10-18-national-employment-support-2026 %})에서 확인하세요.
+실직은 긴급복지의 위기 사유 중 하나예요. (출처②) 고용보험에 가입했던 직장을 잃었다면 [실업급여 글]({% post_url 2026-10-24-unemployment-benefit-2026 %})에서 받을 수 있는지 먼저 확인하세요. 다시 일자리를 찾는 동안 받을 수 있는 지원은 [국민취업지원제도 글]({% post_url 2026-10-18-national-employment-support-2026 %})에 있어요.
 
 ### 거짓으로 받으면 어떻게 되나요?
 
@@ -205,6 +205,7 @@ image: /assets/images/cards/emergency-welfare-support-2026.png
 
 ## 함께 보면 좋은 글
 
+- [2026 실업급여(구직급여) 총정리]({% post_url 2026-10-24-unemployment-benefit-2026 %}): 고용보험 가입자가 직장을 잃었을 때 받는 구직급여(하루 최대 6만 8,100원)
 - [2026 국민취업지원제도 총정리]({% post_url 2026-10-18-national-employment-support-2026 %}): 실직 뒤 구직 활동 중에 받는 구직촉진수당과 취업 지원
 - [2026 에너지바우처 총정리]({% post_url 2026-10-16-energy-voucher-2026 %}): 수급자 가구의 냉난방비를 1년 단위로 지원하는 제도
 - [2026 주거급여 총정리]({% post_url 2026-10-23-housing-benefit-2026 %}): 소득이 낮은 가구의 월세·전세 비용과 집수리를 지원하는 제도

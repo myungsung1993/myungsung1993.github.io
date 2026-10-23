@@ -157,6 +157,7 @@ image: /assets/images/cards/tomorrow-learning-card-2026.png
 ## 함께 보면 좋은 글
 
 - [2026 국민취업지원제도 총정리]({% post_url 2026-10-18-national-employment-support-2026 %}): 구직촉진수당 월 60만 원 + 취업 상담. 참여자는 내일배움카드 본인부담이 없거나 낮아요
+- [2026 실업급여(구직급여) 총정리]({% post_url 2026-10-24-unemployment-benefit-2026 %}): 실업급여를 받는 중에도 내일배움카드로 훈련비를 지원받을 수 있어요(하루 최대 6만 8,100원)
 
 ---
 
