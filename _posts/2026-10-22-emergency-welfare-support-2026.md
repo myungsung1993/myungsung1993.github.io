@@ -207,6 +207,7 @@ image: /assets/images/cards/emergency-welfare-support-2026.png
 
 - [2026 국민취업지원제도 총정리]({% post_url 2026-10-18-national-employment-support-2026 %}): 실직 뒤 구직 활동 중에 받는 구직촉진수당과 취업 지원
 - [2026 에너지바우처 총정리]({% post_url 2026-10-16-energy-voucher-2026 %}): 수급자 가구의 냉난방비를 1년 단위로 지원하는 제도
+- [2026 주거급여 총정리]({% post_url 2026-10-23-housing-benefit-2026 %}): 소득이 낮은 가구의 월세·전세 비용과 집수리를 지원하는 제도
 
 ---
 
