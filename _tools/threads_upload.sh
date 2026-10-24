@@ -10,10 +10,13 @@
 # 사용법
 #   bash _tools/threads_upload.sh check            # 계정·게시 가능 횟수 확인 (게시하지 않음)
 #   bash _tools/threads_upload.sh preview <슬러그>  # 보낼 글·링크·글자 수만 보여 줌 (게시하지 않음)
-#   bash _tools/threads_upload.sh post <슬러그>     # 글 + 블로그 링크 카드 게시 (반드시 사용자 확인 후 실행)
+#   bash _tools/threads_upload.sh post <슬러그>     # 글 + 블로그 링크 카드 게시 (팩트체크 반영 후)
+#   bash _tools/threads_upload.sh comments [개수]   # 최근 게시물(기본 10개)에 달린 남의 댓글 (답글 안 단 것에 * 표시)
+#   bash _tools/threads_upload.sh reply <댓글ID>    # ~/.policy-blog/threads_replies/<댓글ID>.txt 를 답글로 게시 (팩트체크 반영 후)
 #   bash _tools/threads_upload.sh refresh          # 장기 토큰 갱신 (60일 만료 전, 발급 24시간 뒤부터 가능)
 #
-# 규칙: CLAUDE.md — 인스타와 같이 독립 팩트체크를 거치고, 사용자가 "올려"라고 한 뒤에만 post 를 실행한다.
+# 규칙: CLAUDE.md — 글·답글 모두 독립 팩트체크(fact-checker)를 거친 뒤 게시한다. (2026-10-24부터 사용자 확인 없이 게시)
+#       댓글 원문은 남의 글이라 저장소에 넣지 않는다. 답글 초안·게시 기록은 ~/.policy-blog/threads_replies/ 에 둔다.
 
 set -euo pipefail
 
@@ -88,6 +91,35 @@ case "${1:-}" in
     fail_if_error "$r"; mid="$(printf '%s' "$r" | jget id)"
     plink="$(curl -s -m 30 -G "$API/$mid" --data-urlencode "fields=permalink" --data-urlencode "access_token=$TOKEN" | jget permalink | sed 's#\\/#/#g')"
     echo "게시 완료: ${plink:-$mid}"
+    ;;
+  comments)
+    load_token
+    n="${2:-10}"; done_dir="$HOME/.policy-blog/threads_replies"; mkdir -p "$done_dir"
+    r="$(cr -s -m 30 -G "$API/me" --data-urlencode "fields=id,username" --data-urlencode "access_token=$TOKEN")"
+    fail_if_error "$r"; me="$(printf '%s' "$r" | jget username)"
+    r="$(cr -s -m 30 -G "$API/me/threads" --data-urlencode "fields=id" --data-urlencode "limit=$n" --data-urlencode "access_token=$TOKEN")"
+    fail_if_error "$r"
+    for pid in $(printf '%s' "$r" | grep -o '"id":"[0-9]*"' | cut -d'"' -f4); do
+      cr -s -m 30 -G "$API/$pid/replies" --data-urlencode "fields=id,text,username,timestamp" --data-urlencode "access_token=$TOKEN" |
+        PID="$pid" ME="$me" DONE="$done_dir" node "$ROOT/_tools/threads_comments.js"
+    done
+    ;;
+  reply)
+    rid="${2:?댓글 ID를 넣어 주세요}"; dir="$HOME/.policy-blog/threads_replies"; txt="$dir/$rid.txt"
+    [ -f "$dir/$rid.posted" ] && { echo "이미 답글을 단 댓글입니다: $(cat "$dir/$rid.posted")" >&2; exit 1; }
+    check_text "$txt"
+    load_token
+    tw="$(cygpath -m "$txt" 2>/dev/null || echo "$txt")"
+    r="$(cr -s -m 60 -X POST "$API/me/threads" --data-urlencode "media_type=TEXT" --data-urlencode "text@$tw" --data-urlencode "reply_to_id=$rid" --data-urlencode "access_token=$TOKEN")"
+    fail_if_error "$r"; cid="$(printf '%s' "$r" | jget id)"
+    [ -n "$cid" ] || { echo "컨테이너를 만들지 못했습니다: $r" >&2; exit 1; }
+    echo "답글 준비 중... (약 30초 대기)"; sleep 30
+    # 게시 단계는 중복 게시를 막기 위해 재시도하지 않는다.
+    r="$(curl -s -m 60 -X POST "$API/me/threads_publish" --data-urlencode "creation_id=$cid" --data-urlencode "access_token=$TOKEN")"
+    fail_if_error "$r"; mid="$(printf '%s' "$r" | jget id)"
+    plink="$(curl -s -m 30 -G "$API/$mid" --data-urlencode "fields=permalink" --data-urlencode "access_token=$TOKEN" | jget permalink | sed 's#\\/#/#g')"
+    echo "$(date '+%Y-%m-%d %H:%M') ${plink:-$mid}" > "$dir/$rid.posted"
+    echo "답글 완료: ${plink:-$mid}"
     ;;
   refresh)
     load_token

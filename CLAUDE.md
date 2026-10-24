@@ -134,6 +134,9 @@ date: YYYY-MM-DD HH:MM:SS +0900
 4. **독립 팩트체크(fact-checker)** 를 카드·캡션에 따로 돌린다. 게시 후에는 고칠 수 없으므로 블로그보다 엄격하게 본다.
 5. 독립 팩트체크의 ❌·⚠️를 모두 반영했으면 **사용자 확인 없이 바로 게시**한다. (2026-10-24 사용자 지정: "내 최종검토 없이 팩트체크됐으면 자동으로 올려줘")
    게시 뒤 사용자에게 게시 링크와 검토에서 고친 점을 보고한다. 인스타 게시 간격 50분 규칙은 지킨다.
+   - **댓글 답글** (2026-10-24 사용자 지정: "댓글은 팩트체크 후 답변해줘"): `bash _tools/threads_upload.sh comments`로 새 댓글(* 표시)을 보고,
+     답글 초안을 `~/.policy-blog/threads_replies/<댓글ID>.txt`(저장소 밖)에 쓴 뒤 fact-checker 검토를 반영하고 `reply <댓글ID>`로 게시한다.
+     개인 자격을 판정하지 않고 일반 기준과 공식 문의처(1350, 129, 1355 등)를 안내한다. 홍보·스팸·욕설 댓글에는 답하지 않고 사용자에게 알린다.
    - **쓰레드**도 같은 방식이다: `assets/threads/<슬러그>/post.txt`(500자 이내)를 fact-checker로 검토하고 반영한 뒤 `bash _tools/threads_upload.sh post <슬러그>`로 게시한다. 토큰은 `~/.policy-blog/threads.token`.
 6. 이미지를 사이트에 먼저 올리고(commit·push, 200 확인) `bash _tools/insta_upload.sh post <슬러그>`로 게시한다.
 7. 토큰은 `~/.policy-blog/instagram.token`(저장소 밖). 약 60일마다 `bash _tools/insta_upload.sh refresh`로 갱신한다.
