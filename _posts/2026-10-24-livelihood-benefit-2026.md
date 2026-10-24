@@ -192,6 +192,7 @@ image: /assets/images/cards/livelihood-benefit-2026.png
 - [2026 주거급여 총정리]({% post_url 2026-10-23-housing-benefit-2026 %}): 기준 중위소득 48% 이하 가구의 월세·전세·집수리 지원
 - [2026 긴급복지지원 총정리]({% post_url 2026-10-22-emergency-welfare-support-2026 %}): 실직·질병 등 갑작스러운 위기 때 먼저 받는 생계비
 - [2026 에너지바우처 총정리]({% post_url 2026-10-16-energy-voucher-2026 %}): 기초생활수급 가구 중 노인·영유아·장애인 등이 있으면 받는 냉난방비
+- [2026 장애인연금 총정리]({% post_url 2026-10-25-disability-pension-2026 %}): 소득이 적은 18세 이상 중증장애인이 매달 받는 연금
 
 ---
 
