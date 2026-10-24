@@ -7,6 +7,8 @@
             --screenshot="assets/images/cards/슬러그.png" "file:///.../_tools/card.html#슬러그"
   3) 글 머리말에 image: /assets/images/cards/슬러그.png 를 넣고(공유 미리보기),
      본문 도입부 아래에 ![설명](/assets/images/cards/슬러그.png) 를 넣는다.
+  4) 신청기간이 끝난 글은 cards 항목에 expired: "2026년 모집" 처럼 회차를 적으면
+     오른쪽 위에 빨간 "신청기간 만료" 도장이 찍힌다. 다음 모집 공고로 글을 갱신하면 지운다.
 -->
 <html lang="ko">
 <head>
@@ -28,6 +30,11 @@
   .foot { position: absolute; left: 64px; right: 64px; bottom: 34px; display: flex; justify-content: space-between;
           font-size: 26px; color: var(--sub); font-weight: 600; }
   .foot b { color: var(--ink); }
+  .stamp { position: absolute; top: 30px; right: 44px; transform: rotate(-10deg); text-align: center;
+           color: #d62828; border: 8px double #d62828; border-radius: 16px; padding: 8px 24px 10px;
+           background: rgba(255,255,255,.9); }
+  .stamp .s1 { font-size: 50px; font-weight: 900; letter-spacing: -1px; line-height: 1.15; }
+  .stamp .s2 { font-size: 26px; font-weight: 700; }
 </style>
 </head>
 <body>
@@ -36,6 +43,7 @@
   <h1 id="title"></h1>
   <div class="stats" id="stats"></div>
   <div class="foot"><b>정책 지원금 길잡이</b><span id="foot"></span></div>
+  <div class="stamp" id="stamp" hidden><div class="s1">신청기간 만료</div><div class="s2" id="stamp-sub"></div></div>
 </div>
 <script>
 const cards = {
@@ -46,6 +54,7 @@ const cards = {
     foot: "2026.10.16 기준 · 출처: 에너지바우처 누리집"
   },
   "youth-monthly-rent-2026": {
+    expired: "2026년 모집",
     label: "2026 청년월세 지원",
     title: "부모와 따로 사는 무주택 청년 월세 지원",
     stats: [["월 20만 원", "최대 · 낸 월세 범위 안"], ["24개월", "최대 · 생애 1회"], ["19~34세", "만 나이 · 매년 새로 모집"]],
@@ -106,18 +115,21 @@ const cards = {
     foot: "2026.10.14 기준 · 출처: 중소벤처기업부"
   },
   "pre-startup-package-2026": {
+    expired: "2026년 모집",
     label: "2026 예비창업패키지",
     title: "사업자등록 전 창업자 사업화 자금",
     stats: [["평균 4천만 원", "사업화 자금"], ["0원", "자기부담금"], ["300명 내외", "2026년 선정 규모"]],
     foot: "2026.10.14 기준 · 출처: 중소벤처기업부 공고"
   },
   "early-startup-package-2026": {
+    expired: "2026년 모집",
     label: "2026 초기창업패키지",
     title: "창업 3년 이내 기업 사업화 자금",
     stats: [["최대 1억 원", "일반형 · 평균 0.5억 원"], ["400개사 내외", "일반형 선정 규모"], ["10~30% 이상", "자기부담금 · 지역별"]],
     foot: "2026.10.14 기준 · 출처: 중소벤처기업부 공고"
   },
   "youth-startup-academy-2026": {
+    expired: "2026년 모집",
     label: "2026 청년창업사관학교",
     title: "39세 이하 창업자 자금·공간·교육",
     stats: [["최대 1억 원", "사업화 자금 · 평균 0.7억"], ["39세 이하", "창업 3년 이내"], ["650명", "전국 18곳 모집"]],
@@ -160,12 +172,14 @@ const cards = {
     foot: "2026.10.16 기준 · 출처: 주택도시기금"
   },
   "sports-voucher-2026": {
+    expired: "2026년분 모집",
     label: "2026 스포츠강좌이용권",
     title: "저소득 가구 아이 운동 수강료 지원",
     stats: [["월 10만 5천 원", "만 5~18세 · 12개월"], ["월 11만 원", "장애인 · 만 5~69세"], ["126만 원", "연간 최대 · 유·청소년"]],
     foot: "2026.10.20 기준 · 출처: 국민체육진흥공단"
   },
   "youth-tomorrow-savings-2026": {
+    expired: "2026년 모집",
     label: "2026 청년내일저축계좌",
     title: "월 10만 원 저축하면 정부가 30만 원",
     stats: [["월 30만 원", "정부 지원 · 정액"], ["1,440만 원", "3년 만기 + 이자"], ["중위 50% 이하", "가구소득 · 만 15~39세"]],
@@ -220,6 +234,10 @@ document.getElementById("title").textContent = c.title;
 document.getElementById("foot").textContent = c.foot;
 document.getElementById("stats").innerHTML = c.stats
   .map(([v, k]) => `<div class="stat"><div class="v">${v}</div><div class="k">${k}</div></div>`).join("");
+if (c.expired) {
+  document.getElementById("stamp").hidden = false;
+  document.getElementById("stamp-sub").textContent = c.expired + " 마감";
+}
 // 칸보다 긴 글자는 한 줄에 들어갈 때까지 글씨를 줄인다 (글꼴을 다 불러온 뒤)
 function fit(el, min) {
   let size = parseFloat(getComputedStyle(el).fontSize);
