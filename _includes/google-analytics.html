@@ -1,0 +1,8 @@
+{%- comment -%} minima 2.5.1 기본본은 옛 UA(analytics.js)라 G- 측정 ID가 작동하지 않아 GA4(gtag.js)로 덮어씀 {%- endcomment -%}
+<script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics }}"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', '{{ site.google_analytics }}');
+</script>

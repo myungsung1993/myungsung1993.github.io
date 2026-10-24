@@ -38,6 +38,9 @@ naver_site_verification:
   - 7095bb9c439dc95a5dfbc5f53f67b023bc0b1181
   - e4c9ce30ab761a96f124fc74c5b74124f3cbe519
 
+# 구글 애널리틱스(GA4) 측정 ID — 방문자 통계 (_includes/google-analytics.html)
+google_analytics: G-HL61JCWY3B
+
 # 사이트에 올라가면 안 되는 파일
 exclude:
   - CLAUDE.md
