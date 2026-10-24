@@ -178,6 +178,7 @@ image: /assets/images/cards/housing-benefit-2026.png
 - [2026 청년 주거 지원 총정리]({% post_url 2026-10-16-youth-housing-support-2026 %}): 월세 지원·전세대출·공공임대까지 청년 주거 제도 한눈에
 - [2026 긴급복지지원 총정리]({% post_url 2026-10-22-emergency-welfare-support-2026 %}): 갑작스러운 위기로 집에서 지내기 어려울 때 받는 임시 거처 지원
 - [2026 에너지바우처 총정리]({% post_url 2026-10-16-energy-voucher-2026 %}): 주거급여 수급자도 받을 수 있는 냉난방비 지원
+- [2026 생계급여 총정리]({% post_url 2026-10-24-livelihood-benefit-2026 %}): 기준 중위소득 32% 이하 가구가 매달 받는 생활비(1인 월 최대 82만 556원)
 
 ---
 
