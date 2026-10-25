@@ -50,16 +50,22 @@ wait_ready() {  # 컨테이너 처리 완료까지 대기 (두 번째 인자: �
 }
 
 # 게시하고 media id 출력. 인스타가 오류(2207051 "행동 차단")를 돌려줘도 실제로는 게시되는 경우가 있어서
-# (2026-10-24 기초연금: 실패로 기록됐지만 올라감 → 릴스 누락·중복 게시), 오류면 컨테이너 상태를 다시 본다.
+# (2026-10-24 기초연금, 10-25 출산지원금: 실패로 기록됐지만 올라감 → 릴스 누락·중복 게시), 오류면 다시 확인한다.
+# 컨테이너 상태는 ERROR로 나와도 게시된 적이 있어(10-25), 최신 게시물의 캡션 첫 줄·시각(15분 안)으로 판단한다.
 publish() {
-  local ig="$1" cid="$2" r s
+  local ig="$1" cid="$2" capf="$3" r s m
   r="$(curl -s -m 60 -X POST "$API/$ig/media_publish" --data-urlencode "creation_id=$cid" --data-urlencode "access_token=$TOKEN")"
   if ! printf '%s' "$r" | grep -q '"error"'; then printf '%s' "$r" | jget id; return 0; fi
-  sleep 10
+  sleep 15
   s="$(cr -s -m 30 -G "$API/$cid" --data-urlencode "fields=status_code" --data-urlencode "access_token=$TOKEN" | jget status_code)"
-  if [ "$s" = "PUBLISHED" ]; then
-    echo "오류 응답을 받았지만 실제로 게시됨(컨테이너 PUBLISHED): $r" >&2
-    cr -s -m 30 -G "$API/$ig/media" --data-urlencode "fields=id" --data-urlencode "limit=1" --data-urlencode "access_token=$TOKEN" | jget id
+  m="$(cr -s -m 30 -G "$API/$ig/media" --data-urlencode "fields=id,caption,timestamp" --data-urlencode "limit=1" --data-urlencode "access_token=$TOKEN" |
+       CAPF="$capf" node -e 'let d="";process.stdin.on("data",c=>d+=c).on("end",()=>{try{
+         const p=JSON.parse(d).data[0],first=require("fs").readFileSync(process.env.CAPF,"utf8").split("\n")[0].trim();
+         const recent=Date.now()-Date.parse(p.timestamp)<15*60*1000;
+         if(recent&&(p.caption||"").split("\n")[0].trim()===first)console.log(p.id)}catch(e){}})')"
+  if [ "$s" = "PUBLISHED" ] || [ -n "$m" ]; then
+    echo "오류 응답을 받았지만 실제로 게시됨(컨테이너 상태: ${s:-알 수 없음}): $r" >&2
+    if [ -n "$m" ]; then echo "$m"; else cr -s -m 30 -G "$API/$ig/media" --data-urlencode "fields=id" --data-urlencode "limit=1" --data-urlencode "access_token=$TOKEN" | jget id; fi
     return 0
   fi
   echo "API 오류: $r (컨테이너 상태: ${s:-알 수 없음})" >&2; exit 1
@@ -98,7 +104,7 @@ case "${1:-}" in
     r="$(cr -s -m 60 -X POST "$API/$id/media" --data-urlencode "media_type=CAROUSEL" \
           --data-urlencode "children=$children" --data-urlencode "caption@$capw" --data-urlencode "access_token=$TOKEN")"
     fail_if_error "$r"; carousel="$(printf '%s' "$r" | jget id)"; wait_ready "$carousel"
-    mid="$(publish "$id" "$carousel")"
+    mid="$(publish "$id" "$carousel" "$capw")"
     link="$(curl -s -m 30 -G "$API/$mid" --data-urlencode "fields=permalink" --data-urlencode "access_token=$TOKEN" | jget permalink | sed 's#\\/#/#g')"
     echo "게시 완료: $link"
     ;;
@@ -120,7 +126,7 @@ case "${1:-}" in
           --data-urlencode "video_url=$SITE/assets/insta/$slug/reel.mp4" --data-urlencode "thumb_offset=0" \
           --data-urlencode "share_to_feed=$feed" --data-urlencode "caption@$capw" --data-urlencode "access_token=$TOKEN")"
     fail_if_error "$r"; cid="$(printf '%s' "$r" | jget id)"; echo "영상 처리 중..."; wait_ready "$cid" 100
-    mid="$(publish "$id" "$cid")"
+    mid="$(publish "$id" "$cid" "$capw")"
     link="$(curl -s -m 30 -G "$API/$mid" --data-urlencode "fields=permalink" --data-urlencode "access_token=$TOKEN" | jget permalink | sed 's#\\/#/#g')"
     echo "게시 완료: $link"
     ;;
