@@ -145,6 +145,7 @@ image: /assets/images/cards/child-support-advance-payment-2026.png
 - [2026 한부모가족 아동양육비 총정리]({% post_url 2026-10-25-single-parent-child-support-2026 %}): 소득이 적은 한부모·조손가족이 자녀 1인당 매달 받는 양육비
 - [2026 출산지원금 총정리]({% post_url 2026-10-14-birth-support-2026 %}): 부모급여·아동수당 등 출산·육아 지원 한눈에
 - [2026 아이돌봄서비스 총정리]({% post_url 2026-10-16-child-care-service-2026 %}): 한부모 가정은 이용 시간·지원이 더 많은 정부 돌봄
+- [2026 기저귀·조제분유 지원 총정리]({% post_url 2026-10-26-diaper-formula-support-2026 %}): 만 2세 미만 아기 기저귀 월 9만 원, 한부모가족 지원 대상도 포함
 
 ---
 
