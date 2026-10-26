@@ -38,6 +38,7 @@ layout: default
           <div class="post-card-meta">
             {%- if post.topic %}<span class="post-card-topic">{{ post.topic }}</span>{% endif %}
             {%- if post.hub %}<span class="post-card-hub">총정리</span>{% endif %}
+            {%- if post.deadline %}{% assign dl = post.deadline | date: "%Y%m%d" | plus: 0 %}{% assign built = site.time | date: "%Y%m%d" | plus: 0 %}<span class="post-card-closed" data-deadline="{{ post.deadline | date: '%Y-%m-%d' }}"{% if built <= dl %} hidden{% endif %}>신청 마감</span>{% endif %}
             <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y.%m.%d" }}</time>
           </div>
           <h3 class="post-card-title">{{ main_title | escape }}</h3>
@@ -71,4 +72,9 @@ layout: default
       });
     });
   })();
+  // 신청 마감 배지: 방문자 브라우저의 오늘 날짜로 다시 판단 (빌드가 없던 날에도 맞게)
+  document.querySelectorAll(".post-card-closed").forEach(function (b) {
+    var d = b.getAttribute("data-deadline").split("-");
+    b.hidden = new Date() <= new Date(+d[0], +d[1] - 1, +d[2], 23, 59, 59);
+  });
 </script>

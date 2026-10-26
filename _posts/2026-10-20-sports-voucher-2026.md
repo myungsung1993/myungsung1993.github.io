@@ -2,6 +2,8 @@
 layout: post
 title: "2026 스포츠강좌이용권 총정리: 저소득 가구 아이 운동 수강료 월 10만 5천 원 (대상·신청 시기·장애인 이용권)"
 date: 2026-10-20 23:20:00 +0900
+deadline: 2025-11-28
+deadline_note: "2026년분 모집"
 topic: 생활비
 image: /assets/images/cards/sports-voucher-2026.png
 ---

@@ -2,6 +2,8 @@
 layout: post
 title: "2026 청년내일저축계좌 총정리: 월 10만 원 저축하면 정부가 30만 원, 3년 뒤 1,440만 원 (2026년 바뀐 대상·만기 조건)"
 date: 2026-10-19 23:30:00 +0900
+deadline: 2026-05-20
+deadline_note: "2026년 모집"
 topic: 청년 자산
 image: /assets/images/cards/youth-tomorrow-savings-2026.png
 ---

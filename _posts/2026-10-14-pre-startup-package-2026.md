@@ -2,6 +2,8 @@
 layout: post
 title: "2026 예비창업패키지 총정리: 사업자등록 전 창업자를 위한 사업화 자금 (자격·금액·일정)"
 date: 2026-10-14 13:10:00 +0900
+deadline: 2026-03-24
+deadline_note: "2026년 모집"
 topic: 창업
 image: /assets/images/cards/pre-startup-package-2026.png
 ---

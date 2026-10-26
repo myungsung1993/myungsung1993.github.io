@@ -1,0 +1,53 @@
+---
+layout: default
+---
+{%- comment -%}
+  minima 2.5.1 post.html 복사본. 신청 마감 안내 상자만 추가함 (2026-10-26).
+  글 머리말에 deadline: 2026-11-30 (이번 회차 신청 마감일), deadline_note: "2026년 모집" 을 넣으면
+  (마감 전·후 문구를 따로 쓰려면 deadline_open: "..." / deadline_closed: "..." 를 넣는다. 예: 신청은 끝났고 계좌 개설만 남은 경우)
+  제목 아래에 마감일이 보이고, 마감일이 지나면 "신청 마감" 안내로 바뀐다.
+  빌드 시각(site.time)으로 먼저 그리고, 방문자 브라우저의 오늘 날짜로 한 번 더 고친다(빌드가 없던 날에도 맞게).
+{%- endcomment -%}
+<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">{{ page.title | escape }}</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
+        {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+        {{ page.date | date: date_format }}
+      </time>
+      {%- if page.author -%}
+        • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">{{ page.author }}</span></span>
+      {%- endif -%}</p>
+  </header>
+
+  {%- if page.deadline -%}
+    {%- assign dl = page.deadline | date: "%Y%m%d" | plus: 0 -%}
+    {%- assign built = site.time | date: "%Y%m%d" | plus: 0 -%}
+    {%- assign dl_text = page.deadline | date: "%Y년 %-m월 %-d일" -%}
+    {%- assign dl_note = page.deadline_note | default: "이번 회차" -%}
+  <div class="deadline-box{% if built > dl %} is-closed{% endif %}" data-deadline="{{ page.deadline | date: '%Y-%m-%d' }}">
+    <p class="deadline-open">📅 {% if page.deadline_open %}{{ page.deadline_open }}{% else %}<b>{{ dl_note }}</b> 신청 마감: <b>{{ dl_text }}</b>{% endif %}</p>
+    <p class="deadline-closed">⏰ {% if page.deadline_closed %}{{ page.deadline_closed }}{% else %}<b>{{ dl_note }}</b> 신청은 <b>{{ dl_text }}</b>에 마감됐어요.{% endif %} 다음 모집 공고가 나오면 이 글을 고칠게요.</p>
+  </div>
+  <script>
+    (function () {
+      var box = document.currentScript.previousElementSibling;
+      var d = box.getAttribute("data-deadline").split("-");
+      var end = new Date(+d[0], +d[1] - 1, +d[2], 23, 59, 59);
+      box.classList.toggle("is-closed", new Date() > end);
+    })();
+  </script>
+  {%- endif -%}
+
+  <div class="post-content e-content" itemprop="articleBody">
+    {{ content }}
+  </div>
+
+  {%- if site.disqus.shortname -%}
+    {%- include disqus_comments.html -%}
+  {%- endif -%}
+
+  <a class="u-url" href="{{ page.url | relative_url }}" hidden></a>
+</article>

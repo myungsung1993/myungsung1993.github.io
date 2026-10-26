@@ -225,6 +225,7 @@ body {
 }
 .post-card-topic { color: $brand-color; background: #eaf2fc; }
 .post-card-hub { color: #b45309; background: #fff4e0; }
+.post-card-closed { font-weight: 700; font-size: 12px; padding: 2px 8px; border-radius: 6px; color: #d62828; background: #fdecec; }
 .post-card-title {
   margin: 0;
   font-size: 18px;
@@ -239,3 +240,11 @@ body {
   color: #5b6676;
 }
 .post-cards-empty { color: #5b6676; }
+
+/* 신청 마감 안내 상자 (_layouts/post.html, 머리말 deadline) */
+.deadline-box { margin: 0 0 20px; padding: 12px 16px; border-radius: 10px; background: #eaf2fc; color: #1b2430; line-height: 1.5; }
+.deadline-box p { margin: 0; }
+.deadline-box .deadline-closed { display: none; }
+.deadline-box.is-closed { background: #fdecec; border: 1px solid #f3b4b4; }
+.deadline-box.is-closed .deadline-open { display: none; }
+.deadline-box.is-closed .deadline-closed { display: block; color: #a61b1b; }
