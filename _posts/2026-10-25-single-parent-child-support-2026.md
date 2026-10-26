@@ -144,6 +144,7 @@ image: /assets/images/cards/single-parent-child-support-2026.png
 - [2026 출산지원금 총정리]({% post_url 2026-10-14-birth-support-2026 %}): 첫만남이용권·부모급여·아동수당 등 출산·육아 지원 한눈에
 - [2026 아이돌봄서비스 총정리]({% post_url 2026-10-16-child-care-service-2026 %}): 돌보미가 집으로 오는 정부 돌봄
 - [2026 생계급여 총정리]({% post_url 2026-10-24-livelihood-benefit-2026 %}): 소득이 아주 적은 가구의 생활비 지원
+- [2026 양육비 선지급제 총정리]({% post_url 2026-10-26-child-support-advance-payment-2026 %}): 따로 사는 부모가 양육비를 안 줄 때 국가가 자녀 1인당 월 20만 원을 먼저 지급
 
 ---
 
