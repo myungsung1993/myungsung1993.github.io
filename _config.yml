@@ -11,6 +11,7 @@ theme: minima
 # 위쪽 메뉴에 보일 페이지 순서
 header_pages:
   - about.md
+  - contact.md
   - privacy.md
 
 # 글 주소 형식: /2026/10/14/글제목/
