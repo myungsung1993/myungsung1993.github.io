@@ -146,6 +146,7 @@ image: /assets/images/cards/single-parent-child-support-2026.png
 - [2026 생계급여 총정리]({% post_url 2026-10-24-livelihood-benefit-2026 %}): 소득이 아주 적은 가구의 생활비 지원
 - [2026 양육비 선지급제 총정리]({% post_url 2026-10-26-child-support-advance-payment-2026 %}): 따로 사는 부모가 양육비를 안 줄 때 국가가 자녀 1인당 월 20만 원을 먼저 지급
 - [2026 기저귀·조제분유 지원 총정리]({% post_url 2026-10-26-diaper-formula-support-2026 %}): 만 2세 미만 아기 기저귀 월 9만 원, 한부모가족 지원 대상도 포함
+- [2026 디딤씨앗통장 총정리]({% post_url 2026-10-28-didim-seed-account-2026 %}): 한부모가족 아동이 모은 돈의 2배를 정부가 적립(월 최대 10만 원)
 
 ---
 
