@@ -175,6 +175,7 @@ image: /assets/images/cards/hourly-childcare-2026.png
 - [2026 출산지원금 총정리]({% post_url 2026-10-14-birth-support-2026 %}): 첫만남이용권·부모급여·아동수당 등 출산·육아 지원 전체
 - [2026 아이돌봄서비스 총정리]({% post_url 2026-10-16-child-care-service-2026 %}): 돌보미가 집으로 오는 돌봄 서비스
 - [2026 육아기 근로시간 단축 총정리]({% post_url 2026-10-19-reduced-hours-childcare-2026 %}): 일하는 시간을 줄여 아이를 돌보는 방법
+- [2026 가정양육수당 총정리]({% post_url 2026-10-28-home-care-allowance-2026 %}): 어린이집에 안 다니는 24~86개월 미만 아이 월 10만 원
 
 ---
 
