@@ -156,6 +156,7 @@ image: /assets/images/cards/disability-pension-2026.png
 
 ## 함께 보면 좋은 글
 
+- [2026 생활비 지원 총정리]({% post_url 2026-10-29-living-cost-support-2026 %}): 생계급여·주거급여·기초연금·긴급복지 등 내 상황에 맞는 제도 찾기
 - [2026 기초연금 총정리]({% post_url 2026-10-24-basic-pension-2026 %}): 65세부터 장애인연금 기초급여 대신 받는 연금
 - [2026 생계급여 총정리]({% post_url 2026-10-24-livelihood-benefit-2026 %}): 소득이 아주 적은 가구의 생활비 지원
 - [2026 에너지바우처 총정리]({% post_url 2026-10-16-energy-voucher-2026 %}): 기초생활수급 가구 중 장애인이 있으면 받을 수 있는 냉난방비

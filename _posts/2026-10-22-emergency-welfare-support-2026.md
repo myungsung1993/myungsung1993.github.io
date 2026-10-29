@@ -205,6 +205,7 @@ image: /assets/images/cards/emergency-welfare-support-2026.png
 
 ## 함께 보면 좋은 글
 
+- [2026 생활비 지원 총정리]({% post_url 2026-10-29-living-cost-support-2026 %}): 생계급여·주거급여·기초연금·긴급복지 등 내 상황에 맞는 제도 찾기
 - [2026 실업급여(구직급여) 총정리]({% post_url 2026-10-24-unemployment-benefit-2026 %}): 고용보험 가입자가 직장을 잃었을 때 받는 구직급여(하루 최대 6만 8,100원)
 - [2026 국민취업지원제도 총정리]({% post_url 2026-10-18-national-employment-support-2026 %}): 실직 뒤 구직 활동 중에 받는 구직촉진수당과 취업 지원
 - [2026 생계급여 총정리]({% post_url 2026-10-24-livelihood-benefit-2026 %}): 위기가 길어질 때 살펴볼 기초생활보장 생활비 지원(기준 중위소득 32% 이하)

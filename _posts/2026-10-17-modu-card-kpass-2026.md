@@ -162,6 +162,7 @@ image: /assets/images/cards/modu-card-kpass-2026.png
 
 ## 함께 보면 좋은 글
 
+- [2026 생활비 지원 총정리]({% post_url 2026-10-29-living-cost-support-2026 %}): 생계급여·주거급여·기초연금·긴급복지 등 내 상황에 맞는 제도 찾기
 - [2026 청년 주거 지원 총정리]({% post_url 2026-10-16-youth-housing-support-2026 %}): 교통비 다음으로 큰 청년 고정비, 월세·전세 지원 한눈에
 
 ---
