@@ -189,6 +189,7 @@ image: /assets/images/cards/high-risk-pregnancy-medical-support-2026.png
 
 ## 함께 보면 좋은 글
 
+- [미숙아·선천성이상아 의료비 지원 총정리]({% post_url 2026-10-31-premature-infant-medical-support-2026 %}): 아기가 신생아중환자실에 입원하거나 선천성이상으로 수술했을 때
 - [2026 출산지원금 총정리]({% post_url 2026-10-14-birth-support-2026 %}): 임신·출산 진료비 바우처 100만 원, 첫만남이용권, 부모급여
 - [2026 출산휴가·육아휴직 급여 총정리]({% post_url 2026-10-14-leave-pay-2026 %}): 직장인 엄마·아빠가 받는 휴가·휴직 급여
 - [2026 고용보험 미적용자 출산급여 총정리]({% post_url 2026-10-27-uninsured-maternity-benefit-2026 %}): 프리랜서·1인 사업자 출산급여 150만 원
