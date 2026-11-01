@@ -171,6 +171,7 @@ image: /assets/images/cards/infertility-treatment-support-2026.png
 
 ## 함께 보면 좋은 글
 
+- [임신 사전건강관리 지원 총정리]({% post_url 2026-11-01-preconception-fertility-test-2026 %}): 20~49세 가임력 검사비 여성 13만·남성 5만 원
 - [2026 출산지원금 총정리]({% post_url 2026-10-14-birth-support-2026 %}): 임신 후 진료비 바우처, 첫만남이용권, 부모급여
 - [고위험 임산부 의료비 지원 총정리]({% post_url 2026-10-30-high-risk-pregnancy-medical-support-2026 %}): 임신 중 고위험 질환으로 입원했을 때
 - [미숙아·선천성이상아 의료비 지원 총정리]({% post_url 2026-10-31-premature-infant-medical-support-2026 %}): 아기가 신생아중환자실에 입원했을 때
