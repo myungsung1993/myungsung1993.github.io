@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "2026 영구 불임 예상 난자·정자 냉동 지원 총정리: 본인부담 50%, 여성 최대 200만 원·남성 30만 원 (대상·신청 방법)"
-date: 2026-11-02 10:00:00 +0900
+date: 2026-11-02 09:40:00 +0900
 topic: 출산·육아
 image: /assets/images/cards/fertility-preservation-support-2026.png
 ---
