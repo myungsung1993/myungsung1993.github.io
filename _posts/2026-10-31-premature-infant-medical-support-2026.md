@@ -215,6 +215,7 @@ image: /assets/images/cards/premature-infant-medical-support-2026.png
 ## 함께 보면 좋은 글
 
 - [고위험 임산부 의료비 지원 총정리]({% post_url 2026-10-30-high-risk-pregnancy-medical-support-2026 %}): 엄마가 조기진통 등으로 입원했을 때 받는 의료비 지원
+- [신생아 선천성 대사이상·난청 검사비 지원 총정리]({% post_url 2026-11-03-newborn-screening-support-2026 %}): 외래 선별검사 본인부담금, 확진검사비 7만 원까지
 - [2026 출산지원금 총정리]({% post_url 2026-10-14-birth-support-2026 %}): 임신·출산 진료비 바우처, 첫만남이용권, 부모급여
 - [2026 출산휴가·육아휴직 급여 총정리]({% post_url 2026-10-14-leave-pay-2026 %}): 직장인 엄마·아빠가 받는 휴가·휴직 급여
 
