@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "2026 한부모가족 아동양육비 총정리: 자녀 1인당 월 23만 원, 기준 중위소득 65% 이하 (대상·추가 지원·신청 방법)"
+title: "2026 한부모가족 아동양육비 신청 방법·자격 조건: 자녀 1인당 월 23만 원, 기준 중위소득 65% 이하 (추가 지원 포함)"
 date: 2026-10-25 21:30:00 +0900
 topic: 출산·육아
 image: /assets/images/cards/single-parent-child-support-2026.png

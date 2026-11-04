@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "2026 근로·자녀장려금 기한 후 신청: 12월 1일까지, 산정액의 95% 지급 (대상·금액·신청 방법)"
+title: "2026 근로장려금·자녀장려금 기한 후 신청 방법: 12월 1일까지, 산정액의 95% 지급 (대상·금액)"
 date: 2026-10-31 18:00:00 +0900
 topic: 생활비
 image: /assets/images/cards/eitc-late-application-2026.png
