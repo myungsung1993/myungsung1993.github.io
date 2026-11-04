@@ -3,6 +3,7 @@ layout: post
 title: "2026 양육비 선지급제 총정리: 못 받은 양육비 자녀 1인당 월 20만 원, 10월 29일부터 소득 기준 폐지 (대상·서류·신청 방법)"
 date: 2026-10-26 15:00:00 +0900
 topic: 출산·육아
+who: ["양육비 미지급", "만 18세 이하 자녀", "양육비 판결·조정 있음", "소득 무관"]
 image: /assets/images/cards/child-support-advance-payment-2026.png
 ---
 

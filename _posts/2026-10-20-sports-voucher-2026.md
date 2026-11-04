@@ -5,6 +5,7 @@ date: 2026-10-20 23:20:00 +0900
 deadline: 2026-11-27
 deadline_note: "2027년분 전국 동시신청"
 topic: 생활비
+who: ["만 5~18세", "수급자·차상위·한부모", "장애인 만 5~69세"]
 image: /assets/images/cards/sports-voucher-2026.png
 ---
 

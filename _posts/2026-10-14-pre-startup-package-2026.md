@@ -5,6 +5,7 @@ date: 2026-10-14 13:10:00 +0900
 deadline: 2026-03-24
 deadline_note: "2026년 모집"
 topic: 창업
+who: ["예비창업자"]
 image: /assets/images/cards/pre-startup-package-2026.png
 ---
 

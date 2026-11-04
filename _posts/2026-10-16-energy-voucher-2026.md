@@ -5,6 +5,7 @@ date: 2026-10-16 17:30:00 +0900
 deadline: 2026-12-31
 deadline_note: "2026년도"
 topic: 생활비
+who: ["기초생활수급자", "노인·영유아·장애인 등 세대"]
 image: /assets/images/cards/energy-voucher-2026.png
 ---
 

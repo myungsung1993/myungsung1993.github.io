@@ -3,6 +3,7 @@ layout: post
 title: "2026 기저귀·조제분유 지원 총정리: 기저귀 월 9만 원·분유 월 11만 원, 한부모가족도 대상 (자격·신청 방법)"
 date: 2026-10-26 22:30:00 +0900
 topic: 출산·육아
+who: ["만 2세 미만", "기초생활수급자", "차상위계층", "한부모", "다자녀·장애인 가구"]
 image: /assets/images/cards/diaper-formula-support-2026.png
 ---
 

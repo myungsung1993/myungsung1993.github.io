@@ -3,6 +3,7 @@ layout: post
 title: "2026 고위험 임산부 의료비 지원 총정리: 비급여 등 입원 진료비 90%, 1인 최대 300만 원 (19대 질환·서류·신청 방법)"
 date: 2026-10-30 10:00:00 +0900
 topic: 출산·육아
+who: ["고위험 임신질환", "입원 치료", "소득 무관"]
 image: /assets/images/cards/high-risk-pregnancy-medical-support-2026.png
 ---
 

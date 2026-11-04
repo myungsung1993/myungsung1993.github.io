@@ -3,6 +3,7 @@ layout: post
 title: "2026 난임부부 시술비 지원 총정리: 신선배아 1회 최대 110만 원, 출산당 25회 (대상·신청·청구 방법)"
 date: 2026-11-01 12:30:00 +0900
 topic: 출산·육아
+who: ["난임 부부", "사실혼 1년 이상", "소득 무관"]
 image: /assets/images/cards/infertility-treatment-support-2026.png
 ---
 

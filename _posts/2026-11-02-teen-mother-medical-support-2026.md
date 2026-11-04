@@ -3,6 +3,7 @@ layout: post
 title: "2026 청소년산모 임신·출산 의료비 지원 총정리: 만 19세 이하 임신 1회 120만 원, 소득 기준 없음 (신청 방법)"
 date: 2026-11-02 09:30:00 +0900
 topic: 출산·육아
+who: ["만 19세 이하 산모"]
 image: /assets/images/cards/teen-mother-medical-support-2026.png
 ---
 

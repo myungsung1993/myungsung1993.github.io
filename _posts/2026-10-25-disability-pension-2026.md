@@ -3,6 +3,7 @@ layout: post
 title: "2026 장애인연금 총정리: 월 최대 43만 9,700원, 단독가구 소득인정액 140만 원 이하 (대상·금액·신청 방법)"
 date: 2026-10-25 01:30:00 +0900
 topic: 생활비
+who: ["18세 이상", "등록 중증장애인", "소득 하위 70%"]
 image: /assets/images/cards/disability-pension-2026.png
 ---
 

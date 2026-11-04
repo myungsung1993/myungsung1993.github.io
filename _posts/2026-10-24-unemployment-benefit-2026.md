@@ -3,6 +3,7 @@ layout: post
 title: "2026 실업급여(구직급여) 총정리: 하루 최대 6만 8,100원, 최대 270일 (조건·금액·신청 방법)"
 date: 2026-10-24 00:30:00 +0900
 topic: 일자리
+who: ["고용보험 180일 이상", "비자발적 퇴사"]
 image: /assets/images/cards/unemployment-benefit-2026.png
 ---
 

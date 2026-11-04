@@ -7,6 +7,7 @@ deadline_note: "2차 모집"
 deadline_open: "2차 모집 신청은 10월 16일에 마감됐고, 선정된 분의 계좌 개설은 <b>2026년 11월 27일</b>까지예요."
 deadline_closed: "2차 모집은 신청(10월 16일)과 계좌 개설(<b>2026년 11월 27일</b>)까지 모두 끝났어요."
 topic: 청년 자산
+who: ["만 19~34세", "총급여 7,500만 원 이하", "가구 중위소득 200% 이하"]
 image: /assets/images/cards/youth-future-savings-2026.png
 ---
 

@@ -3,6 +3,7 @@ layout: post
 title: "2026 생계급여 총정리: 1인 가구 월 최대 82만 556원, 4인 가구 207만 8,316원 (대상·계산·신청 방법)"
 date: 2026-10-24 15:50:00 +0900
 topic: 생활비
+who: ["중위소득 32% 이하"]
 image: /assets/images/cards/livelihood-benefit-2026.png
 ---
 

@@ -5,6 +5,7 @@ date: 2026-10-19 23:30:00 +0900
 deadline: 2026-05-20
 deadline_note: "2026년 모집"
 topic: 청년 자산
+who: ["만 15~39세", "중위소득 50% 이하", "일하는 청년"]
 image: /assets/images/cards/youth-tomorrow-savings-2026.png
 ---
 

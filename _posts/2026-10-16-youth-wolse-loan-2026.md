@@ -3,6 +3,7 @@ layout: post
 title: "2026 청년전용 보증부월세대출 총정리: 월세 대출 연 0~1%, 보증금 연 1.3% (자격 조건·한도·신청 방법)"
 date: 2026-10-16 15:30:00 +0900
 topic: 청년 주거
+who: ["만 19~34세", "무주택 단독세대주", "연소득 5천만 원 이하"]
 image: /assets/images/cards/youth-wolse-loan-2026.png
 ---
 

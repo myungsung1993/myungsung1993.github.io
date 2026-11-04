@@ -3,6 +3,7 @@ layout: post
 title: "2026 주거급여 총정리: 서울 1인 월 최대 36만 9,000원, 자가 가구 집수리 대보수 1,601만 원 (대상·금액·신청 방법)"
 date: 2026-10-23 10:00:00 +0900
 topic: 생활비
+who: ["중위소득 48% 이하"]
 image: /assets/images/cards/housing-benefit-2026.png
 ---
 

@@ -3,6 +3,7 @@ layout: post
 title: "2026 긴급복지지원 총정리: 4인 가구 생계비 월 199만 4,600원, 실직·질병·폐업 때 먼저 지원 (대상·금액·신청 방법)"
 date: 2026-10-22 22:00:00 +0900
 topic: 생활비
+who: ["위기 가구", "실직·질병·폐업", "중위소득 75% 이하"]
 image: /assets/images/cards/emergency-welfare-support-2026.png
 ---
 

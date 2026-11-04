@@ -3,6 +3,7 @@ layout: post
 title: "2026 미숙아·선천성이상아 의료비 지원 신청 방법·대상: 미숙아 최대 2,000만 원, 선천성이상아 700만 원 (계산법)"
 date: 2026-10-31 17:30:00 +0900
 topic: 출산·육아
+who: ["미숙아", "선천성이상아", "소득 무관"]
 image: /assets/images/cards/premature-infant-medical-support-2026.png
 ---
 

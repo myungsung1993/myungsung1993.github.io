@@ -3,6 +3,7 @@ layout: post
 title: "2026 신생아 선천성 대사이상·난청 검사비 지원: 확진검사 7만 원까지, 소득 기준 없음 (출생 1년 안 신청)"
 date: 2026-11-03 07:40:00 +0900
 topic: 출산·육아
+who: ["신생아", "외래 검사", "소득 무관"]
 image: /assets/images/cards/newborn-screening-support-2026.png
 ---
 

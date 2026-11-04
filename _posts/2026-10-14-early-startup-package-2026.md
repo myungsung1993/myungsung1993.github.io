@@ -5,6 +5,7 @@ date: 2026-10-14 13:20:00 +0900
 deadline: 2026-02-13
 deadline_note: "2026년 모집"
 topic: 창업
+who: ["창업 3년 이내"]
 image: /assets/images/cards/early-startup-package-2026.png
 ---
 

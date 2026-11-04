@@ -3,6 +3,7 @@ layout: post
 title: "2026 국민취업지원제도 총정리: 구직촉진수당 월 60만 원 × 6개월 (1유형·2유형 자격, 취업성공수당 150만 원)"
 date: 2026-10-18 01:05:00 +0900
 topic: 일자리
+who: ["만 15~69세", "구직자", "유형별 소득 기준", "실업급여 수급자 제외"]
 image: /assets/images/cards/national-employment-support-2026.png
 ---
 

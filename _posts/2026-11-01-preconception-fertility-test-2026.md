@@ -3,6 +3,7 @@ layout: post
 title: "2026 임신 사전건강관리 지원 총정리: 가임력 검사비 여성 13만 원·남성 5만 원, 20~49세 결혼 무관 (신청·청구 방법)"
 date: 2026-11-01 12:35:00 +0900
 topic: 출산·육아
+who: ["20~49세", "결혼 무관"]
 image: /assets/images/cards/preconception-fertility-test-2026.png
 ---
 

@@ -3,6 +3,7 @@ layout: post
 title: "2026 고용보험 미적용자 출산급여 총정리: 프리랜서·1인 사업자도 150만 원 (자격·서류·신청 방법)"
 date: 2026-10-27 22:05:00 +0900
 topic: 출산·육아
+who: ["출산 여성", "고용보험 미적용"]
 image: /assets/images/cards/uninsured-maternity-benefit-2026.png
 ---
 

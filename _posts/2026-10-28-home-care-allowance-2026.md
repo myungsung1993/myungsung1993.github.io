@@ -3,6 +3,7 @@ layout: post
 title: "2026 가정양육수당 총정리: 어린이집 안 다니는 24~86개월 미만 아이 월 10만 원 (농어촌·장애아동 금액, 신청 방법)"
 date: 2026-10-28 23:00:00 +0900
 topic: 출산·육아
+who: ["24~86개월", "가정양육"]
 image: /assets/images/cards/home-care-allowance-2026.png
 ---
 

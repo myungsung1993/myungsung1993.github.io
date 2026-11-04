@@ -3,6 +3,7 @@ layout: post
 title: "2026 육아기 근로시간 단축 총정리: 자녀 만 12세까지, 최대 3년, 급여 상한 250만 원 (계산 예시·신청 방법)"
 date: 2026-10-19 21:20:00 +0900
 topic: 출산·육아
+who: ["근로자", "만 12세 이하 자녀"]
 image: /assets/images/cards/reduced-hours-childcare-2026.png
 ---
 

@@ -3,6 +3,7 @@ layout: post
 title: "2026 아동 보청기 지원: 만 12세 미만 난청, 개당 135만 원까지 (소득 기준 없음, 신청 절차)"
 date: 2026-11-03 07:45:00 +0900
 topic: 출산·육아
+who: ["만 12세 미만", "난청", "소득 무관"]
 image: /assets/images/cards/child-hearing-aid-support-2026.png
 ---
 

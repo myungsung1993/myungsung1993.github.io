@@ -5,6 +5,7 @@ date: 2026-10-16 10:00:00 +0900
 deadline: 2026-05-29
 deadline_note: "2026년 모집"
 topic: 청년 주거
+who: ["만 19~34세", "무주택", "부모와 따로 거주", "중위소득 60% 이하"]
 image: /assets/images/cards/youth-monthly-rent-2026.png
 ---
 

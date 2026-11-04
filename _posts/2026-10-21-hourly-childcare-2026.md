@@ -3,6 +3,7 @@ layout: post
 title: "2026 시간제보육 총정리: 시간당 부모부담 2천 원, 월 60시간 (대상·예약 방법·이용 요금)"
 date: 2026-10-21 21:00:00 +0900
 topic: 출산·육아
+who: ["6~36개월", "가정양육"]
 image: /assets/images/cards/hourly-childcare-2026.png
 ---
 

@@ -5,6 +5,7 @@ date: 2026-10-17 23:30:00 +0900
 deadline: 2026-11-30
 deadline_note: "2026년 카드 발급"
 topic: 생활비
+who: ["6세 이상", "기초생활수급자", "차상위계층"]
 image: /assets/images/cards/culture-nuri-card-2026.png
 ---
 

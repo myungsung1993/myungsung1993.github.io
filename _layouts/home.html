@@ -70,6 +70,9 @@ layout: default
           {%- if sub_title != "" %}
           <p class="post-card-sub">{{ sub_title | escape }}</p>
           {%- endif %}
+          {%- if post.who %}
+          <div class="post-card-who" aria-label="대상">{% for w in post.who %}<span>{{ w | escape }}</span>{% endfor %}</div>
+          {%- endif %}
         </div>
       </a>
     </li>
