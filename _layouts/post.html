@@ -2,7 +2,7 @@
 layout: default
 ---
 {%- comment -%}
-  minima 2.5.1 post.html 복사본. 신청 마감 안내 상자만 추가함 (2026-10-26).
+  minima 2.5.1 post.html 복사본. 신청 마감 안내 상자 추가(2026-10-26), 분야 배지·대상 태그·D-day·분야 글 더 보기 추가(2026-11-04).
   글 머리말에 deadline: 2026-11-30 (이번 회차 신청 마감일), deadline_note: "2026년 모집" 을 넣으면
   (마감 전·후 문구를 따로 쓰려면 deadline_open: "..." / deadline_closed: "..." 를 넣는다. 예: 신청은 끝났고 계좌 개설만 남은 경우)
   제목 아래에 마감일이 보이고, 마감일이 지나면 "신청 마감" 안내로 바뀐다.
@@ -10,9 +10,11 @@ layout: default
 {%- endcomment -%}
 <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
 
+  {%- assign tp = site.data.topics | where: "name", page.topic | first %}
   <header class="post-header">
-    <h1 class="post-title p-name" itemprop="name headline">{{ page.title | escape }}</h1>
     <p class="post-meta">
+      {%- if page.topic %}<span class="post-topic" style="color:{{ tp.fg | default: '#1a6fd1' }};background:{{ tp.bg | default: '#eaf2fc' }}">{{ page.topic }}</span>{% endif %}
+      {%- if page.hub %}<span class="post-card-hub">총정리</span>{% endif %}
       <time class="dt-published" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
         {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
         {{ page.date | date: date_format }}
@@ -20,6 +22,10 @@ layout: default
       {%- if page.author -%}
         • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">{{ page.author }}</span></span>
       {%- endif -%}</p>
+    <h1 class="post-title p-name" itemprop="name headline">{{ page.title | escape }}</h1>
+    {%- if page.who %}
+    <div class="post-who" aria-label="대상"><b>대상</b>{% for w in page.who %}<span>{{ w | escape }}</span>{% endfor %}</div>
+    {%- endif %}
   </header>
 
   {%- if page.deadline -%}
@@ -28,15 +34,19 @@ layout: default
     {%- assign dl_text = page.deadline | date: "%Y년 %-m월 %-d일" -%}
     {%- assign dl_note = page.deadline_note | default: "이번 회차" -%}
   <div class="deadline-box{% if built > dl %} is-closed{% endif %}" data-deadline="{{ page.deadline | date: '%Y-%m-%d' }}">
-    <p class="deadline-open">📅 {% if page.deadline_open %}{{ page.deadline_open }}{% else %}<b>{{ dl_note }}</b> 신청 마감: <b>{{ dl_text }}</b>{% endif %}</p>
-    <p class="deadline-closed">⏰ {% if page.deadline_closed %}{{ page.deadline_closed }}{% else %}<b>{{ dl_note }}</b> 신청은 <b>{{ dl_text }}</b>에 마감됐어요.{% endif %} 다음 모집 공고가 나오면 이 글을 고칠게요.</p>
+    <span class="dday"></span>
+    <p class="deadline-open">{% if page.deadline_open %}{{ page.deadline_open }}{% else %}<b>{{ dl_note }}</b> 신청 마감: <b>{{ dl_text }}</b>{% endif %}</p>
+    <p class="deadline-closed">{% if page.deadline_closed %}{{ page.deadline_closed }}{% else %}<b>{{ dl_note }}</b> 신청은 <b>{{ dl_text }}</b>에 마감됐어요.{% endif %} 다음 모집 공고가 나오면 이 글을 고칠게요.</p>
   </div>
   <script>
     (function () {
       var box = document.currentScript.previousElementSibling;
       var d = box.getAttribute("data-deadline").split("-");
       var end = new Date(+d[0], +d[1] - 1, +d[2], 23, 59, 59);
-      box.classList.toggle("is-closed", new Date() > end);
+      var now = new Date();
+      box.classList.toggle("is-closed", now > end);
+      var n = Math.round((new Date(+d[0], +d[1] - 1, +d[2]) - new Date(now.getFullYear(), now.getMonth(), now.getDate())) / 864e5);
+      box.querySelector(".dday").textContent = n < 0 ? "마감" : n === 0 ? "오늘 마감" : "D-" + n;
     })();
   </script>
   {%- endif -%}
@@ -44,6 +54,11 @@ layout: default
   <div class="post-content e-content" itemprop="articleBody">
     {{ content }}
   </div>
+
+  {%- if page.topic %}
+  {%- assign same = site.posts | where: "topic", page.topic | size %}
+  <a class="post-more" href="{{ "/" | relative_url }}?topic={{ page.topic | url_encode }}" style="color:{{ tp.fg | default: '#1a6fd1' }};background:{{ tp.bg | default: '#eaf2fc' }}">{{ page.topic }} 글 더 보기<span>이 분야 글 {{ same }}개 모아 보기</span></a>
+  {%- endif %}
 
   {%- if site.disqus.shortname -%}
     {%- include disqus_comments.html -%}

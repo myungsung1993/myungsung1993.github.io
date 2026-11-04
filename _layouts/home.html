@@ -102,6 +102,9 @@ layout: default
         heading.textContent = t === "all" ? "최신 글" : t;
       });
     });
+    // 글 끝 "분야 글 더 보기"(?topic=분야)로 들어오면 그 분야 타일을 눌러 둠
+    var want = new URLSearchParams(location.search).get("topic");
+    tiles.forEach(function (x) { if (want && x.getAttribute("data-topic") === want) x.click(); });
 
     // 마감까지 남은 날 (오늘 마감이면 0, 지났으면 음수)
     var now = new Date();
