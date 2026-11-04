@@ -129,6 +129,8 @@ body {
   background: $brand-color;
   border-top: 0;
   .jg-header-inner { display: flex; align-items: center; justify-content: space-between; min-height: 60px; }
+  // minima .wrapper의 clearfix(::after)가 flex 칸으로 끼어들어 메뉴가 가운데로 밀리는 것 막기
+  .jg-header-inner::after { display: none; }
   .jg-logo { display: block; line-height: 0; }
   .jg-logo img { height: 44px; width: auto; border-radius: 10px; box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.25); }
   .jg-nav { display: flex; gap: 16px; }
@@ -137,6 +139,8 @@ body {
 }
 
 // ---------- 홈 화면 (_layouts/home.html) ----------
+// minima는 box-sizing을 정하지 않아 padding이 높이에 더해짐 → 카드가 겹치지 않게
+.topic-tile, .soon-card, .post-card-link, .post-card-icon, .home-hero { box-sizing: border-box; }
 .home-hero {
   margin: 4px 0 22px;
   padding: 22px 16px 16px;
