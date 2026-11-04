@@ -13,7 +13,11 @@
 #   bash _tools/threads_upload.sh post <슬러그>     # 글 + 블로그 링크 카드 게시 (팩트체크 반영 후)
 #   bash _tools/threads_upload.sh comments [개수]   # 최근 게시물(기본 10개)에 달린 남의 댓글 (답글 안 단 것에 * 표시)
 #   bash _tools/threads_upload.sh reply <댓글ID>    # ~/.policy-blog/threads_replies/<댓글ID>.txt 를 답글로 게시 (팩트체크 반영 후)
+#   bash _tools/threads_upload.sh home-reply-all   # 예전 게시물 중 홈 링크 댓글이 없는 글에 3분 간격으로 댓글 달기
 #   bash _tools/threads_upload.sh refresh          # 장기 토큰 갱신 (60일 만료 전, 발급 24시간 뒤부터 가능)
+#
+# 홈 링크 댓글: post 로 게시하면 바로 아래 HOME_REPLY 문구를 내 댓글로 단다(2026-11-04 사용자 지정).
+#       단 글 ID는 ~/.policy-blog/threads_home_replied.txt 에 남겨 두 번 달지 않는다.
 #
 # 규칙: CLAUDE.md — 글·답글 모두 독립 팩트체크(fact-checker)를 거친 뒤 게시한다. (2026-10-24부터 사용자 확인 없이 게시)
 #       댓글 원문은 남의 글이라 저장소에 넣지 않는다. 답글 초안·게시 기록은 ~/.policy-blog/threads_replies/ 에 둔다.
@@ -52,7 +56,42 @@ check_text() {
   [ "$n" -le 500 ] || { echo "500자를 넘습니다. 줄여 주세요." >&2; exit 1; }
 }
 
+HOME_REPLY="다른 지원금도 분야별로 정리해 뒀어요 👉 $SITE/"
+HOME_REPLIED="$HOME/.policy-blog/threads_home_replied.txt"
+
+# 내 게시물(ID)에 홈 링크 댓글 달기. 이미 단 글은 건너뜀. TOKEN이 로드돼 있어야 함.
+home_reply() {
+  local pid="$1" f cid r mid
+  grep -q "^$pid " "$HOME_REPLIED" 2>/dev/null && { echo "이미 홈 링크 댓글을 단 글: $pid"; return 0; }
+  # 윈도우 curl은 한글 인자를 깨뜨리므로 파일로 넘긴다.
+  f="$HOME/.policy-blog/threads_home_reply.txt"; printf '%s' "$HOME_REPLY" > "$f"
+  r="$(cr -s -m 60 -X POST "$API/me/threads" --data-urlencode "media_type=TEXT" --data-urlencode "text@$(cygpath -m "$f" 2>/dev/null || echo "$f")" --data-urlencode "reply_to_id=$pid" --data-urlencode "access_token=$TOKEN")"
+  fail_if_error "$r"; cid="$(printf '%s' "$r" | jget id)"
+  [ -n "$cid" ] || { echo "댓글 컨테이너를 만들지 못했습니다: $r" >&2; return 1; }
+  sleep 30
+  # 게시 단계는 중복 게시를 막기 위해 재시도하지 않는다.
+  r="$(curl -s -m 60 -X POST "$API/me/threads_publish" --data-urlencode "creation_id=$cid" --data-urlencode "access_token=$TOKEN")"
+  fail_if_error "$r"; mid="$(printf '%s' "$r" | jget id)"
+  echo "$pid $(date '+%Y-%m-%d %H:%M') $mid" >> "$HOME_REPLIED"
+  echo "홈 링크 댓글 완료: 글 $pid"
+}
+
 case "${1:-}" in
+  home-reply-all)
+    load_token
+    r="$(cr -s -m 30 -G "$API/me/threads" --data-urlencode "fields=id,is_reply" --data-urlencode "limit=100" --data-urlencode "access_token=$TOKEN")"
+    fail_if_error "$r"
+    # 오래된 글부터, 답글(is_reply)은 빼고
+    ids="$(printf '%s' "$r" | node -e 'let s="";process.stdin.on("data",d=>s+=d).on("end",()=>{for(const x of JSON.parse(s).data.reverse())if(!x.is_reply)console.log(x.id)})')"
+    first=1
+    for pid in $ids; do
+      grep -q "^$pid " "$HOME_REPLIED" 2>/dev/null && continue
+      [ $first = 1 ] || sleep 150   # 한꺼번에 달면 스팸으로 보일 수 있어 간격을 둠 (댓글 1개에 30초 + 150초)
+      first=0
+      home_reply "$pid"
+    done
+    echo "끝: $(wc -l < "$HOME_REPLIED" 2>/dev/null || echo 0)개 기록"
+    ;;
   check)
     load_token
     r="$(cr -s -m 30 -G "$API/me" --data-urlencode "fields=id,username" --data-urlencode "access_token=$TOKEN")"
@@ -99,6 +138,7 @@ case "${1:-}" in
     plink="$(curl -s -m 30 -G "$API/$mid" --data-urlencode "fields=permalink" --data-urlencode "access_token=$TOKEN" | jget permalink | sed 's#\\/#/#g')"
     echo "$(date '+%Y-%m-%d %H:%M') $slug ${plink:-$mid}" >> "$posted"
     echo "게시 완료: ${plink:-$mid}"
+    home_reply "$mid"
     ;;
   comments)
     load_token
@@ -139,5 +179,5 @@ case "${1:-}" in
     echo "토큰 갱신 완료 (만료까지 초: $(printf '%s' "$r" | grep -o '"expires_in":[0-9]*' | cut -d: -f2))"
     ;;
   *)
-    sed -n '2,17p' "$0"; exit 1 ;;
+    sed -n '2,21p' "$0"; exit 1 ;;
 esac
