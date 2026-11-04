@@ -17,6 +17,8 @@
 #
 # 규칙: CLAUDE.md — 글·답글 모두 독립 팩트체크(fact-checker)를 거친 뒤 게시한다. (2026-10-24부터 사용자 확인 없이 게시)
 #       댓글 원문은 남의 글이라 저장소에 넣지 않는다. 답글 초안·게시 기록은 ~/.policy-blog/threads_replies/ 에 둔다.
+#       중복 방지: 게시한 슬러그는 ~/.policy-blog/threads_posted.txt 에 남고, 같은 슬러그는 다시 올리지 않는다.
+#       일부러 다시 올릴 때만 THREADS_FORCE=1 bash _tools/threads_upload.sh post <슬러그>
 
 set -euo pipefail
 
@@ -71,6 +73,11 @@ case "${1:-}" in
       echo "링크 카드: $link"; echo "주제 태그: ${topic:-(없음)}"; echo "----"; cat "$txt"; echo "----"
       exit 0
     fi
+    posted="$HOME/.policy-blog/threads_posted.txt"
+    if [ "${THREADS_FORCE:-}" != 1 ] && grep -q " $slug " "$posted" 2>/dev/null; then
+      echo "이미 쓰레드에 올린 글입니다: $(grep " $slug " "$posted" | tail -1)" >&2
+      echo "일부러 다시 올릴 때만 THREADS_FORCE=1 을 붙이세요." >&2; exit 1
+    fi
     load_token
     r="$(cr -s -m 30 -G "$API/me" --data-urlencode "fields=id" --data-urlencode "access_token=$TOKEN")"
     fail_if_error "$r"; id="$(printf '%s' "$r" | jget id)"
@@ -90,6 +97,7 @@ case "${1:-}" in
     r="$(curl -s -m 60 -X POST "$API/$id/threads_publish" --data-urlencode "creation_id=$cid" --data-urlencode "access_token=$TOKEN")"
     fail_if_error "$r"; mid="$(printf '%s' "$r" | jget id)"
     plink="$(curl -s -m 30 -G "$API/$mid" --data-urlencode "fields=permalink" --data-urlencode "access_token=$TOKEN" | jget permalink | sed 's#\\/#/#g')"
+    echo "$(date '+%Y-%m-%d %H:%M') $slug ${plink:-$mid}" >> "$posted"
     echo "게시 완료: ${plink:-$mid}"
     ;;
   comments)
