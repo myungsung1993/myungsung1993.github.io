@@ -186,6 +186,21 @@ body {
   &.is-active { outline: 3px solid #ffd43b; outline-offset: 2px; }
 }
 
+// 검색창 (분야 타일 아래)
+.home-search { margin: 0 0 24px; }
+.home-search-label { display: block; font-size: 15px; font-weight: 800; margin-bottom: 6px; color: #1b2430; }
+.home-search input {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 13px 16px;
+  font: inherit;
+  font-size: 16px; // 16px 미만이면 아이폰이 화면을 확대함
+  border: 2px solid #c9d8ea;
+  border-radius: 12px;
+  background: #fff;
+  &:focus { outline: none; border-color: $brand-color; }
+}
+
 .home-h2 { font-size: 20px; font-weight: 800; margin: 0 0 12px; }
 
 // 신청 마감 다가와요 (옆으로 넘기는 카드)

@@ -30,6 +30,11 @@ layout: default
     </nav>
   </section>
 
+  <div class="home-search" role="search">
+    <label for="post-search" class="home-search-label">지원금 검색</label>
+    <input type="search" id="post-search" placeholder="예: 월세, 기초생활수급자, 출산" autocomplete="off" enterkeyhint="search">
+  </div>
+
   {%- assign dl_posts = site.posts | where_exp: "p", "p.deadline" | sort: "deadline" %}
   {%- if dl_posts.size > 0 %}
   <section class="soon" hidden>
@@ -54,7 +59,8 @@ layout: default
     {%- assign main_title = parts | first %}
     {%- assign sub_title = post.title | remove_first: main_title | remove_first: ": " %}
     {%- assign tp = topics | where: "name", post.topic | first %}
-    <li class="post-card" data-topic="{{ post.topic | default: '기타' }}">
+    {%- capture q %}{{ post.title }} {{ post.topic }} {{ post.who | join: " " }} {{ post.excerpt | strip_html | strip_newlines | truncate: 300, "" }}{% endcapture %}
+    <li class="post-card" data-topic="{{ post.topic | default: '기타' }}" data-q="{{ q | strip | escape }}">
       <a class="post-card-link" href="{{ post.url | relative_url }}">
         <span class="post-card-icon" style="background:{{ tp.bg | default: '#eaf2fc' }}">
           {%- if tp %}<img src="{{ "/assets/images/topics/" | append: tp.icon | append: ".png" | relative_url }}" alt="" width="44" height="44" loading="lazy">{% endif -%}
@@ -78,30 +84,40 @@ layout: default
     </li>
     {%- endfor %}
   </ul>
-  <p class="post-cards-empty" hidden>이 분야의 글이 아직 없어요.</p>
+  <p class="post-cards-empty" hidden>맞는 글이 없어요. 다른 낱말로 찾아보세요.</p>
 </div>
 
 <script>
   (function () {
-    // 분야 타일: 누르면 그 분야 글만 보여 줌
+    // 분야 타일 + 검색어로 글 카드 거르기 (띄어쓰기 무시, 낱말이 모두 들어 있는 글만)
     var tiles = document.querySelectorAll(".topic-tile");
     var cards = document.querySelectorAll(".post-card");
     var empty = document.querySelector(".post-cards-empty");
     var heading = document.querySelector(".post-list-heading");
+    var box = document.getElementById("post-search");
+    var topic = "all";
+    cards.forEach(function (c) { c._q = (c.getAttribute("data-q") || "").toLowerCase().replace(/\s+/g, ""); });
+    function apply() {
+      var words = box.value.toLowerCase().split(/\s+/).filter(Boolean);
+      var shown = 0;
+      cards.forEach(function (card) {
+        var on = (topic === "all" || card.getAttribute("data-topic") === topic) &&
+          words.every(function (w) { return card._q.indexOf(w) >= 0; });
+        card.hidden = !on;
+        if (on) shown++;
+      });
+      empty.hidden = shown > 0;
+      var name = topic === "all" ? "최신 글" : topic;
+      heading.textContent = words.length ? (topic === "all" ? "전체" : topic) + " 검색 결과 " + shown + "개" : name;
+    }
     tiles.forEach(function (tile) {
       tile.addEventListener("click", function () {
-        var t = tile.getAttribute("data-topic");
+        topic = tile.getAttribute("data-topic");
         tiles.forEach(function (x) { x.classList.toggle("is-active", x === tile); });
-        var shown = 0;
-        cards.forEach(function (card) {
-          var on = t === "all" || card.getAttribute("data-topic") === t;
-          card.hidden = !on;
-          if (on) shown++;
-        });
-        empty.hidden = shown > 0;
-        heading.textContent = t === "all" ? "최신 글" : t;
+        apply();
       });
     });
+    box.addEventListener("input", apply);
     // 글 끝 "분야 글 더 보기"(?topic=분야)로 들어오면 그 분야 타일을 눌러 둠
     var want = new URLSearchParams(location.search).get("topic");
     tiles.forEach(function (x) { if (want && x.getAttribute("data-topic") === want) x.click(); });
