@@ -124,73 +124,123 @@ body {
   border-radius: 12px;
 }
 
+// ---------- 상단 바 (_includes/header.html) ----------
+.jg-header {
+  background: $brand-color;
+  border-top: 0;
+  .jg-header-inner { display: flex; align-items: center; justify-content: space-between; min-height: 60px; }
+  .jg-logo { display: block; line-height: 0; }
+  .jg-logo img { height: 44px; width: auto; border-radius: 10px; box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.25); }
+  .jg-nav { display: flex; gap: 16px; }
+  .jg-nav a { color: #fff; font-size: 15px; font-weight: 600; text-decoration: none; }
+  .jg-nav a:hover { text-decoration: underline; }
+}
+
 // ---------- 홈 화면 (_layouts/home.html) ----------
 .home-hero {
-  margin: 4px 0 18px;
-  padding: 20px 20px 16px;
-  background: #f4f8fd;
-  border: 1px solid #e1e6ec;
-  border-radius: 14px;
+  margin: 4px 0 22px;
+  padding: 22px 16px 16px;
+  background: linear-gradient(180deg, #dcebfc 0%, #eef5fd 100%);
+  border-radius: 16px;
   .home-hero-title {
-    margin: 0 0 6px;
-    font-size: 22px;
+    margin: 0 0 8px;
+    font-size: 25px;
+    line-height: 1.35;
     font-weight: 800;
     color: #1b2430;
-    letter-spacing: -0.3px;
+    letter-spacing: -0.5px;
   }
-  .home-hero-text p { margin: 0; font-size: 16px; color: #3a4553; line-height: 1.7; }
+  .home-hero-text p { margin: 0; font-size: 15px; color: #3a4553; line-height: 1.65; }
 }
 
-.topic-filter {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 22px;
+// 분야 타일 (파스텔 바탕 + 사용자가 만든 2D 아이콘)
+.topic-tiles {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 18px;
+  @media (min-width: 700px) { grid-template-columns: repeat(4, 1fr); }
 }
-.topic-chip {
-  font: inherit;
-  font-size: 14px;
-  font-weight: 600;
-  padding: 7px 14px;
-  border: 1px solid #d5dde7;
-  border-radius: 999px;
+.topic-tile {
+  position: relative;
+  min-height: 78px;
+  padding: 14px 80px 12px 14px;
+  border: 0;
+  border-radius: 16px;
   background: #fff;
-  color: #3a4553;
+  color: #1b2430;
+  font: inherit;
+  text-align: left;
   cursor: pointer;
-  line-height: 1.2;
-  .topic-count { color: #8a95a3; font-weight: 500; margin-left: 2px; }
-  &:hover { border-color: $brand-color; color: $brand-color; }
-  &.is-active {
-    background: $brand-color;
-    border-color: $brand-color;
-    color: #fff;
-    .topic-count { color: rgba(255, 255, 255, 0.8); }
-  }
+  box-shadow: 0 2px 8px rgba(20, 60, 120, 0.08);
+  overflow: hidden;
+  b { display: block; font-size: 17px; font-weight: 800; line-height: 1.3; }
+  span { display: block; margin-top: 3px; font-size: 13px; color: #5b6676; }
+  img { position: absolute; right: 6px; bottom: 4px; width: 70px; height: 70px; }
+  img.is-wide { transform: scale(1.2) translate(-6px, -2px); }
+  &.topic-tile-all { border: 2px solid $brand-color; }
+  &.is-active { outline: 3px solid #ffd43b; outline-offset: 2px; }
 }
 
-.post-list-heading {
-  font-size: 20px;
-  font-weight: 700;
-  margin: 0 0 12px;
-}
+.home-h2 { font-size: 20px; font-weight: 800; margin: 0 0 12px; }
 
+// 신청 마감 다가와요 (옆으로 넘기는 카드)
+.soon { margin-bottom: 26px; }
+.soon[hidden] { display: none; }
+.soon-list {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding-bottom: 6px;
+  scroll-snap-type: x mandatory;
+}
+.soon-card {
+  flex: 0 0 72%;
+  max-width: 260px;
+  scroll-snap-align: start;
+  padding: 14px;
+  border: 1px solid #e3e8ef;
+  border-radius: 14px;
+  background: #fff;
+  color: inherit;
+  &:hover { text-decoration: none; border-color: $brand-color; }
+  &[hidden] { display: none; }
+  h3 { margin: 8px 0 0; font-size: 16px; line-height: 1.4; font-weight: 700; color: #1b2430; }
+  p { margin: 4px 0 0; font-size: 13px; color: #5b6676; }
+}
+.dday, .post-card-dday {
+  display: inline-block;
+  font-weight: 800;
+  font-size: 12px;
+  padding: 2px 8px;
+  border-radius: 6px;
+  color: #c2410c;
+  background: #fff1e6;
+}
+.dday { font-size: 13px; }
+.dday.is-near { color: #c81e1e; background: #fdecec; }
+.post-card-dday.is-closed { color: #d62828; background: #fdecec; }
+.post-card-dday[hidden] { display: none; }
+
+// 글 카드
 .post-cards {
   list-style: none;
   margin: 0;
   padding: 0;
   display: grid;
   grid-template-columns: 1fr;
-  gap: 16px;
+  gap: 12px;
   @media (min-width: 700px) { grid-template-columns: 1fr 1fr; }
 }
 .post-card[hidden] { display: none; }
 .post-card-link {
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  gap: 12px;
   height: 100%;
-  border: 1px solid #e1e6ec;
+  padding: 12px;
+  border: 1px solid #e3e8ef;
   border-radius: 14px;
-  overflow: hidden;
   background: #fff;
   color: inherit;
   transition: box-shadow 0.15s ease, transform 0.15s ease;
@@ -200,22 +250,24 @@ body {
     transform: translateY(-2px);
   }
 }
-.post-card-thumb {
-  display: block;
-  width: 100%;
-  height: auto;
-  aspect-ratio: 1200 / 630;
-  border-bottom: 1px solid #eef2f6;
+.post-card-icon {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  img { width: 44px; height: 44px; }
 }
-.post-card-body { padding: 14px 16px 16px; }
+.post-card-body { min-width: 0; }
 .post-card-meta {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
   gap: 6px;
-  font-size: 13px;
+  font-size: 12px;
   color: #8a95a3;
-  margin-bottom: 6px;
+  margin-bottom: 4px;
 }
 .post-card-topic, .post-card-hub {
   font-weight: 700;
@@ -223,21 +275,23 @@ body {
   padding: 2px 8px;
   border-radius: 6px;
 }
-.post-card-topic { color: $brand-color; background: #eaf2fc; }
 .post-card-hub { color: #b45309; background: #fff4e0; }
-.post-card-closed { font-weight: 700; font-size: 12px; padding: 2px 8px; border-radius: 6px; color: #d62828; background: #fdecec; }
 .post-card-title {
   margin: 0;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 700;
   line-height: 1.4;
   color: #1b2430;
 }
 .post-card-sub {
-  margin: 4px 0 0;
-  font-size: 14px;
-  line-height: 1.55;
+  margin: 2px 0 0;
+  font-size: 13px;
+  line-height: 1.45;
   color: #5b6676;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 .post-cards-empty { color: #5b6676; }
 

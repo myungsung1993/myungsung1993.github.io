@@ -3,42 +3,67 @@ layout: default
 ---
 {%- comment -%}
   minima 기본 home 레이아웃을 대신하는 홈 화면.
-  글 머리말의 topic(분야), hub(총정리 글 여부), image(요약 카드)를 사용한다.
+  분야 타일은 _data/topics.yml, 글 머리말의 topic(분야)·hub(총정리)·deadline(마감일)을 사용한다.
+  마감 D-day와 '신청 마감' 표시는 방문자 브라우저의 오늘 날짜로 계산한다(빌드가 없던 날에도 맞게).
 {%- endcomment -%}
-{%- assign topics = "청년 주거,청년 자산,창업,출산·육아,생활비,일자리,자동차" | split: "," -%}
+{%- assign topics = site.data.topics -%}
 
 <div class="home">
   <section class="home-hero">
-    <p class="home-hero-title">정부 지원금, 공식 자료로 쉽게</p>
+    <h1 class="home-hero-title">복잡한 정부 지원금,<br>공식 자료로 쉽게 정리해요</h1>
     <div class="home-hero-text">{{ content }}</div>
+
+    <nav class="topic-tiles" aria-label="분야별 글 보기">
+      <button type="button" class="topic-tile topic-tile-all is-active" data-topic="all">
+        <b>전체</b><span>글 {{ site.posts | size }}개</span>
+        <img src="{{ "/assets/images/topics/all.png" | relative_url }}" alt="" width="70" height="70">
+      </button>
+      {%- for t in topics %}
+      {%- assign n = site.posts | where: "topic", t.name | size %}
+      {%- if n > 0 %}
+      <button type="button" class="topic-tile" data-topic="{{ t.name }}" style="background:{{ t.bg }}">
+        <b>{{ t.name }}</b><span>글 {{ n }}개</span>
+        <img src="{{ "/assets/images/topics/" | append: t.icon | append: ".png" | relative_url }}" alt="" width="70" height="70"{% if t.wide %} class="is-wide"{% endif %}>
+      </button>
+      {%- endif %}
+      {%- endfor %}
+    </nav>
   </section>
 
-  <nav class="topic-filter" aria-label="분야별 글 보기">
-    <button type="button" class="topic-chip is-active" data-topic="all">전체</button>
-    {%- for t in topics %}
-    {%- assign n = site.posts | where: "topic", t | size %}
-    {%- if n > 0 %}
-    <button type="button" class="topic-chip" data-topic="{{ t }}">{{ t }} <span class="topic-count">{{ n }}</span></button>
-    {%- endif %}
-    {%- endfor %}
-  </nav>
+  {%- assign dl_posts = site.posts | where_exp: "p", "p.deadline" | sort: "deadline" %}
+  {%- if dl_posts.size > 0 %}
+  <section class="soon" hidden>
+    <h2 class="home-h2">신청 마감 다가와요</h2>
+    <div class="soon-list">
+      {%- for post in dl_posts %}
+      {%- assign main_title = post.title | split: ": " | first %}
+      <a class="soon-card" href="{{ post.url | relative_url }}" data-deadline="{{ post.deadline | date: '%Y-%m-%d' }}">
+        <span class="dday"></span>
+        <h3>{{ main_title | escape }}</h3>
+        <p>{{ post.deadline | date: "%-m월 %-d일" }} 마감</p>
+      </a>
+      {%- endfor %}
+    </div>
+  </section>
+  {%- endif %}
 
-  <h2 class="post-list-heading">최신 글</h2>
+  <h2 class="home-h2 post-list-heading">최신 글</h2>
   <ul class="post-cards">
     {%- for post in site.posts %}
     {%- assign parts = post.title | split: ": " %}
     {%- assign main_title = parts | first %}
     {%- assign sub_title = post.title | remove_first: main_title | remove_first: ": " %}
+    {%- assign tp = topics | where: "name", post.topic | first %}
     <li class="post-card" data-topic="{{ post.topic | default: '기타' }}">
       <a class="post-card-link" href="{{ post.url | relative_url }}">
-        {%- if post.image %}
-        <img class="post-card-thumb" src="{{ post.image | relative_url }}" alt="" loading="lazy" width="1200" height="630">
-        {%- endif %}
+        <span class="post-card-icon" style="background:{{ tp.bg | default: '#eaf2fc' }}">
+          {%- if tp %}<img src="{{ "/assets/images/topics/" | append: tp.icon | append: ".png" | relative_url }}" alt="" width="44" height="44" loading="lazy">{% endif -%}
+        </span>
         <div class="post-card-body">
           <div class="post-card-meta">
-            {%- if post.topic %}<span class="post-card-topic">{{ post.topic }}</span>{% endif %}
+            {%- if post.topic %}<span class="post-card-topic" style="color:{{ tp.fg | default: '#1a6fd1' }};background:{{ tp.bg | default: '#eaf2fc' }}">{{ post.topic }}</span>{% endif %}
             {%- if post.hub %}<span class="post-card-hub">총정리</span>{% endif %}
-            {%- if post.deadline %}{% assign dl = post.deadline | date: "%Y%m%d" | plus: 0 %}{% assign built = site.time | date: "%Y%m%d" | plus: 0 %}<span class="post-card-closed" data-deadline="{{ post.deadline | date: '%Y-%m-%d' }}"{% if built <= dl %} hidden{% endif %}>신청 마감</span>{% endif %}
+            {%- if post.deadline %}<span class="post-card-dday" data-deadline="{{ post.deadline | date: '%Y-%m-%d' }}" hidden></span>{% endif %}
             <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y.%m.%d" }}</time>
           </div>
           <h3 class="post-card-title">{{ main_title | escape }}</h3>
@@ -55,13 +80,15 @@ layout: default
 
 <script>
   (function () {
-    var chips = document.querySelectorAll(".topic-chip");
+    // 분야 타일: 누르면 그 분야 글만 보여 줌
+    var tiles = document.querySelectorAll(".topic-tile");
     var cards = document.querySelectorAll(".post-card");
     var empty = document.querySelector(".post-cards-empty");
-    chips.forEach(function (chip) {
-      chip.addEventListener("click", function () {
-        var t = chip.getAttribute("data-topic");
-        chips.forEach(function (c) { c.classList.toggle("is-active", c === chip); });
+    var heading = document.querySelector(".post-list-heading");
+    tiles.forEach(function (tile) {
+      tile.addEventListener("click", function () {
+        var t = tile.getAttribute("data-topic");
+        tiles.forEach(function (x) { x.classList.toggle("is-active", x === tile); });
         var shown = 0;
         cards.forEach(function (card) {
           var on = t === "all" || card.getAttribute("data-topic") === t;
@@ -69,12 +96,32 @@ layout: default
           if (on) shown++;
         });
         empty.hidden = shown > 0;
+        heading.textContent = t === "all" ? "최신 글" : t;
       });
     });
+
+    // 마감까지 남은 날 (오늘 마감이면 0, 지났으면 음수)
+    var now = new Date();
+    var today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    function left(s) { var d = s.split("-"); return Math.round((new Date(+d[0], +d[1] - 1, +d[2]) - today) / 864e5); }
+
+    var shownSoon = 0;
+    document.querySelectorAll(".soon-card").forEach(function (c) {
+      var n = left(c.getAttribute("data-deadline"));
+      if (n < 0) { c.hidden = true; return; }
+      var b = c.querySelector(".dday");
+      b.textContent = n === 0 ? "오늘 마감" : "D-" + n;
+      if (n <= 14) b.classList.add("is-near");
+      shownSoon++;
+    });
+    var soon = document.querySelector(".soon");
+    if (soon) soon.hidden = shownSoon === 0;
+
+    document.querySelectorAll(".post-card-dday").forEach(function (b) {
+      var n = left(b.getAttribute("data-deadline"));
+      b.textContent = n < 0 ? "신청 마감" : n === 0 ? "오늘 마감" : "D-" + n;
+      b.classList.toggle("is-closed", n < 0);
+      b.hidden = false;
+    });
   })();
-  // 신청 마감 배지: 방문자 브라우저의 오늘 날짜로 다시 판단 (빌드가 없던 날에도 맞게)
-  document.querySelectorAll(".post-card-closed").forEach(function (b) {
-    var d = b.getAttribute("data-deadline").split("-");
-    b.hidden = new Date() <= new Date(+d[0], +d[1] - 1, +d[2], 23, 59, 59);
-  });
 </script>
