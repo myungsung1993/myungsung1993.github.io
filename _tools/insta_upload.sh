@@ -14,6 +14,8 @@
 #   bash _tools/insta_upload.sh refresh          # 장기 토큰 갱신 (60일 만료 전에 실행)
 #
 # 규칙: CLAUDE.md — 카드뉴스는 독립 팩트체크를 거치고, 사용자가 "올려"라고 한 뒤에만 post 를 실행한다.
+# 중복 방지: 게시한 슬러그는 ~/.policy-blog/insta_posted.txt 에 "날짜 시각 슬러그 post|reel 링크"로 남고,
+#           같은 슬러그·종류는 다시 올리지 않는다(종료 코드 3). 일부러 다시 올릴 때만 INSTA_REPOST=1 을 붙인다.
 
 set -euo pipefail
 
@@ -27,6 +29,14 @@ TOKEN="$(tr -d ' \r\n' < "$TOKEN_FILE")"
 
 # 일시적인 네트워크 끊김(curl 56 등)에 대비해 재시도한다. 게시 단계는 중복 게시를 막기 위해 재시도하지 않는다.
 cr() { curl --retry 4 --retry-delay 3 --retry-all-errors "$@"; }
+
+POSTED="$HOME/.policy-blog/insta_posted.txt"
+not_posted() {  # $1 슬러그 $2 post|reel
+  [ "${INSTA_REPOST:-}" = 1 ] && return 0
+  grep -q " $1 $2 " "$POSTED" 2>/dev/null || return 0
+  echo "이미 인스타에 올린 $2입니다: $(grep " $1 $2 " "$POSTED" | tail -1)" >&2
+  echo "일부러 다시 올릴 때만 INSTA_REPOST=1 을 붙이세요." >&2; exit 3
+}
 
 # JSON에서 "키":"값" 하나 꺼내기 (jq 없이)
 jget() { grep -o "\"$1\":\"[^\"]*\"" | head -1 | sed "s/\"$1\":\"//; s/\"$//"; }
@@ -83,6 +93,7 @@ case "${1:-}" in
     dir="$ROOT/assets/insta/$slug"
     cap="$dir/caption.txt"
     [ -s "$cap" ] || { echo "캡션 파일이 없습니다: $cap" >&2; exit 1; }
+    not_posted "$slug" post
     imgs=( $(ls "$dir" | grep -E '^[0-9]+\.png$' | sort -n) )
     [ "${#imgs[@]}" -ge 2 ] && [ "${#imgs[@]}" -le 10 ] || { echo "이미지는 2~10장이어야 합니다 (지금 ${#imgs[@]}장)" >&2; exit 1; }
     for f in "${imgs[@]}"; do   # 사이트에 실제로 올라가 있는지 먼저 확인
@@ -106,6 +117,7 @@ case "${1:-}" in
     fail_if_error "$r"; carousel="$(printf '%s' "$r" | jget id)"; wait_ready "$carousel"
     mid="$(publish "$id" "$carousel" "$capw")"
     link="$(curl -s -m 30 -G "$API/$mid" --data-urlencode "fields=permalink" --data-urlencode "access_token=$TOKEN" | jget permalink | sed 's#\\/#/#g')"
+    echo "$(date '+%Y-%m-%d %H:%M') $slug post ${link:-$mid}" >> "$POSTED"
     echo "게시 완료: $link"
     ;;
   reel)
@@ -113,6 +125,7 @@ case "${1:-}" in
     dir="$ROOT/assets/insta/$slug"
     cap="$dir/caption.txt"
     [ -s "$cap" ] || { echo "캡션 파일이 없습니다: $cap" >&2; exit 1; }
+    not_posted "$slug" reel
     [ -s "$dir/reel.mp4" ] || { echo "영상이 없습니다: $dir/reel.mp4 (bash _tools/insta_reel.sh $slug)" >&2; exit 1; }
     feed=true; [ "${3:-}" = nofeed ] && feed=false
     for f in reel.mp4; do   # 영상이 사이트에 올라가 있는지 먼저 확인
@@ -128,6 +141,7 @@ case "${1:-}" in
     fail_if_error "$r"; cid="$(printf '%s' "$r" | jget id)"; echo "영상 처리 중..."; wait_ready "$cid" 100
     mid="$(publish "$id" "$cid" "$capw")"
     link="$(curl -s -m 30 -G "$API/$mid" --data-urlencode "fields=permalink" --data-urlencode "access_token=$TOKEN" | jget permalink | sed 's#\\/#/#g')"
+    echo "$(date '+%Y-%m-%d %H:%M') $slug reel ${link:-$mid}" >> "$POSTED"
     echo "게시 완료: $link"
     ;;
   refresh)

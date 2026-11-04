@@ -69,6 +69,9 @@ if out="$(bash "$TOOL" post "$slug" 2>&1)"; then
       echo "$(now) 릴스 실패 $slug :: $(printf '%s' "$out" | tail -3 | tr '\n' ' ')" >> "$LOG"
     fi
   fi
+elif [ $? = 3 ]; then   # 이미 올린 슬러그: 대기열에서 빼서 뒤 순서가 막히지 않게
+  echo "$(now) 이미 게시됨, 대기열에서 뺌 $slug" >> "$LOG"
+  grep -v -x "$slug" "$QUEUE" > "$QUEUE.tmp" && mv "$QUEUE.tmp" "$QUEUE"
 else
   echo "$(now) 게시 실패 $slug :: $(printf '%s' "$out" | tail -3 | tr '\n' ' ')" >> "$LOG"
   exit 1
