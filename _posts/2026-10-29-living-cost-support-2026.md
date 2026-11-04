@@ -42,6 +42,7 @@ image: /assets/images/cards/living-cost-support-2026.png
 | 아이 운동 수강료가 부담된다 | [스포츠강좌이용권 총정리]({% post_url 2026-10-20-sports-voucher-2026 %}) |
 | 대중교통비를 아끼고 싶다 | [모두의카드(K-패스) 총정리]({% post_url 2026-10-17-modu-card-kpass-2026 %}) |
 | 일은 하는데 소득이 적다 (근로·자녀장려금, 기한 후 신청 12월 1일까지) | [근로·자녀장려금 기한 후 신청]({% post_url 2026-10-31-eitc-late-application-2026 %}) |
+| 2027년에 소득 기준 금액이 어떻게 바뀌는지 궁금하다 | [2027 기준 중위소득 정리]({% post_url 2026-11-04-median-income-2027 %}) |
 
 ---
 
