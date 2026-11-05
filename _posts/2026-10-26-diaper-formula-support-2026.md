@@ -5,6 +5,8 @@ date: 2026-10-26 22:30:00 +0900
 topic: 출산·육아
 who: ["만 2세 미만", "기초생활수급자", "차상위계층", "한부모", "다자녀·장애인 가구"]
 image: /assets/images/cards/diaper-formula-support-2026.png
+apply_url: https://www.bokjiro.go.kr
+apply_name: "복지로"
 ---
 
 **저소득층 기저귀·조제분유 지원**은 만 2세 미만 아기를 키우는 저소득 가정에 기저귀값과 분유값을 국민행복카드 포인트로 주는 제도예요.

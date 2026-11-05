@@ -5,6 +5,8 @@ date: 2026-10-30 10:00:00 +0900
 topic: 출산·육아
 who: ["고위험 임신질환", "입원 치료", "소득 무관"]
 image: /assets/images/cards/high-risk-pregnancy-medical-support-2026.png
+apply_url: https://www.e-health.go.kr
+apply_name: "e보건소"
 ---
 
 **고위험 임산부 의료비 지원**은 조기진통, 중증 임신중독증 같은 고위험 임신질환으로 입원 치료를 받은 임산부에게 진료비 일부를 돌려주는 제도예요.

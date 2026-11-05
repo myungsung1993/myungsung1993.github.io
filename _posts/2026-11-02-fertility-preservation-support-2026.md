@@ -5,6 +5,8 @@ date: 2026-11-02 09:40:00 +0900
 topic: 출산·육아
 who: ["영구 불임 예상", "결혼 무관"]
 image: /assets/images/cards/fertility-preservation-support-2026.png
+apply_url: https://www.e-health.go.kr
+apply_name: "e보건소"
 ---
 
 **영구 불임 예상 난자·정자 냉동 지원**은 항암치료나 난소·고환 수술처럼 생식 기능이 손상되는 치료를 받기 전후에, 나중에 아이를 가질 수 있도록 난자·정자를 얼려 두는 비용을 지원하는 제도예요.

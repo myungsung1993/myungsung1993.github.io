@@ -5,6 +5,8 @@ date: 2026-10-25 01:30:00 +0900
 topic: 생활비
 who: ["18세 이상", "등록 중증장애인", "소득 하위 70%"]
 image: /assets/images/cards/disability-pension-2026.png
+apply_url: https://www.bokjiro.go.kr
+apply_name: "복지로"
 ---
 
 **장애인연금**은 소득이 적은 18세 이상 **중증장애인**에게 매달 드리는 연금이에요. 일하기 어려워 줄어든 소득을 채워 주는 **기초급여**와, 장애 때문에 더 드는 비용을 보태는 **부가급여**로 나뉘어요.

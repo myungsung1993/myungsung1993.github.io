@@ -5,6 +5,8 @@ date: 2026-10-14 13:40:00 +0900
 topic: 창업
 who: ["소상공인"]
 image: /assets/images/cards/small-business-policy-loan-2026.png
+apply_url: https://ols.semas.or.kr
+apply_name: "소상공인 정책자금 누리집"
 ---
 
 **소상공인 정책자금**은 정부가 소상공인에게 낮은 금리로 빌려주는 **융자(대출)** 예요. 창업 초기에 운영자금이 필요할 때 가장 먼저 찾아보는 제도이기도 해요.

@@ -5,6 +5,8 @@ date: 2026-10-23 10:00:00 +0900
 topic: 생활비
 who: ["중위소득 48% 이하"]
 image: /assets/images/cards/housing-benefit-2026.png
+apply_url: https://www.bokjiro.go.kr
+apply_name: "복지로"
 ---
 
 **주거급여**는 소득이 낮은 가구에 월세·전세 비용을 지원하고, 내 집에 사는 가구에는 낡은 집을 고쳐 주는 제도예요.

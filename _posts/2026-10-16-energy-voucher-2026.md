@@ -7,6 +7,8 @@ deadline_note: "2026년도"
 topic: 생활비
 who: ["기초생활수급자", "노인·영유아·장애인 등 세대"]
 image: /assets/images/cards/energy-voucher-2026.png
+apply_url: https://www.bokjiro.go.kr
+apply_name: "복지로"
 ---
 
 **에너지바우처**는 기초생활수급 가구에 전기, 도시가스, 등유, LPG, 연탄 같은 냉난방비를 지원하는 제도예요.

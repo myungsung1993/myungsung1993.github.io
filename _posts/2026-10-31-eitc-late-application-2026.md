@@ -7,6 +7,8 @@ who: ["근로·사업소득자", "소득·재산 기준"]
 image: /assets/images/cards/eitc-late-application-2026.png
 deadline: 2026-12-01
 deadline_note: "2025년 귀속 기한 후 신청"
+apply_url: https://www.hometax.go.kr
+apply_name: "홈택스"
 ---
 
 5~6월 정기 신청 때 **근로·자녀장려금**을 놓쳤다면, 아직 **12월 1일까지** 기한 후 신청을 할 수 있어요.

@@ -5,6 +5,8 @@ date: 2026-11-02 09:30:00 +0900
 topic: 출산·육아
 who: ["만 19세 이하 산모"]
 image: /assets/images/cards/teen-mother-medical-support-2026.png
+apply_url: https://www.socialservice.or.kr:444
+apply_name: "사회서비스 전자바우처"
 ---
 
 **청소년산모 임신·출산 의료비 지원**은 만 19세 이하에 임신한 산모에게 병원비로 쓸 수 있는 바우처를 주는 제도예요.

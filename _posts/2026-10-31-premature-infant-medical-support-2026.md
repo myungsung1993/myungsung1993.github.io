@@ -5,6 +5,8 @@ date: 2026-10-31 17:30:00 +0900
 topic: 출산·육아
 who: ["미숙아", "선천성이상아", "소득 무관"]
 image: /assets/images/cards/premature-infant-medical-support-2026.png
+apply_url: https://www.e-health.go.kr
+apply_name: "e보건소"
 ---
 
 **미숙아·선천성이상아 의료비 지원**은 일찍 또는 작게 태어나 신생아중환자실에 입원한 아기, 선천성이상으로 수술한 아기의 병원비 일부를 돌려주는 제도예요.

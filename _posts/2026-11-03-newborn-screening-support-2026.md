@@ -5,6 +5,8 @@ date: 2026-11-03 07:40:00 +0900
 topic: 출산·육아
 who: ["신생아", "외래 검사", "소득 무관"]
 image: /assets/images/cards/newborn-screening-support-2026.png
+apply_url: https://www.e-health.go.kr
+apply_name: "e보건소"
 ---
 
 아기가 태어나면 **선천성 대사이상 검사**와 **청각선별검사(난청 검사)**를 받아요.

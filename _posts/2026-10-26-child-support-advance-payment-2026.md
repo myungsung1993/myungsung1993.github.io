@@ -5,6 +5,8 @@ date: 2026-10-26 15:00:00 +0900
 topic: 출산·육아
 who: ["양육비 미지급", "만 18세 이하 자녀", "양육비 판결·조정 있음", "소득 무관"]
 image: /assets/images/cards/child-support-advance-payment-2026.png
+apply_url: https://www.childsupport.or.kr
+apply_name: "양육비이행관리원"
 ---
 
 **양육비 선지급제**는 이혼 등으로 따로 사는 부모(양육비 채무자)가 양육비를 주지 않을 때, 국가가 자녀 1명당 매달 양육비를 먼저 주고 나중에 그 부모에게 받아 내는 제도예요.

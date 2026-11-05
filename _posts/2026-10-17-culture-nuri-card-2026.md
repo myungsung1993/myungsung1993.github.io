@@ -7,6 +7,8 @@ deadline_note: "2026년 카드 발급"
 topic: 생활비
 who: ["6세 이상", "기초생활수급자", "차상위계층"]
 image: /assets/images/cards/culture-nuri-card-2026.png
+apply_url: https://www.mnuri.kr
+apply_name: "문화누리카드 누리집"
 ---
 
 **문화누리카드**는 기초생활수급자와 차상위계층이 공연, 영화, 여행, 스포츠 관람 등에 쓸 수 있도록 1년에 **15만 원**을 넣어 주는 카드예요.

@@ -5,6 +5,8 @@ date: 2026-11-01 12:35:00 +0900
 topic: 출산·육아
 who: ["20~49세", "결혼 무관"]
 image: /assets/images/cards/preconception-fertility-test-2026.png
+apply_url: https://www.e-health.go.kr
+apply_name: "e보건소"
 ---
 
 **임신 사전건강관리 지원**은 20~49세 남녀가 가임력 검사를 받을 때 검사비를 지원하는 제도예요.

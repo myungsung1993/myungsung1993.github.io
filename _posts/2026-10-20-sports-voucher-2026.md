@@ -7,6 +7,8 @@ deadline_note: "2027년분 전국 동시신청"
 topic: 생활비
 who: ["5~18세", "수급자·차상위·한부모", "장애인 5~69세"]
 image: /assets/images/cards/sports-voucher-2026.png
+apply_url: https://svoucher.kspo.or.kr
+apply_name: "스포츠강좌이용권 누리집"
 ---
 
 **스포츠강좌이용권**은 저소득 가구의 5~18세 아이가 운동 강좌를 배울 수 있도록 수강료를 **매달 최대 10만 5천 원** 지원하는 카드예요.

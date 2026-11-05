@@ -5,6 +5,8 @@ date: 2026-10-27 22:05:00 +0900
 topic: 출산·육아
 who: ["출산 여성", "고용보험 미적용"]
 image: /assets/images/cards/uninsured-maternity-benefit-2026.png
+apply_url: https://www.work24.go.kr
+apply_name: "고용24"
 ---
 
 **고용보험 미적용자 출산급여**는 일을 해서 돈을 벌지만 고용보험의 출산휴가급여를 받지 못하는 엄마에게 출산급여를 주는 제도예요.

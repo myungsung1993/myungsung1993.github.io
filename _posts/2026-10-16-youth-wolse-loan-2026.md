@@ -5,6 +5,8 @@ date: 2026-10-16 15:30:00 +0900
 topic: 청년 주거
 who: ["만 19~34세", "무주택 단독세대주", "연소득 5천만 원 이하"]
 image: /assets/images/cards/youth-wolse-loan-2026.png
+apply_url: https://enhuf.molit.go.kr
+apply_name: "기금e든든"
 ---
 
 **청년전용 보증부월세대출**은 월세로 사는 청년에게 **보증금**과 **매달 내는 월세**를 함께 낮은 금리로 빌려주는 주택도시기금 대출이에요.

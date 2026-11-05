@@ -5,6 +5,8 @@ date: 2026-10-18 00:10:00 +0900
 topic: 일자리
 who: ["누구나", "일부 제외"]
 image: /assets/images/cards/tomorrow-learning-card-2026.png
+apply_url: https://www.work24.go.kr
+apply_name: "고용24"
 ---
 
 **국민내일배움카드**는 직업훈련이 필요한 국민에게 **5년 동안 300만~500만 원**까지 훈련비를 지원하는 카드예요.

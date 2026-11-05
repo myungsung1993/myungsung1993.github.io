@@ -5,6 +5,8 @@ date: 2026-10-17 23:50:00 +0900
 topic: 생활비
 who: ["만 19세 이상", "누구나"]
 image: /assets/images/cards/modu-card-kpass-2026.png
+apply_url: https://www.korea-pass.kr
+apply_name: "모두의카드 누리집"
 ---
 
 **모두의카드**는 대중교통비를 돌려주는 K-패스에 2026년 새로 도입된 환급 방식이에요. 지금은 서비스 이름으로도 쓰이고, 기존 K-패스 카드를 그대로 쓰면 돼요. (출처①⑤)

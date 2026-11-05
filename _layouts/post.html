@@ -51,6 +51,11 @@ layout: default
   </script>
   {%- endif -%}
 
+  {%- comment -%} 신청 버튼(2026-11-05): 머리말 apply_url(공식 신청 누리집, 글 본문에 적힌 곳만)·apply_name. 마감 상자가 is-closed면 CSS로 숨김. {%- endcomment -%}
+  {%- if page.apply_url %}
+  <a class="apply-link" href="{{ page.apply_url }}" target="_blank" rel="noopener">{{ page.apply_name }}에서 신청하기 →<span>공식 누리집으로 이동해요</span></a>
+  {%- endif %}
+
   <div class="post-content e-content" itemprop="articleBody">
     {{ content }}
   </div>

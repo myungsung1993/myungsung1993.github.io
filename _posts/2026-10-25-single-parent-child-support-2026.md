@@ -5,6 +5,8 @@ date: 2026-10-25 21:30:00 +0900
 topic: 출산·육아
 who: ["한부모", "조손가족", "중위소득 65% 이하"]
 image: /assets/images/cards/single-parent-child-support-2026.png
+apply_url: https://www.bokjiro.go.kr
+apply_name: "복지로"
 ---
 
 **한부모가족 아동양육비**는 혼자 아이를 키우는 저소득 한부모가족과 조손가족에게 자녀 1명당 매달 양육비를 주는 제도예요.

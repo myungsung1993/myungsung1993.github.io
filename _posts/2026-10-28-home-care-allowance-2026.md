@@ -5,6 +5,8 @@ date: 2026-10-28 23:00:00 +0900
 topic: 출산·육아
 who: ["24~86개월", "가정양육"]
 image: /assets/images/cards/home-care-allowance-2026.png
+apply_url: https://www.bokjiro.go.kr
+apply_name: "복지로"
 ---
 
 **가정양육수당**은 어린이집·유치원에 다니지 않고 집에서 키우는 **24개월 이상~86개월 미만** 아이에게 매달 주는 현금이에요.

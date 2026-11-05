@@ -5,6 +5,8 @@ date: 2026-11-03 07:45:00 +0900
 topic: 출산·육아
 who: ["만 12세 미만", "난청", "소득 무관"]
 image: /assets/images/cards/child-hearing-aid-support-2026.png
+apply_url: https://www.e-health.go.kr
+apply_name: "e보건소"
 ---
 
 청각장애 등급을 받을 정도는 아니지만 난청이 있는 아이에게 정부가 **보청기 구입비**를 지원해요.

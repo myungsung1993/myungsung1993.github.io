@@ -5,6 +5,8 @@ date: 2026-11-01 12:30:00 +0900
 topic: 출산·육아
 who: ["난임 부부", "사실혼 1년 이상", "소득 무관"]
 image: /assets/images/cards/infertility-treatment-support-2026.png
+apply_url: https://www.e-health.go.kr
+apply_name: "e보건소"
 ---
 
 **난임부부 시술비 지원**은 체외수정이나 인공수정 같은 난임 시술을 받는 부부에게 건강보험 본인부담금 등 시술비 일부를 지원하는 제도예요.

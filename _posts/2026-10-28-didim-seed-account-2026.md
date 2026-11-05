@@ -5,6 +5,8 @@ date: 2026-10-28 23:10:00 +0900
 topic: 출산·육아
 who: ["18세 미만", "보호대상아동", "기초생활수급자", "차상위계층", "한부모"]
 image: /assets/images/cards/didim-seed-account-2026.png
+apply_url: https://www.bokjiro.go.kr
+apply_name: "복지로"
 ---
 
 **디딤씨앗통장(아동발달지원계좌)** 은 형편이 어려운 가정의 아이가 통장에 돈을 모으면, 정부가 **모은 돈의 2배**(월 최대 10만 원)를 더 넣어 주는 제도예요.

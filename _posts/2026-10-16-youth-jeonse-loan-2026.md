@@ -5,6 +5,8 @@ date: 2026-10-16 15:00:00 +0900
 topic: 청년 주거
 who: ["만 19~34세", "무주택 세대주", "연소득 5천만 원 이하"]
 image: /assets/images/cards/youth-jeonse-loan-2026.png
+apply_url: https://enhuf.molit.go.kr
+apply_name: "기금e든든"
 ---
 
 **청년전용 버팀목전세자금**은 전세 보증금이 부족한 청년에게 주택도시기금이 낮은 금리로 빌려주는 전세대출이에요.

@@ -5,6 +5,8 @@ date: 2026-10-18 01:05:00 +0900
 topic: 일자리
 who: ["만 15~69세", "구직자", "유형별 소득 기준", "실업급여 수급자 제외"]
 image: /assets/images/cards/national-employment-support-2026.png
+apply_url: https://www.work24.go.kr
+apply_name: "고용24"
 ---
 
 **국민취업지원제도**는 일자리를 찾는 사람에게 취업 상담·직업훈련·일경험을 지원하고, 저소득 구직자에게는 매달 **구직촉진수당**을 주는 고용노동부 제도예요.

@@ -5,6 +5,8 @@ date: 2026-10-21 21:00:00 +0900
 topic: 출산·육아
 who: ["6~36개월", "가정양육"]
 image: /assets/images/cards/hourly-childcare-2026.png
+apply_url: https://www.childcare.go.kr
+apply_name: "아이사랑 누리집"
 ---
 
 **시간제보육**은 어린이집에 보내지 않고 집에서 아이를 키우는 부모가, 병원 진료나 취업 준비처럼 잠깐 돌봄이 필요할 때 **시간 단위로** 아이를 맡길 수 있는 보육 서비스예요.
