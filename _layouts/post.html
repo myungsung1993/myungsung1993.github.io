@@ -26,6 +26,7 @@ layout: default
     {%- if page.who %}
     <div class="post-who" aria-label="대상"><b>대상</b>{% for w in page.who %}<span>{{ w | escape }}</span>{% endfor %}</div>
     {%- endif %}
+    <p class="post-notice">정부·기관이 아닌 개인이 공식 자료를 정리한 글이에요. 내가 받을 수 있는지는 담당 기관에 꼭 확인하세요. <a href="{{ '/about/' | relative_url }}">운영 안내</a></p>
   </header>
 
   {%- if page.deadline -%}
