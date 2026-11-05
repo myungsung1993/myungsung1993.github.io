@@ -17,6 +17,16 @@ body {
   word-break: keep-all;       // 한글 단어 중간에서 줄바꿈하지 않기
   overflow-wrap: break-word;  // 긴 영문·주소는 줄바꿈 허용
   color: #222;
+  background: #eef3f9;        // 양쪽 여백 바탕색
+}
+
+// 본문 칸을 흰 카드로 띄우기
+.page-content > .wrapper {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 2px 14px rgba(20, 50, 90, 0.06);
+  padding-top: 28px;
+  padding-bottom: 36px;
 }
 
 .post-title {
