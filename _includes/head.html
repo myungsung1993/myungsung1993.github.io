@@ -20,6 +20,9 @@
   <link rel="apple-touch-icon" href="{{ "/assets/images/apple-touch-icon.png" | relative_url }}">
   <link rel="stylesheet" href="{{ "/assets/main.css" | relative_url }}">
   {%- feed_meta -%}
+  {%- if jekyll.environment == 'production' and site.adsense_client -%}
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={{ site.adsense_client }}" crossorigin="anonymous"></script>
+  {%- endif -%}
   {%- if jekyll.environment == 'production' and site.google_analytics -%}
     {%- include google-analytics.html -%}
   {%- endif -%}

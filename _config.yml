@@ -41,6 +41,8 @@ naver_site_verification:
 
 # 구글 애널리틱스(GA4) 측정 ID — 방문자 통계 (_includes/google-analytics.html)
 google_analytics: G-HL61JCWY3B
+# 구글 애드센스 게시자 ID (_includes/head.html, ads.txt)
+adsense_client: ca-pub-4783566909072492
 
 # 사이트에 올라가면 안 되는 파일
 exclude:
