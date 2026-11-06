@@ -139,7 +139,7 @@ case "${1:-}" in
     echo "$(date '+%Y-%m-%d %H:%M') $slug ${plink:-$mid}" >> "$posted"
     echo "게시 완료: ${plink:-$mid}"
     # 2026-11-06 중단: 같은 링크 댓글 반복이 노출 하락 원인 후보라 1주 시험(본문 링크 카드는 유지). 다시 켜려면 THREADS_HOME_REPLY=1
-    [ "${THREADS_HOME_REPLY:-0}" = 1 ] && home_reply "$mid"
+    if [ "${THREADS_HOME_REPLY:-0}" = 1 ]; then home_reply "$mid"; fi
     ;;
   comments)
     load_token
