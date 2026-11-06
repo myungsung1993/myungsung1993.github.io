@@ -16,7 +16,7 @@
 #   bash _tools/threads_upload.sh home-reply-all   # 예전 게시물 중 홈 링크 댓글이 없는 글에 3분 간격으로 댓글 달기
 #   bash _tools/threads_upload.sh refresh          # 장기 토큰 갱신 (60일 만료 전, 발급 24시간 뒤부터 가능)
 #
-# 홈 링크 댓글: post 로 게시하면 바로 아래 HOME_REPLY 문구를 내 댓글로 단다(2026-11-04 사용자 지정).
+# 홈 링크 댓글: 2026-11-04 사용자 지정으로 post 뒤 자동으로 달았으나 2026-11-06 중단(조회수 하락 시험). THREADS_HOME_REPLY=1일 때만 단다.
 #       단 글 ID는 ~/.policy-blog/threads_home_replied.txt 에 남겨 두 번 달지 않는다.
 #
 # 규칙: CLAUDE.md — 글·답글 모두 독립 팩트체크(fact-checker)를 거친 뒤 게시한다. (2026-10-24부터 사용자 확인 없이 게시)
@@ -138,7 +138,8 @@ case "${1:-}" in
     plink="$(curl -s -m 30 -G "$API/$mid" --data-urlencode "fields=permalink" --data-urlencode "access_token=$TOKEN" | jget permalink | sed 's#\\/#/#g')"
     echo "$(date '+%Y-%m-%d %H:%M') $slug ${plink:-$mid}" >> "$posted"
     echo "게시 완료: ${plink:-$mid}"
-    home_reply "$mid"
+    # 2026-11-06 중단: 같은 링크 댓글 반복이 노출 하락 원인 후보라 1주 시험(본문 링크 카드는 유지). 다시 켜려면 THREADS_HOME_REPLY=1
+    [ "${THREADS_HOME_REPLY:-0}" = 1 ] && home_reply "$mid"
     ;;
   comments)
     load_token
