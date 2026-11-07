@@ -34,6 +34,7 @@ image: /assets/images/cards/living-cost-support-2026.png
 |---|---|
 | 소득이 거의 없어 생활비가 부족하다 | [생계급여 총정리]({% post_url 2026-10-24-livelihood-benefit-2026 %}) |
 | 월세·전세 부담이 크거나 집이 낡았다 | [주거급여 총정리]({% post_url 2026-10-23-housing-benefit-2026 %}) |
+| 병원비가 부담된다 (소득인정액 중위소득 40% 이하) | [의료급여 총정리]({% post_url 2026-11-07-medical-aid-2026 %}) |
 | 만 65세 이상이다 | [기초연금 총정리]({% post_url 2026-10-24-basic-pension-2026 %}) |
 | 18세 이상 중증장애인이다 | [장애인연금 총정리]({% post_url 2026-10-25-disability-pension-2026 %}) |
 | 실직·질병·폐업으로 갑자기 어려워졌다 | [긴급복지지원 총정리]({% post_url 2026-10-22-emergency-welfare-support-2026 %}) |
