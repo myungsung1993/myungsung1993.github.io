@@ -1,22 +1,22 @@
 # 홈 화면 분야 타일 (순서대로 보임). 글 머리말의 topic 값과 name이 같아야 한다.
 # 아이콘: assets/images/topics/<icon>.png (사용자가 만든 2D 이미지, 투명 배경. 이모지는 쓰지 않는다)
 # 새 분야를 추가하면 아이콘 이미지를 사용자에게 받아서 넣는다.
-- name: 청년 주거
-  icon: youth-housing
-  bg: "#dcebfb"
-  fg: "#1d5fae"
-- name: 청년 자산
-  icon: youth-assets
-  bg: "#fdefcf"
-  fg: "#a35d00"
-- name: 창업
-  icon: startup
-  bg: "#ece4fb"
-  fg: "#6a43c9"
 - name: 출산·육아
   icon: birth
   bg: "#fde3e9"
   fg: "#c23a5c"
+- name: 청년
+  icon: youth
+  bg: "#dcebfb"
+  fg: "#1d5fae"
+- name: 신혼부부
+  icon: newlywed
+  bg: "#fde8dc"
+  fg: "#b4532a"
+- name: 창업
+  icon: startup
+  bg: "#ece4fb"
+  fg: "#6a43c9"
 - name: 생활비
   icon: living-cost
   bg: "#d9f2ea"

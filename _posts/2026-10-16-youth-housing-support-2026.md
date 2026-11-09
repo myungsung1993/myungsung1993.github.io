@@ -2,7 +2,7 @@
 layout: post
 title: "2026 청년 주거 지원 총정리: 월세 지원·전월세 대출·공공임대·청약통장 한눈에 (상황별 찾기)"
 date: 2026-10-16 16:00:00 +0900
-topic: 청년 주거
+topic: 청년
 hub: true
 image: /assets/images/cards/youth-housing-support-2026.png
 ---
@@ -103,6 +103,8 @@ image: /assets/images/cards/youth-housing-support-2026.png
 전세 보증금의 **80%** 안에서 **최대 1.5억 원**을 빌려줘요. 금리는 소득에 따라 연 2.2~3.3%이고, 지방 주택은 0.2%p 더 낮아요. (출처②)
 
 👉 [2026 청년 전세자금대출(청년전용 버팀목) 총정리]({% post_url 2026-10-16-youth-jeonse-loan-2026 %})
+
+결혼했거나 3개월 안에 결혼할 예정이라면 나이 상한이 없는 신혼부부전용 전세자금도 비교해 보세요. 👉 [2026 신혼부부 전세자금대출 총정리]({% post_url 2026-11-09-newlywed-jeonse-loan-2026 %})
 
 ### 청년전용 보증부월세대출
 

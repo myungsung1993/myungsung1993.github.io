@@ -2,7 +2,7 @@
 layout: post
 title: "2026 청년 주택드림 청약통장 총정리: 최고 연 4.5% 금리, 가입 조건·비과세·전환 방법"
 date: 2026-10-16 16:30:00 +0900
-topic: 청년 주거
+topic: 청년
 who: ["만 19~34세", "연소득 5천만 원 이하", "무주택"]
 image: /assets/images/cards/youth-dream-account-2026.png
 ---
