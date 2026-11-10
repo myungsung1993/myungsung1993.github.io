@@ -47,6 +47,7 @@ Jekyll(minima 테마) 블로그이며, GitHub Pages로 배포한다. `main` 브�
 ---
 layout: post
 title: "제목 (핵심 키워드 포함, 예: 2026 청년 월세 지원 신청 방법과 자격 조건)"
+description: "검색 결과 설명문: 핵심 요약 첫 항목을 출처 표시·굵게만 빼고 그대로 (70~140자, 새 숫자 넣지 않음)"
 date: YYYY-MM-DD HH:MM:SS +0900
 ---
 
