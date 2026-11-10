@@ -11,6 +11,7 @@
 #   bash _tools/threads_upload.sh check            # 계정·게시 가능 횟수 확인 (게시하지 않음)
 #   bash _tools/threads_upload.sh preview <슬러그>  # 보낼 글·링크·글자 수만 보여 줌 (게시하지 않음)
 #   bash _tools/threads_upload.sh post <슬러그>     # 글 + 블로그 링크 카드 게시 (팩트체크 반영 후)
+#   bash _tools/threads_upload.sh views [개수]      # 내 게시물 조회수 많은 순 (주제 고르기용, 기본 최근 100개)
 #   bash _tools/threads_upload.sh comments [개수]   # 최근 게시물(기본 10개)에 달린 남의 댓글 (답글 안 단 것에 * 표시)
 #   bash _tools/threads_upload.sh reply <댓글ID>    # ~/.policy-blog/threads_replies/<댓글ID>.txt 를 답글로 게시 (팩트체크 반영 후)
 #   bash _tools/threads_upload.sh home-reply-all   # 예전 게시물 중 홈 링크 댓글이 없는 글에 3분 간격으로 댓글 달기
@@ -91,6 +92,23 @@ case "${1:-}" in
       home_reply "$pid"
     done
     echo "끝: $(wc -l < "$HOME_REPLIED" 2>/dev/null || echo 0)개 기록"
+    ;;
+  views)
+    # 주제 우선순위 1번(CLAUDE.md "주제 고르는 순서")용: 내 게시물 조회수 많은 순. 답글은 뺀다.
+    load_token
+    TOKEN="$TOKEN" POSTED="$HOME/.policy-blog/threads_posted.txt" N="${2:-100}" node -e '
+const fs=require("fs");const {TOKEN,POSTED,N}=process.env;const API="https://graph.threads.com/v1.0";
+const slug={};try{for(const l of fs.readFileSync(POSTED,"utf8").split(/\r?\n/)){const p=l.split(" ");if(p[3])slug[p[3].split("/").pop()]=p[2]}}catch(e){}
+const get=u=>fetch(API+u+(u.includes("?")?"&":"?")+"access_token="+TOKEN).then(r=>r.json()).then(j=>{if(j.error)throw new Error(j.error.message);return j});
+(async()=>{
+  const L=(await get("/me/threads?fields=id,permalink,timestamp,text,is_reply&limit="+N)).data.filter(x=>!x.is_reply);
+  const rows=[];
+  for(const x of L){const i=await get("/"+x.id+"/insights?metric=views");const code=(x.permalink||"").split("/").filter(Boolean).pop();
+    const v=i.data?.[0]?.values?.[0]?.value; if(v===undefined)continue; // 조회수 안 주는 글(리포스트 등)은 건너뜀
+    rows.push([v,x.timestamp.slice(0,10),slug[code]||"(기록 없음)",(x.text||"").split("\n")[0].slice(0,40)])}
+  rows.sort((a,b)=>b[0]-a[0]);
+  for(const r of rows)console.log(String(r[0]).padStart(6)+"  "+r[1]+"  "+r[2]+"  "+r[3]);
+})().catch(e=>{console.error("API 오류: "+String(e.message).split(TOKEN).join("***"));process.exit(1)});'
     ;;
   check)
     load_token
