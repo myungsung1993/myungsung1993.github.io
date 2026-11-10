@@ -408,3 +408,10 @@ body {
 /* 9. 핵심 요약 상자 오른쪽 위 캐릭터 */
 .post-content blockquote.has-char { position: relative; }
 .post-content img.summary-char { position: absolute; top: 4px; right: 10px; width: 48px; height: auto; border: 0; transform: scaleX(-1); }
+/* 10. 놓치기 쉬운 점·주의사항 빨간색 강조 */
+.post-content h2.warn-h { border-left-color: #d62828; }
+.post-content h3.warn-h { color: #b91c1c; }
+.post-content .warn-list > li::marker { color: #d62828; }
+.post-content .warn-list > li > strong:first-child { color: #c81e1e; }
+.post-content ol.steps.warn-list > li::before { background: #d62828; }
+.post-content blockquote.warn-box { background: #fdf1f1; border-left-color: #d62828; }

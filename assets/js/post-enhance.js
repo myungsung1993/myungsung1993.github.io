@@ -17,6 +17,12 @@
   // 4. 신청 단계: "어떻게 신청" 소제목 바로 뒤 첫 번호 목록
   c.querySelectorAll("h2").forEach(function (h) { if (!/어떻게 신청/.test(h.textContent)) return;
     for (var e = h.nextElementSibling; e && e.tagName !== "H2"; e = e.nextElementSibling) if (e.tagName === "OL") { e.classList.add("steps"); break; } });
+  // 10. 놓치기 쉬운 점·주의사항 강조(빨간색, 2026-11-10 사용자 지정): 해당 소제목 아래 목록의 첫 굵은 글씨, ⚠️ 상자
+  c.querySelectorAll("h2, h3").forEach(function (h) { if (!/놓치기 쉬운|주의|조심/.test(h.textContent)) return;
+    h.classList.add("warn-h");
+    for (var e = h.nextElementSibling; e && e.tagName !== "H2" && !(h.tagName === "H3" && e.tagName === "H3"); e = e.nextElementSibling)
+      if (e.tagName === "UL" || e.tagName === "OL") e.classList.add("warn-list"); });
+  c.querySelectorAll("blockquote").forEach(function (b) { if (/^\s*⚠️/.test(b.textContent)) b.classList.add("warn-box"); });
   // 5. 표 머리 줄이 "항목 | 내용"이면 숨김
   c.querySelectorAll("table").forEach(function (tb) { var th = tb.querySelectorAll("thead th");
     if (th.length === 2 && th[0].textContent.trim() === "항목" && th[1].textContent.trim() === "내용") tb.classList.add("no-head"); });

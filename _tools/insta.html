@@ -65,6 +65,12 @@
   .end .link { margin-top:56px; display:inline-block; font-size:56px; font-weight:900; color:#fff; background:var(--brand);
                padding:22px 40px; border-radius:20px; }
   .end .source { margin-top:90px; font-size:36px; font-weight:600; color:var(--sub); line-height:1.6; white-space:pre-line; }
+
+  /* 캐릭터(2026-11-10~): 오른쪽 위 빈칸. 파란 표지에서는 흰 원 안에 */
+  .char { position:absolute; top:70px; right:70px; height:250px; width:auto; }
+  .char-wrap { position:absolute; top:60px; right:60px; width:270px; height:270px; border-radius:50%; background:#fff; display:flex; align-items:center; justify-content:center; }
+  .char-wrap img { height:220px; width:auto; }
+  .has-char h2, .has-char .step, .has-char .label, .has-char .who { max-width:640px; }
 </style>
 </head>
 <body>
@@ -625,10 +631,24 @@ if (s.type === "cover") {
           <div class="link">${esc(s.link)}</div><div class="source">${esc(s.source)}</div>${foot}</div>`;
 }
 document.getElementById("root").innerHTML = html;
+// 캐릭터: 표지 hello · 누가·얼마 talk · 놓치기 쉬운 점 think · 마지막 welcome (CLAUDE.md). 슬라이드에 char:"happy" 처럼 바꾸고, char:"" 면 빼기
+const autoChar = s.type === "cover" || s.type === "hero" ? "hello" : s.type === "end" ? "welcome"
+  : /놓치기/.test(s.title || "") ? "think" : /누가|얼마/.test(s.step || "") ? "talk" : "";
+const ch = s.char ?? autoChar;
+if (ch) {
+  const slide = document.querySelector(".slide"), src = `../assets/brand/char/${ch}.png`;
+  slide.classList.add("has-char");
+  slide.insertAdjacentHTML("beforeend", s.type === "hero" ? `<div class="char-wrap char-x"><img src="${src}" alt=""></div>` : `<img class="char char-x" src="${src}" alt="">`);
+}
 // 넘침 검사: 본문 마지막 요소가 아래 표시줄(foot)과 겹치면 제목에 OVERFLOW 표시 (dump-dom으로 확인)
 document.fonts.ready.then(() => {
+  // 캐릭터 옆 제목은 한 줄에 들어갈 때까지 글씨를 줄인다(최소 70px, 그래도 안 되면 원래대로 두 줄)
+  const h2 = document.querySelector(".has-char.rows h2");
+  if (h2) { let z = 90; h2.style.whiteSpace = "nowrap";
+    while (h2.scrollWidth > h2.clientWidth && z > 70) { z -= 2; h2.style.fontSize = z + "px"; }
+    if (h2.scrollWidth > h2.clientWidth) { h2.style.whiteSpace = ""; h2.style.fontSize = ""; } }
   const foot = document.querySelector(".foot").getBoundingClientRect();
-  const kids = [...document.querySelector(".slide").children].filter(e => !e.classList.contains("foot") && !e.classList.contains("top"));
+  const kids = [...document.querySelector(".slide").children].filter(e => !e.classList.contains("foot") && !e.classList.contains("top") && !e.classList.contains("char-x"));
   const bottom = Math.max(...kids.map(e => e.getBoundingClientRect().bottom));
   document.title = bottom > foot.top - 24 ? "OVERFLOW " + Math.round(bottom - foot.top + 24) : "OK";
 });
