@@ -21,7 +21,7 @@ layout: default
       {%- for t in topics %}
       {%- assign n = site.posts | where: "topic", t.name | size %}
       {%- if n > 0 %}
-      <button type="button" class="topic-tile" data-topic="{{ t.name }}" style="background:{{ t.bg }}">
+      <button type="button" class="topic-tile" data-topic="{{ t.name }}" style="background:{{ t.tile | default: t.bg }}">
         <b>{{ t.name }}</b><span>글 {{ n }}개</span>
         <img src="{{ "/assets/images/topics/" | append: t.icon | append: ".png" | relative_url }}" alt="" width="70" height="70"{% if t.wide %} class="is-wide"{% endif %}>
       </button>
