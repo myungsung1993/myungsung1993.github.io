@@ -161,6 +161,11 @@ date: YYYY-MM-DD HH:MM:SS +0900
    - **댓글 답글** (2026-10-24 사용자 지정: "댓글은 팩트체크 후 답변해줘"): `bash _tools/threads_upload.sh comments`로 새 댓글(* 표시)을 보고,
      답글 초안을 `~/.policy-blog/threads_replies/<댓글ID>.txt`(저장소 밖)에 쓴 뒤 fact-checker 검토를 반영하고 `reply <댓글ID>`로 게시한다.
      개인 자격을 판정하지 않고 일반 기준과 공식 문의처(1350, 129, 1355 등)를 안내한다. 홍보·스팸·욕설 댓글에는 답하지 않고 사용자에게 알린다.
+   - **다른 계정 글 답글 후보** ("댓글 달 거 탐색해줘"): 크롬 쓰레드 검색(최근 순)으로 지금까지 올린 모든 글 주제를 검색한다.
+     - 고르는 기준: 본문 자체가 제도·조건·금액·신청 방법을 몰라서 묻는 질문인 최근 1주 글만. 경험담·의견("받아 본 사람?", "어때?"), 남의 댓글 칸 질문, 정보·홍보 계정 글은 뺀다. 없으면 "오늘은 없음"으로 보고한다.
+     - 문체: 해요체 통일, 문장 끝 마침표 없이 문단만 나눔, 링크 없음, 개인 자격 판정 없이 공식 문의처 안내.
+     - 절차: 원문 근거 확인 → 초안을 `~/.policy-blog/outreach/`에 기록 → fact-checker 검토 반영 → 사용자가 직접 게시.
+     - **채팅 전달 형식(고정)**: 글 주소(https://www.threads.com/@계정/post/ID) 한 줄 + 답글 본문은 코드 블록(```). 인용(>) 형식 금지. (2026-11-10 사용자 지정)
    - **쓰레드**도 같은 방식이다: `assets/threads/<슬러그>/post.txt`(500자 이내)를 fact-checker로 검토하고 반영한 뒤 `bash _tools/threads_upload.sh post <슬러그>`로 게시한다. 토큰은 `~/.policy-blog/threads.token`.
 6. 이미지를 사이트에 먼저 올리고(commit·push, 200 확인) `bash _tools/insta_upload.sh post <슬러그>`로 게시한다.
 7. 토큰은 `~/.policy-blog/instagram.token`(저장소 밖). 약 60일마다 `bash _tools/insta_upload.sh refresh`로 갱신한다.
