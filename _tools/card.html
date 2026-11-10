@@ -35,6 +35,8 @@
            background: rgba(255,255,255,.9); }
   .stamp .s1 { font-size: 50px; font-weight: 900; letter-spacing: -1px; line-height: 1.15; }
   .stamp .s2 { font-size: 26px; font-weight: 700; }
+  .char { position: absolute; top: 22px; right: 46px; height: 236px; width: auto; }
+  .has-char .label, .has-char h1 { max-width: 840px; }
 </style>
 </head>
 <body>
@@ -313,7 +315,8 @@ const cards = {
     label: "2026 신혼부부 주택구입자금대출",
     title: "신혼부부전용 구입자금",
     stats: [["연 2.55~3.85%", "소득·대출기간별 금리"], ["최대 3.2억 원", "LTV 80% · 수도권 70%"], ["6억 원 이하", "집 평가액"]],
-    foot: "2026.11.10 기준 · 출처: 주택도시기금"
+    foot: "2026.11.10 기준 · 출처: 주택도시기금",
+    char: "guide"
   },
   "newborn-jeonse-loan-2026": {
     label: "2026 신생아 특례 전세대출",
@@ -407,6 +410,11 @@ document.getElementById("title").textContent = c.title;
 document.getElementById("foot").textContent = c.foot;
 document.getElementById("stats").innerHTML = c.stats
   .map(([v, k]) => `<div class="stat"><div class="v">${v}</div><div class="k">${k}</div></div>`).join("");
+// 캐릭터(2026-11-10~, 새 글부터): char: "guide" → assets/brand/char/guide.png 를 오른쪽 위에. 도장과 같이 쓰지 않는다
+if (c.char && !c.expired) {
+  const im = document.createElement("img"); im.className = "char"; im.alt = ""; im.src = "../assets/brand/char/" + c.char + ".png";
+  document.querySelector(".card").classList.add("has-char"); document.querySelector(".card").appendChild(im);
+}
 if (c.expired) {
   document.getElementById("stamp").hidden = false;
   document.getElementById("stamp-sub").textContent = c.expired + " 마감";
