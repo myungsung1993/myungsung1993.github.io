@@ -4,7 +4,7 @@
 #   예) bash _tools/naver_pack.sh "$HOME/OneDrive/바탕 화면/네이버예약_1118-1127" basic-pension-2026 11-18_기초연금
 # 만드는 것: <출력 폴더>/<폴더 이름>/한번에복사.html (제목·태그 복사 버튼 + 사진·본문 한 번에 복사)
 #           사진은 사이트에 올라간 인스타 카드(https://jiwongil.kr/assets/insta/<슬러그>/n.png)를 쓰므로 먼저 push해 둔다.
-# 원고: _naver/<슬러그>/post.txt ([제목] [본문] [태그], 본문 속 [사진 n])
+# 원고: _naver/<슬러그>/post.txt ([제목] [본문] [태그], 본문 속 [사진 n], 신청 흐름도는 [흐름도 사이트슬러그] 한 줄 — 2026-11-10~)
 set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 OUT="$1"; shift
@@ -16,7 +16,7 @@ while [ $# -ge 2 ]; do
   tags=$(awk '/^\[태그\]/{getline; print; exit}' "$src")
   cat=$(awk '/^\[카테고리\]/{getline; print; exit}' "$src")
   catline=""; [ -n "$cat" ] && catline="<p><b>0. 카테고리</b> <b style=\"color:#c2410c\">$cat</b> (발행 설정에서 선택)</p>"
-  body=$(awk '/^\[본문\]/{f=1;next} /^\[(카테고리|태그)\]/{f=0} f' "$src" | sed -E 's/&/\&amp;/g; s/</\&lt;/g; s#^\[사진 ([0-9]+)\]$#<p><img src="https://jiwongil.kr/assets/insta/'"$s"'/\1.png" width="540"></p>#; t; s#^$#<p>\&nbsp;</p>#; t; s#(https://[^ ]+)#<a href="\1">\1</a>#g; s#^(.*)$#<p>\1</p>#')
+  body=$(awk '/^\[본문\]/{f=1;next} /^\[(카테고리|태그)\]/{f=0} f' "$src" | sed -E 's/&/\&amp;/g; s/</\&lt;/g; s#^\[사진 ([0-9]+)\]$#<p><img src="https://jiwongil.kr/assets/insta/'"$s"'/\1.png" width="540"></p>#; t; s#^\[흐름도 ([a-z0-9-]+)\]$#<p><img src="https://jiwongil.kr/assets/images/flow/\1.png" width="540"></p>#; t; s#^$#<p>\&nbsp;</p>#; t; s#(https://[^ ]+)#<a href="\1">\1</a>#g; s#^(.*)$#<p>\1</p>#')
   # 주소를 <a>로 감싼다: HTML로 붙여넣으면 네이버가 글자 주소를 자동으로 링크로 바꾸지 않는다(11-09 확인).
   # 점선 테두리는 복사 영역(#copy) 바깥 .frame에 둔다. 안에 두면 네이버 본문에 테두리가 같이 붙는다(11-07 확인).
   cat > "$d/한번에복사.html" <<EOF
