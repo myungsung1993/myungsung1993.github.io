@@ -141,8 +141,9 @@ body {
   .jg-header-inner { display: flex; align-items: center; justify-content: space-between; min-height: 60px; }
   // minima .wrapper의 clearfix(::after)가 flex 칸으로 끼어들어 메뉴가 가운데로 밀리는 것 막기
   .jg-header-inner::after { display: none; }
-  .jg-logo { display: block; line-height: 0; }
-  .jg-logo img { height: 44px; width: auto; border-radius: 10px; box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.25); }
+  .jg-logo { display: flex; align-items: center; gap: 9px; line-height: 1; text-decoration: none; }
+  .jg-logo img { height: 50px; width: 50px; border-radius: 50%; box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.6); }
+  .jg-logo span { color: #fff; font-size: 24px; font-weight: 800; letter-spacing: -0.5px; }
   .jg-nav { display: flex; gap: 16px; }
   .jg-nav a { color: #fff; font-size: 15px; font-weight: 600; text-decoration: none; }
   .jg-nav a:hover { text-decoration: underline; }
@@ -375,3 +376,35 @@ body {
 /* 글 제목 아래 운영 안내 한 줄 (_layouts/post.html) */
 .post-notice { margin: 10px 0 0; font-size: 12.5px; line-height: 1.5; color: #6b7684; }
 .post-notice a { color: inherit; text-decoration: underline; }
+
+/* ---------- 세부 글 개편 (2026-11-10): 동작은 assets/js/post-enhance.js ---------- */
+/* 1. 목차 접기 */
+.toc-box.toc-js { padding: 0; }
+.toc-box.toc-js .toc-title { margin: 0; padding: 12px 16px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+.toc-box.toc-js .toc-title::after { content: "펼치기 ▾"; font-size: 13px; font-weight: 600; color: #1a6fd1; }
+.toc-box.is-open .toc-title::after { content: "접기 ▴"; }
+.toc-box.toc-js > ul { display: none; padding: 0 16px 12px; margin: 0 0 0 1.2em !important; }
+.toc-box.is-open > ul { display: block; }
+/* 2. 출처 표시 방법 → 작은 한 줄 */
+.post-content blockquote.src-howto { background: none; border: 0; padding: 0; margin: 0 0 1em; font-size: 12.5px; color: #8a95a3; }
+.post-content blockquote.src-howto strong { font-weight: 600; }
+/* 3. 요약 카드: 핵심 요약 아래, 작게 */
+.post-content img.summary-card { max-width: 78%; margin: 0.6em auto 1.6em; }
+/* 4. 소제목 색 막대 */
+.post-content h2 { border-bottom: 0; padding: 0 0 0 12px; border-left: 5px solid #1a6fd1; line-height: 1.3; margin-top: 2.4em; }
+.post-content h3 { color: #1d3f6e; }
+/* 4. 신청 단계 번호 카드 */
+.post-content ol.steps { list-style: none; margin: 1em 0; padding: 0; counter-reset: st; }
+.post-content ol.steps > li { counter-increment: st; position: relative; margin: 0 0 10px; padding: 12px 14px 12px 52px; background: #f6f9fd; border: 1px solid #e1e8f2; border-radius: 12px; }
+.post-content ol.steps > li::before { content: counter(st); position: absolute; left: 14px; top: 12px; width: 26px; height: 26px; border-radius: 50%; background: #1a6fd1; color: #fff; font-weight: 800; font-size: 14px; text-align: center; line-height: 26px; }
+/* 5. 표 머리 줄(항목|내용) 숨김, 출처 표시 작게 */
+.post-content table.no-head thead { display: none; }
+.post-content table { border-radius: 10px; }
+.post-content p.src-line { margin: -0.6em 0 1.2em; text-align: right; font-size: 12px; color: #9aa4b1; }
+.post-content .src { font-size: 0.78em; color: #9aa4b1; font-weight: 500; white-space: nowrap; }
+/* 8. 신청 흐름도 */
+.post-content img.flow-chart { display: block; width: 100%; max-width: 560px; height: auto; margin: 0.8em auto 1.4em; border-radius: 14px; }
+
+/* 9. 핵심 요약 상자 오른쪽 위 캐릭터 */
+.post-content blockquote.has-char { position: relative; }
+.post-content img.summary-char { position: absolute; top: 4px; right: 10px; width: 48px; height: auto; border: 0; transform: scaleX(-1); }

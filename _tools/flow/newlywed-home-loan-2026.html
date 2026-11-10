@@ -1,0 +1,78 @@
+<!doctype html><html><head><meta charset="utf-8"><title>flow</title>
+<style>html,body{margin:0}body{width:900px;height:1260px;background:#fff}svg text{font-family:"Pretendard","Malgun Gothic",sans-serif}</style></head><body>
+<!--
+  신청 흐름도 (2026-11-10~). 글마다 이 파일을 복사해 _tools/flow/<슬러그>.html 로 만들고 글자·화살표만 바꾼다.
+  캡처: chrome --headless=new --hide-scrollbars --allow-file-access-from-files --window-size=900,1260 --screenshot="assets/images/flow/<슬러그>.png" "file:///.../_tools/flow/<슬러그>.html"
+  규칙: 번호는 본문 "어떻게 신청하나요?" 단계 번호와 같게, 단계·기관 이름은 본문 그대로(새 정보 넣지 않음), 오른쪽 위 빈칸에 고민하는 모습(think), fact-checker 검토 대상.
+-->
+<!-- 번호는 본문 "어떻게 신청하나요?" 단계 번호와 같게 쓴다 -->
+<svg width="900" height="1260" viewBox="0 0 900 1260" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#1a6fd1"/></marker>
+    <marker id="ao" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#c2410c"/></marker>
+  </defs>
+  <rect x="14" y="14" width="872" height="1232" rx="40" fill="#f6f9fd" stroke="#bcd3ef" stroke-width="3"/>
+  <text x="56" y="90" font-size="30" font-weight="700" fill="#1a6fd1">2026 신혼부부 주택구입자금대출</text>
+  <text x="56" y="148" font-size="50" font-weight="800" fill="#1b2430">신청 흐름 한눈에 보기</text>
+
+  <!-- 1~3단계: 신청 전 -->
+  <rect x="56" y="180" width="788" height="128" rx="18" fill="#fff6ef" stroke="#f3c7a8" stroke-width="2"/>
+  <g font-size="30" font-weight="800" fill="#c2410c">
+    <circle cx="96" cy="226" r="20" fill="#c2410c"/><text x="96" y="235" font-size="24" fill="#fff" text-anchor="middle">1</text>
+    <text x="126" y="236">조건 확인</text>
+    <circle cx="300" cy="226" r="20" fill="#c2410c"/><text x="300" y="235" font-size="24" fill="#fff" text-anchor="middle">2</text>
+    <text x="330" y="236">매매계약</text>
+    <circle cx="490" cy="226" r="20" fill="#c2410c"/><text x="490" y="235" font-size="24" fill="#fff" text-anchor="middle">3</text>
+    <text x="520" y="236">등기 전 신청</text>
+  </g>
+  <text x="84" y="284" font-size="26" fill="#8a5a3c">이미 등기했다면 등기 접수일부터 3개월 안</text>
+
+  <!-- 신청자 -->
+  <rect x="56" y="340" width="190" height="830" rx="26" fill="#1a6fd1"/>
+  <text x="151" y="740" font-size="44" font-weight="800" fill="#fff" text-anchor="middle">신청자</text>
+  <text x="151" y="786" font-size="27" fill="#dbe9fb" text-anchor="middle">신혼부부</text>
+  <text x="151" y="822" font-size="27" fill="#dbe9fb" text-anchor="middle">결혼 예정</text>
+
+  <!-- 기관 -->
+  <rect x="480" y="340" width="364" height="210" rx="24" fill="#fff" stroke="#1a6fd1" stroke-width="3"/>
+  <text x="662" y="390" font-size="26" font-weight="700" fill="#1a6fd1" text-anchor="middle">신청 창구 (중 1곳)</text>
+  <text x="662" y="438" font-size="31" font-weight="800" fill="#1b2430" text-anchor="middle">기금e든든</text>
+  <text x="662" y="480" font-size="27" fill="#4a5565" text-anchor="middle">한국주택금융공사 누리집</text>
+  <text x="662" y="518" font-size="27" fill="#4a5565" text-anchor="middle">은행 지점</text>
+
+  <rect x="480" y="640" width="364" height="170" rx="24" fill="#fff" stroke="#6b7684" stroke-width="3"/>
+  <text x="662" y="700" font-size="31" font-weight="800" fill="#1b2430" text-anchor="middle">주택도시보증공사</text>
+  <text x="662" y="738" font-size="26" fill="#4a5565" text-anchor="middle">(HUG)</text>
+  <text x="662" y="782" font-size="29" font-weight="800" fill="#1a6fd1" text-anchor="middle">자산 심사</text>
+
+  <rect x="480" y="910" width="364" height="230" rx="24" fill="#fff" stroke="#6b7684" stroke-width="3"/>
+  <text x="662" y="968" font-size="30" font-weight="800" fill="#1b2430" text-anchor="middle">은행 · 한국주택금융공사</text>
+  <text x="662" y="1014" font-size="27" fill="#4a5565" text-anchor="middle">서류 확인</text>
+  <text x="662" y="1054" font-size="27" fill="#4a5565" text-anchor="middle">소득·담보 심사</text>
+  <text x="662" y="1104" font-size="29" font-weight="800" fill="#1a6fd1" text-anchor="middle">대출 실행</text>
+
+  <!-- 4 대출 신청 -->
+  <path d="M246,445 L472,445" stroke="#1a6fd1" stroke-width="6" marker-end="url(#ah)"/>
+  <circle cx="290" cy="403" r="20" fill="#1a6fd1"/><text x="290" y="412" font-size="24" font-weight="800" fill="#fff" text-anchor="middle">4</text>
+  <text x="320" y="414" font-size="29" font-weight="800" fill="#1b2430">대출 신청</text>
+  <!-- 5 자산 심사 -->
+  <path d="M662,550 L662,632" stroke="#1a6fd1" stroke-width="6" marker-end="url(#ah)"/>
+  <circle cx="614" cy="592" r="20" fill="#1a6fd1"/><text x="614" y="601" font-size="24" font-weight="800" fill="#fff" text-anchor="middle">5</text>
+  <text x="686" y="602" font-size="27" font-weight="700" fill="#1b2430">자산 심사</text>
+  <!-- 5 결과 문자 -->
+  <path d="M480,725 L254,725" stroke="#c2410c" stroke-width="6" stroke-dasharray="14 10" marker-end="url(#ao)"/>
+  <circle cx="290" cy="683" r="20" fill="#c2410c"/><text x="290" y="692" font-size="24" font-weight="800" fill="#fff" text-anchor="middle">5</text>
+  <text x="320" y="694" font-size="29" font-weight="800" fill="#c2410c">결과 문자</text>
+  <!-- 6 서류 제출 -->
+  <path d="M246,990 L472,990" stroke="#1a6fd1" stroke-width="6" marker-end="url(#ah)"/>
+  <circle cx="290" cy="948" r="20" fill="#1a6fd1"/><text x="290" y="957" font-size="24" font-weight="800" fill="#fff" text-anchor="middle">6</text>
+  <text x="320" y="959" font-size="29" font-weight="800" fill="#1b2430">서류 제출</text>
+  <!-- 6 대출 실행 -->
+  <path d="M480,1095 L254,1095" stroke="#1a6fd1" stroke-width="6" marker-end="url(#ah)"/>
+  <circle cx="290" cy="1053" r="20" fill="#1a6fd1"/><text x="290" y="1062" font-size="24" font-weight="800" fill="#fff" text-anchor="middle">6</text>
+  <text x="320" y="1064" font-size="29" font-weight="800" fill="#1b2430">대출 실행</text>
+
+  <image href="../../assets/brand/char/think.png" x="716" y="24" width="128" height="146"/>
+  <text x="56" y="1212" font-size="21" fill="#6b7684">정책 지원금 길잡이 · 개인이 정리한 그림</text>
+  <text x="844" y="1212" font-size="21" fill="#6b7684" text-anchor="end">2026.11.10 기준 · 출처: 주택도시기금</text>
+</svg></body></html>

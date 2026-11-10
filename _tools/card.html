@@ -410,9 +410,10 @@ document.getElementById("title").textContent = c.title;
 document.getElementById("foot").textContent = c.foot;
 document.getElementById("stats").innerHTML = c.stats
   .map(([v, k]) => `<div class="stat"><div class="v">${v}</div><div class="k">${k}</div></div>`).join("");
-// 캐릭터(2026-11-10~, 새 글부터): char: "guide" → assets/brand/char/guide.png 를 오른쪽 위에. 도장과 같이 쓰지 않는다
-if (c.char && !c.expired) {
-  const im = document.createElement("img"); im.className = "char"; im.alt = ""; im.src = "../assets/brand/char/" + c.char + ".png";
+// 캐릭터(2026-11-10~): 기본은 안내하는 모습(guide). 다른 포즈는 char: "happy" 처럼, 빼려면 char: "". 도장 찍힌 카드에는 넣지 않는다
+const ch = c.char ?? "guide";
+if (ch && !c.expired) {
+  const im = document.createElement("img"); im.className = "char"; im.alt = ""; im.src = "../assets/brand/char/" + ch + ".png";
   document.querySelector(".card").classList.add("has-char"); document.querySelector(".card").appendChild(im);
 }
 if (c.expired) {
