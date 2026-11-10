@@ -41,13 +41,15 @@
     } else {
       s += r.type === "in" ? `<path d="M246,${r.y} L472,${r.y}" stroke="${c}" stroke-width="6" marker-end="url(#${m})"${da}/>`
                            : `<path d="M480,${r.y} L254,${r.y}" stroke="${c}" stroke-width="6" marker-end="url(#${m})"${da}/>`;
-      const lx = r.n ? 320 : 270;
-      if (r.n) s += dot(290, r.y - 38, r.n, c);
-      s += T(lx, r.y - 27, 28, r.label, { bold: 800, fill: r.dash ? ORANGE : "#1b2430" });
+      const lx = r.n ? 320 : 270, ls = r.label.split("\n");  // 긴 라벨은 "\n"으로 두 줄(위로 쌓음)
+      if (r.n) s += dot(290, r.y - 38 - (ls.length - 1) * 32, r.n, c);
+      ls.forEach((t, i) => { s += T(lx, r.y - 27 - (ls.length - 1 - i) * 32, 28, t, { bold: 800, fill: r.dash ? ORANGE : "#1b2430" }); });
       (r.sub || []).forEach((t, i) => { s += T(270, r.y + 36 + i * 30, 22, t, { fill: "#8a5a3c" }); });
     }
   }
-  (F.notes || []).forEach((t, i) => { s += T(270, F.notesY + i * 38, 24, "※ " + t, { fill: "#4a5565" }); });
+  // 메모: 문자열은 "※ ", [번호, 글]은 동그라미 번호(본문 단계)
+  (F.notes || []).forEach((t, i) => { const y = F.notesY + i * 40;
+    s += Array.isArray(t) ? dot(286, y - 8, t[0], BLUE) + T(314, y, 24, t[1], { bold: 700 }) : T(270, y, 24, "※ " + t, { fill: "#4a5565" }); });
   s += T(56, H - 30, 21, "개인이 정리한 그림", { fill: "#6b7684" }) + T(844, H - 30, 21, F.foot, { fill: "#6b7684", end: 1 });
   document.body.style.cssText = `margin:0;width:${W}px;height:${H}px;background:#fff`;
   document.body.innerHTML = `<svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg" style="font-family:Pretendard,'Malgun Gothic',sans-serif">${s}</svg>`;

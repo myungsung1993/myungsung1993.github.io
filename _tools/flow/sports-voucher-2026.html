@@ -1,0 +1,17 @@
+<!doctype html><html><head><meta charset="utf-8"><title>flow</title></head><body><script>
+// 그림은 본문 "선정 뒤" 목록 바로 아래에 넣는다. 번호 = 본문 "선정 뒤" 단계 번호(신청·선정은 번호 없음). 글자는 본문 그대로
+window.FLOW = { height: 1270, label: "2027 스포츠강좌이용권",
+  note: { main: "2027년 이용권: 11.9.(월)~11.27.(금) 23:59", sub: "전국 동시 신청 · 선착순이 아니에요" },
+  applicant: { y0: 340, y1: 1110, lines: [] },
+  boxes: [
+    { y: 340, h: 210, main: 1, lines: [["head", "신청 (중 1곳)"], ["title", "이용권 홈페이지"], ["text", "시·군·구청 · 주민센터 방문"]] },
+    { y: 640, h: 170, lines: [["title", "시·군·구청"], ["em", "12월 중 선정"]] },
+    { y: 910, h: 200, lines: [["title", "신한카드"], ["em", "전용 카드 발급"]] } ],
+  arrows: [
+    { type: "in", y: 445, label: "신청" },
+    { type: "v", y0: 550, y1: 640, label: "선정" },
+    { type: "out", y: 750, dash: 1, n: 1, label: "결과 안내", sub: ["홈페이지", "문자(알림톡)"] },
+    { type: "in", y: 1000, n: 2, label: "카드 신청", sub: ["선정 후 7일 안"] } ],
+  notesY: 1150, notes: ["7일 안에 안 하면 카드사(1544-7000)가 전화로 안내", [3, "강좌 고르기·결제: 홈페이지에서 카드로"]],
+  foot: "2026.11.9 기준 · 출처: 국민체육진흥공단" };
+</script><script src="flow.js"></script></body></html>

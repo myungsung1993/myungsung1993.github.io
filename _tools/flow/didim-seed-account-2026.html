@@ -1,0 +1,17 @@
+<!doctype html><html><head><meta charset="utf-8"><title>flow</title></head><body><script>
+// 번호 = 본문 "어떻게 신청하나요?" 단계 번호. 글자는 본문 그대로
+window.FLOW = { height: 1230, label: "2026 디딤씨앗통장",
+  note: { main: "기간 없이 상시 신청할 수 있어요", sub: "시설·가정위탁 보호아동은 시설이나 읍·면·동을 통해 진행" },
+  applicant: { y0: 340, y1: 1070, lines: ["수급·차상위", "한부모 가정", "아동"] },
+  boxes: [
+    { y: 340, h: 200, main: 1, lines: [["head", "신청 창구 (중 1곳)"], ["title", "읍·면·동 주민센터"], ["text", "복지로 온라인"]] },
+    { y: 630, h: 170, lines: [["title", "시·군·구"], ["em", "대상자 심사·확정"]] },
+    { y: 890, h: 180, lines: [["title", "협력 은행"], ["em", "통장 만들기"]] } ],
+  arrows: [
+    { type: "in", y: 440, n: 1, label: "신청" },
+    { type: "v", y0: 540, y1: 630, n: 2, label: "" },
+    { type: "v", y0: 800, y1: 890, n: 2, label: "통장 발급" },
+    { type: "in", y: 1000, n: 3, label: "매달 적립" } ],
+  notesY: 1120, notes: ["월 5만 원까지 정부가 2배(최대 10만 원) 매칭", "잘못 받은 정부 매칭금은 돌려줘야 해요"],
+  foot: "2026.10.28 기준 · 출처: 국가아동권리보장원·정부24·복지로" };
+</script><script src="flow.js"></script></body></html>
