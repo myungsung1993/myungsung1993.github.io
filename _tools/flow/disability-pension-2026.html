@@ -1,0 +1,15 @@
+<!doctype html><html><head><meta charset="utf-8"><title>flow</title></head><body><script>
+// 번호 = 본문 "어떻게 신청하나요?" 1~4 (4 받기는 주체가 본문에 없어 메모로)
+window.FLOW = { height: 990, label: "2026 장애인연금",
+  note: { main: "주소지와 관계없이 전국 주민센터에서 신청해요" },
+  applicant: { y0: 300, y1: 830, lines: [] },
+  boxes: [
+    { y: 300, h: 240, main: 1, lines: [["head", "신청 (중 1곳)"], ["title", "전국 읍·면·동 주민센터"], ["text", "복지로 온라인"]] },
+    { y: 630, h: 200, lines: [["title", "시·군·구"], ["text", "소득·재산 조사"], ["em", "받을지 결정"]] } ],
+  arrows: [
+    { type: "in", y: 380, n: 1, label: "신청하기" },
+    { type: "in", y: 490, n: 2, label: "서류 내기", sub: ["신청서·신고서", "동의서 등"] },
+    { type: "v", y0: 540, y1: 630, n: 3, label: "조사·결정" } ],
+  notesY: 890, notes: [[4, "받기: 결정되면 매달 받아요"]],
+  foot: "2026.10.24 기준 · 출처: 보건복지부·복지로" };
+</script><script src="flow.js"></script></body></html>

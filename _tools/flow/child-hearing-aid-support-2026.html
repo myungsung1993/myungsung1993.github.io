@@ -1,0 +1,19 @@
+<!doctype html><html><head><meta charset="utf-8"><title>flow</title></head><body><script>
+// 번호 = 본문 "신청 순서" 1~6 (6은 메모로)
+window.FLOW = { height: 1500, label: "2026 아동 보청기 지원",
+  note: { main: "처방·검수 서류는 신청일부터 6개월 안에 내요" },
+  applicant: { y0: 300, y1: 1240, lines: [] },
+  boxes: [
+    { y: 300, h: 150, main: 1, lines: [["head", "신청 (주소지 관계없이)"], ["title", "전국 어느 보건소"]] },
+    { y: 530, h: 170, lines: [["title", "대학병원급 이비인후과"], ["em", "청력검사·처방전"]] },
+    { y: 780, h: 170, lines: [["title", "난청관리 위탁사업단"], ["em", "1차 심사·지원확인서 발급"]] },
+    { y: 1030, h: 210, lines: [["title", "처방전을 받은 병원"], ["text", "보청기 구입(자비)"], ["em", "검수확인서"]] } ],
+  arrows: [
+    { type: "in", y: 375, n: 1, label: "신청서 내기" },
+    { type: "in", y: 615, n: 2, label: "청력검사\n·처방", sub: ["서류는 보건소에"] },
+    { type: "out", y: 865, dash: 1, n: 3, label: "결과 안내", sub: ["보건소를 거쳐"] },
+    { type: "in", y: 1095, n: 4, label: "구입·착용" },
+    { type: "in", y: 1200, n: 5, label: "검수확인", sub: ["구입 1개월 이상 뒤"] } ],
+  notesY: 1300, notes: [[6, "2차 심사·지급: 서류를 보건소에 내면"], "+사업단이 다시 심사, 결과·지원금은 보건소를 거쳐", "온라인 신청: e보건소 공공보건포털, 아이마중 앱", "사정이 있으면 집 근처 이비인후과·판매점도 가능"],
+  foot: "2026.11.3 기준 · 출처: 보건복지부" };
+</script><script src="flow.js"></script></body></html>

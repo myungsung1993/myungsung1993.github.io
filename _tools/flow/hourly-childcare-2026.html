@@ -1,0 +1,16 @@
+<!doctype html><html><head><meta charset="utf-8"><title>flow</title></head><body><script>
+// 번호 = 본문 "어떻게 신청하나요?" 1~5
+window.FLOW = { height: 1100, label: "2026 시간제보육",
+  note: { steps: [[1, "국민행복카드 준비하기"]], sub: "요금은 이용할 때마다 국민행복카드로 결제해요" },
+  applicant: { y0: 340, y1: 890, lines: [] },
+  boxes: [
+    { y: 340, h: 300, main: 1, lines: [["title", "아이사랑 누리집·앱"], ["text", "가입·아동 등록"], ["text", "제공기관 찾기"], ["em", "예약"]] },
+    { y: 720, h: 170, lines: [["title", "시간제보육 제공기관"], ["em", "이용·국민행복카드 결제"]] } ],
+  arrows: [
+    { type: "in", y: 420, n: 2, label: "가입·\n아동 등록" },
+    { type: "in", y: 520, n: 3, label: "기관 찾기" },
+    { type: "in", y: 620, n: 4, label: "예약하기" },
+    { type: "in", y: 805, n: 5, label: "이용·결제", sub: ["개인 준비물"] } ],
+  notesY: 960, notes: ["독립반 당일 예약은 오후 2시(14시)까지", "독립반 전화 예약 1661-9361"],
+  foot: "2026.10.21 기준 · 출처: 교육부·중앙육아종합지원센터" };
+</script><script src="flow.js"></script></body></html>

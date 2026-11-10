@@ -1,0 +1,16 @@
+<!doctype html><html><head><meta charset="utf-8"><title>flow</title></head><body><script>
+// 번호 = 본문 "신청 순서" 1~4 (4 결과 통보는 주체가 본문에 없어 메모로)
+window.FLOW = { height: 1330, label: "2026 노인일자리",
+  note: { main: "작년에 참여했어도 매년 다시 신청해요", sub: "2027년 모집 공고는 10월 30일 현재 아직 안 나왔어요" },
+  applicant: { y0: 340, y1: 1100, lines: [] },
+  boxes: [
+    { y: 340, h: 170, lines: [["title", "노인일자리 여기"], ["text", "우리 동네 모집 공고"]] },
+    { y: 600, h: 220, main: 1, lines: [["head", "신청 (중 1곳)"], ["title", "노인일자리 여기 온라인"], ["text", "행정복지센터·수행기관 방문"]] },
+    { y: 900, h: 200, lines: [["title", "시·군·구·수행기관"], ["text", "모든 신청자 개별 상담"], ["em", "선발 점수 부여"]] } ],
+  arrows: [
+    { type: "in", y: 425, n: 1, label: "공고 찾기" },
+    { type: "in", y: 710, n: 2, label: "신청" },
+    { type: "in", y: 1000, n: 3, label: "상담·선발" } ],
+  notesY: 1160, notes: [[4, "결과 통보: 신청일부터 15일 안(참여·대기·탈락)"], "+다음 해 사업 미리 신청은 30일까지 늘 수 있어요", "선발되면 공익활동은 협약서, 역량활용은 근로계약서"],
+  foot: "2026.10.30 기준 · 출처: 보건복지부·복지로" };
+</script><script src="flow.js"></script></body></html>

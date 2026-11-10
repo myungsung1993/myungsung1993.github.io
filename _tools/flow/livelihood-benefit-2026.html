@@ -1,0 +1,15 @@
+<!doctype html><html><head><meta charset="utf-8"><title>flow</title></head><body><script>
+// 번호 = 본문 "어떻게 신청하나요?" 1~4 (4 지급은 주체가 본문에 없어 메모로)
+window.FLOW = { height: 1250, label: "2026 생계급여",
+  applicant: { y0: 200, y1: 1000, lines: [] },
+  boxes: [
+    { y: 200, h: 150, lines: [["title", "보건복지상담센터"], ["em", "129"]] },
+    { y: 440, h: 230, main: 1, lines: [["head", "신청"], ["title", "읍·면·동 주민센터"], ["text", "사회보장급여 신청서"], ["text", "금융정보 제공 동의서"]] },
+    { y: 760, h: 240, lines: [["title", "시·군·구"], ["text", "소득·재산 조사"], ["text", "부양의무자 조사"], ["em", "받을지 결정"]] } ],
+  arrows: [
+    { type: "in", y: 275, n: 1, label: "상담하기", sub: ["전화"] },
+    { type: "in", y: 555, n: 2, label: "신청" },
+    { type: "v", y0: 670, y1: 760, n: 3, label: "조사·결정" } ],
+  notesY: 1070, notes: [[4, "지급: 결정되면 매달 현금으로 받아요"], "결정에 이의가 있으면 시·군·구에 이의신청", "받은 뒤에도 시·군·구가 상황을 계속 확인해요"],
+  foot: "2026.10.24 기준 · 출처: 보건복지부·복지로" };
+</script><script src="flow.js"></script></body></html>

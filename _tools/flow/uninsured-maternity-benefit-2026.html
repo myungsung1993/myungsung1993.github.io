@@ -1,0 +1,12 @@
+<!doctype html><html><head><meta charset="utf-8"><title>flow</title></head><body><script>
+// 번호 = 본문 "어떻게 신청하나요?" 1~3 (3은 주체가 본문에 없어 메모로)
+window.FLOW = { height: 880, label: "2026 고용보험 미적용자 출산급여",
+  note: { steps: [[1, "서류 준비"]], sub: "출산일부터 1년 안에 신청하지 않으면 받을 수 없어요" },
+  applicant: { y0: 340, y1: 590, lines: [] },
+  boxes: [
+    { y: 340, h: 250, main: 1, lines: [["head", "신청"], ["title", "고용24 온라인"], ["text", "고용센터 방문·우편"], ["text", "(복지로 안내)"]] } ],
+  arrows: [
+    { type: "in", y: 465, n: 2, label: "신청하기", sub: ["가까운 곳은", "1350에 확인"] } ],
+  notesY: 660, notes: [[3, "결정·입금: 보통 신청 후 14일 안에 지급 여부 안내"], "+승인되면 신청서에 적은 계좌로 들어와요"],
+  foot: "2026.10.27 기준 · 출처: 고용24·복지로" };
+</script><script src="flow.js"></script></body></html>

@@ -1,0 +1,15 @@
+<!doctype html><html><head><meta charset="utf-8"><title>flow</title></head><body><script>
+// 번호 = 본문 "어떻게 신청하나요?" 1~4
+window.FLOW = { height: 1010, label: "2026~2027 독감 무료 예방접종",
+  note: { main: "따로 신청하지 않고 의료기관에서 바로 맞아요", sub: "주소지가 아닌 곳에서도 맞을 수 있어요" },
+  applicant: { y0: 340, y1: 850, lines: [] },
+  boxes: [
+    { y: 340, h: 170, lines: [["title", "예방접종도우미 누리집"], ["text", "위탁의료기관 찾기"]] },
+    { y: 600, h: 250, main: 1, lines: [["title", "위탁의료기관"], ["text", "신분증·대상 확인"], ["em", "접종"]] } ],
+  arrows: [
+    { type: "in", y: 425, n: 1, label: "병원 찾기", sub: ["보건소 문의도 가능"] },
+    { type: "in", y: 690, n: 2, label: "접종 가능\n여부 확인" },
+    { type: "in", y: 810, n: 3, label: "서류 챙겨\n방문" } ],
+  notesY: 910, notes: [[4, "접종 후 20~30분 머물며 이상반응 확인"]],
+  foot: "2026.11.9 기준 · 출처: 질병관리청" };
+</script><script src="flow.js"></script></body></html>

@@ -1,0 +1,18 @@
+<!doctype html><html><head><meta charset="utf-8"><title>flow</title></head><body><script>
+// 번호 = 본문 "신청 순서" 1~5
+window.FLOW = { height: 1480, label: "2026 청소년산모 임신·출산 의료비",
+  note: { main: "출산 후에도 출산일부터 2년 안이면 신청 가능" },
+  applicant: { y0: 300, y1: 1230, lines: [] },
+  boxes: [
+    { y: 300, h: 150, lines: [["title", "병·의원"], ["em", "임신 확인"]] },
+    { y: 530, h: 200, main: 1, lines: [["head", "온라인 신청"], ["title", "전자바우처 누리집"], ["text", "국민행복카드 카드사 고르기"]] },
+    { y: 810, h: 170, lines: [["title", "한국사회보장정보원"], ["em", "서류 우편 접수"]] },
+    { y: 1060, h: 170, lines: [["title", "카드사"], ["em", "국민행복카드 발송"]] } ],
+  arrows: [
+    { type: "out", y: 395, n: 1, label: "임신확인서\n받기" },
+    { type: "in", y: 630, n: 2, label: "온라인 신청" },
+    { type: "in", y: 895, n: 3, label: "서류 보내기", sub: ["신청일부터", "15일 안 도착"] },
+    { type: "out", y: 1145, n: 4, label: "카드 받기", sub: ["자격 결정 후", "7~10일 안"] } ],
+  notesY: 1290, notes: [[5, "병원·약국에서 국민행복카드로 결제"], "+카드를 받기 전에 낸 병원비는 지원 안 돼요", "이미 국민행복카드가 있으면 새로 안 만들어도 돼요", "건보 진료비 신청 때 동의했다면 2·3단계 생략"],
+  foot: "2026.11.2 기준 · 출처: 보건복지부" };
+</script><script src="flow.js"></script></body></html>
