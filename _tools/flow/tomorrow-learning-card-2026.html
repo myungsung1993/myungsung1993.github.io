@@ -1,0 +1,16 @@
+<!doctype html><html><head><meta charset="utf-8"><title>flow</title></head><body><script>
+// 번호 = 본문 "어떻게 신청하나요?" 1~5. 발급 결정 주체는 본문에 없어 카드 받는 곳만 표시
+window.FLOW = { height: 1250, label: "2026 국민내일배움카드",
+  note: { steps: [[1, "구직 신청 (일자리가 없는 경우)"]], sub: "1년 내내 신청 · 모두 고용24 온라인으로 할 수 있어요" },
+  applicant: { y0: 340, y1: 1080, lines: [] },
+  boxes: [
+    { y: 340, h: 200, main: 1, lines: [["head", "카드 발급 신청 (중 1곳)"], ["title", "고용24 온라인"], ["text", "거주지 관할 고용센터"]] },
+    { y: 620, h: 170, lines: [["head", "카드 받기 (중 1곳)"], ["title", "우편 · 은행 방문"]] },
+    { y: 880, h: 200, lines: [["title", "고용24"], ["text", "훈련 과정 찾아 신청"], ["em", "카드로 결제"]] } ],
+  arrows: [
+    { type: "in", y: 440, n: 2, label: "발급 신청" },
+    { type: "out", y: 715, n: 3, label: "카드 받기" },
+    { type: "in", y: 980, n: 4, label: "수강 신청", sub: ["140시간 이상은", "먼저 진단·상담"] } ],
+  notesY: 1150, notes: [[5, "수강·평가: 끝나면 30일 안에 만족도 조사"]],
+  foot: "2026.10.18 기준 · 출처: 고용노동부·고용24" };
+</script><script src="flow.js"></script></body></html>

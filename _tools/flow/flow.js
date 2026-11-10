@@ -5,7 +5,7 @@
   const F = window.FLOW, W = 900, H = F.height;
   const esc = s => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;");
   const T = (x, y, size, txt, o = {}) =>
-    `<text x="${x}" y="${y}" font-size="${size}"${o.bold ? ` font-weight="${o.bold}"` : ""} fill="${o.fill || "#1b2430"}"${o.mid ? ' text-anchor="middle"' : ""}${o.end ? ' text-anchor="end"' : ""}>${esc(txt)}</text>`;
+    `<text data-lim="${o.lim || 0}" x="${x}" y="${y}" font-size="${size}"${o.bold ? ` font-weight="${o.bold}"` : ""} fill="${o.fill || "#1b2430"}"${o.mid ? ' text-anchor="middle"' : ""}${o.end ? ' text-anchor="end"' : ""}>${esc(txt)}</text>`;
   const dot = (x, y, n, c) => `<circle cx="${x}" cy="${y}" r="20" fill="${c}"/>` + T(x, y + 9, 24, n, { bold: 800, fill: "#fff", mid: 1 });
   const BLUE = "#1a6fd1", ORANGE = "#c2410c";
   let s = `<defs><marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="${BLUE}"/></marker>`
@@ -14,11 +14,13 @@
     + T(56, 90, 30, F.label, { bold: 700, fill: BLUE }) + T(56, 148, 50, "신청 흐름 한눈에 보기", { bold: 800 })
     + `<image href="../../assets/brand/char/think.png" x="716" y="24" width="128" height="146"/>`;
   // 위 주황 상자: 먼저 할 일(번호 있는 단계 또는 한 줄)
-  const n = F.note, nh = n.sub ? 128 : 84;
-  s += `<rect x="56" y="180" width="788" height="${nh}" rx="18" fill="#fff6ef" stroke="#f3c7a8" stroke-width="2"/>`;
-  if (n.steps) { let x = 96; for (const [k, t] of n.steps) { s += dot(x, 226, k, ORANGE) + T(x + 30, 236, 29, t, { bold: 800, fill: ORANGE }); x += 60 + t.length * 27; } }
-  else s += T(84, 234, 29, n.main, { bold: 800, fill: ORANGE });
-  if (n.sub) s += T(84, 284, 25, n.sub, { fill: "#8a5a3c" });
+  const n = F.note;  // 없으면 주황 상자 생략(그때는 y 200부터 배치)
+  if (n) {
+    s += `<rect x="56" y="180" width="788" height="${n.sub ? 128 : 84}" rx="18" fill="#fff6ef" stroke="#f3c7a8" stroke-width="2"/>`;
+    if (n.steps) { let x = 96; for (const [k, t] of n.steps) { s += dot(x, 226, k, ORANGE) + T(x + 30, 236, 29, t, { bold: 800, fill: ORANGE }); x += 60 + t.length * 27; } }
+    else s += T(84, 234, 29, n.main, { bold: 800, fill: ORANGE });
+    if (n.sub) s += T(84, 284, 25, n.sub, { fill: "#8a5a3c" });
+  }
   // 신청자 막대
   const a = F.applicant, mid = (a.y0 + a.y1) / 2;
   s += `<rect x="56" y="${a.y0}" width="190" height="${a.y1 - a.y0}" rx="26" fill="${BLUE}"/>` + T(151, mid - 10, 44, "신청자", { bold: 800, fill: "#fff", mid: 1 });
@@ -49,8 +51,14 @@
   }
   // 메모: 문자열은 "※ ", [번호, 글]은 동그라미 번호(본문 단계)
   (F.notes || []).forEach((t, i) => { const y = F.notesY + i * 40;
-    s += Array.isArray(t) ? dot(286, y - 8, t[0], BLUE) + T(314, y, 24, t[1], { bold: 700 }) : T(270, y, 24, "※ " + t, { fill: "#4a5565" }); });
+    s += Array.isArray(t) ? dot(286, y - 8, t[0], BLUE) + T(314, y, 24, t[1], { bold: 700 }) : t.startsWith("+") ? T(296, y, 24, t.slice(1), { fill: "#4a5565" }) : T(270, y, 24, "※ " + t, { fill: "#4a5565" }); });  // "+"로 시작하면 앞 줄에 이어지는 줄
   s += T(56, H - 30, 21, "개인이 정리한 그림", { fill: "#6b7684" }) + T(844, H - 30, 21, F.foot, { fill: "#6b7684", end: 1 });
   document.body.style.cssText = `margin:0;width:${W}px;height:${H}px;background:#fff`;
   document.body.innerHTML = `<svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg" style="font-family:Pretendard,'Malgun Gothic',sans-serif">${s}</svg>`;
+  // 넘침 검사: 화살표 라벨·작은 글씨는 x 472, 메모·세로 화살표 글씨는 x 872, 상자 글씨는 상자 안(482~842)을 넘으면 제목에 WIDE 표시
+  const bad = [];
+  document.querySelectorAll("text").forEach(t => { if (!t.textContent.trim() || +t.getAttribute("y") < F.applicant.y0) return; const b = t.getBBox(), x = +t.getAttribute("x");
+    const lim = x === 662 ? [482, 842] : x === 686 ? [482, 872] : x < 400 && x > 250 ? [0, t.textContent.startsWith("※") || x === 296 || +t.getAttribute("y") > F.applicant.y1 ? 872 : 472] : null;
+    if (lim && (b.x < lim[0] || b.x + b.width > lim[1])) bad.push(t.textContent); });
+  document.title = bad.length ? "WIDE: " + bad.join(" | ") : "OK";
 })();

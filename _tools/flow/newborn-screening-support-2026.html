@@ -1,0 +1,15 @@
+<!doctype html><html><head><meta charset="utf-8"><title>flow</title></head><body><script>
+// 번호 = 본문 "검사비 신청 순서" 1~3. 지급 주체는 보건소(본문 3단계)
+window.FLOW = { height: 1140, label: "2026 신생아 대사이상·난청 검사비",
+  note: { main: "출생일부터 1년 안에 신청해요", sub: "출생신고 전이면 부모 주소지 보건소에 신청" },
+  applicant: { y0: 340, y1: 950, lines: [] },
+  boxes: [
+    { y: 340, h: 200, lines: [["title", "병원"], ["text", "검사비 영수증·세부내역서"], ["text", "(난청은 검사 결과지도)"]] },
+    { y: 640, h: 310, main: 1, lines: [["title", "보건소"], ["text", "서류 확인"], ["em", "계좌로 지급"]] } ],
+  arrows: [
+    { type: "out", y: 460, n: 1, label: "영수증\n챙기기" },
+    { type: "in", y: 740, n: 2, label: "신청", sub: ["아기 주소지 보건소"] },
+    { type: "out", y: 890, n: 3, label: "받기", sub: ["신청일부터", "한 달 안(원칙)"] } ],
+  notesY: 1010, notes: ["온라인 신청: e보건소 공공보건포털, 아이마중 앱", "난청 검사비는 전국 어느 보건소에서나 신청 가능"],
+  foot: "2026.11.3 기준 · 출처: 보건복지부" };
+</script><script src="flow.js"></script></body></html>

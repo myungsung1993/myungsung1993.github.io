@@ -1,0 +1,12 @@
+<!doctype html><html><head><meta charset="utf-8"><title>flow</title></head><body><script>
+// 번호 = 본문 "어떻게 신청하나요?" 1~4 (3 결정·4 받기는 주체가 본문에 없어 메모로)
+window.FLOW = { height: 860, label: "2026 양육비 선지급제",
+  note: { steps: [[1, "서류 준비"]], sub: "신청서·집행권원 서류·최근 3개월 거래내역 등" },
+  applicant: { y0: 340, y1: 560, lines: [] },
+  boxes: [
+    { y: 340, h: 220, main: 1, lines: [["title", "양육비이행관리원"], ["text", "누리집 온라인 또는 우편"]] } ],
+  arrows: [
+    { type: "in", y: 450, n: 2, label: "신청" } ],
+  notesY: 630, notes: [[3, "결정: 신청받은 날부터 30일 안에 서면 통보"], "조사에 시간이 걸리면 30일 더 늘어날 수 있어요", [4, "받기: 결정되면 매달 계좌로"], "문의: 양육비이행관리원 1644-6621"],
+  foot: "2026.10.26 기준 · 출처: 법령·성평등가족부" };
+</script><script src="flow.js"></script></body></html>

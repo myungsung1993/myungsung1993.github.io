@@ -1,0 +1,15 @@
+<!doctype html><html><head><meta charset="utf-8"><title>flow</title></head><body><script>
+// 번호 = 본문 "어떻게 신청하나요?" 1~4
+window.FLOW = { height: 1200, label: "2027 주거급여",
+  applicant: { y0: 200, y1: 950, lines: [] },
+  boxes: [
+    { y: 200, h: 200, main: 1, lines: [["head", "신청 (중 1곳)"], ["title", "읍·면·동 주민센터"], ["text", "복지로 누리집·앱"]] },
+    { y: 490, h: 190, lines: [["title", "시·군·구"], ["text", "소득인정액 조사"], ["em", "결정"]] },
+    { y: 770, h: 180, lines: [["title", "LH"], ["em", "주택조사"]] } ],
+  arrows: [
+    { type: "in", y: 300, n: 1, label: "신청" },
+    { type: "v", y0: 400, y1: 490, n: 2, label: "" },
+    { type: "v", y0: 680, y1: 770, n: 3, label: "주택조사" } ],
+  notesY: 1010, notes: [[4, "결정·지급: 시·군·구가 결정"], "임차급여는 매달 수급자 명의 계좌로 들어와요", "공공임대는 임대인(LH 등)에게 바로 보낼 수 있어요"],
+  foot: "2026.11.5 기준 · 출처: 법령·복지로" };
+</script><script src="flow.js"></script></body></html>
