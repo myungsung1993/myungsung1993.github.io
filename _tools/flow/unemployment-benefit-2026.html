@@ -1,0 +1,19 @@
+<!doctype html><html><head><meta charset="utf-8"><title>flow</title></head><body><script>
+// 번호 = 본문 "어떻게 신청하나요?" 1~7 (7 입금은 메모로)
+window.FLOW = { height: 1480, label: "2026 실업급여(구직급여)",
+  note: { main: "12개월 기한은 퇴사 다음 날부터 세요", sub: "퇴사하면 바로 준비하는 게 좋아요" },
+  applicant: { y0: 340, y1: 1300, lines: [] },
+  boxes: [
+    { y: 340, h: 190, lines: [["title", "회사"], ["text", "상실신고서·이직확인서"], ["em", "이직확인서 10일 안 발급"]] },
+    { y: 610, h: 330, lines: [["title", "고용24"], ["text", "가입기간·이직확인서 확인"], ["text", "구직 등록"], ["text", "온라인 사전 교육"]] },
+    { y: 1020, h: 260, main: 1, lines: [["title", "거주지 관할 고용센터"], ["text", "수급자격 인정 신청"], ["text", "1~4주마다 실업인정"]] } ],
+  arrows: [
+    { type: "in", y: 440, n: 1, label: "서류 요청" },
+    { type: "in", y: 690, n: 2, label: "수급 자격\n확인" },
+    { type: "in", y: 800, n: 3, label: "구직 등록" },
+    { type: "in", y: 910, n: 4, label: "사전 교육" },
+    { type: "in", y: 1110, n: 5, label: "수급자격\n인정 신청", sub: ["신분증 들고 직접"] },
+    { type: "in", y: 1240, n: 6, label: "실업인정", sub: ["특정 회차 외", "온라인 가능"] } ],
+  notesY: 1380, notes: [[7, "입금: 보통 실업인정 다음 날 본인 계좌로"]],
+  foot: "2026.10.24 기준 · 출처: 고용24·고용보험법" };
+</script><script src="flow.js"></script></body></html>

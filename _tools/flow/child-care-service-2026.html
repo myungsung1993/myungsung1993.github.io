@@ -1,0 +1,17 @@
+<!doctype html><html><head><meta charset="utf-8"><title>flow</title></head><body><script>
+// 번호 = 본문 "어떻게 신청하나요?" 1~4
+window.FLOW = { height: 1290, label: "2026 아이돌봄서비스",
+  note: { steps: [[1, "국민행복카드 준비"]], sub: "정부지원 없이 이용하면 3번부터 해요" },
+  applicant: { y0: 340, y1: 1090, lines: [] },
+  boxes: [
+    { y: 340, h: 200, main: 1, lines: [["head", "정부지원 신청"], ["title", "읍·면사무소·동 주민센터"]] },
+    { y: 620, h: 240, lines: [["title", "아이돌봄 누리집"], ["text", "서약서·동의서 작성"], ["em", "서비스 신청"]] },
+    { y: 940, h: 150, lines: [["title", "지역 서비스 제공기관"]] } ],
+  arrows: [
+    { type: "in", y: 470, n: 2, label: "정부지원\n신청", sub: ["소득유형 판정받기"] },
+    { type: "in", y: 710, n: 3, label: "누리집 가입" },
+    { type: "in", y: 820, n: 4, label: "서비스 신청" },
+    { type: "v", y0: 860, y1: 940, label: "연계" } ],
+  notesY: 1150, notes: ["직장보험 가입 맞벌이·한부모는 복지로 온라인 가능", "문의: 아이돌봄 대표전화 1577-2514"],
+  foot: "2026.10.16 기준 · 출처: 성평등가족부" };
+</script><script src="flow.js"></script></body></html>

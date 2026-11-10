@@ -1,0 +1,15 @@
+<!doctype html><html><head><meta charset="utf-8"><title>flow</title></head><body><script>
+// 번호 = 본문 "어떻게 신청하나요?" 1~4
+window.FLOW = { height: 1060, label: "2027 의료급여",
+  applicant: { y0: 200, y1: 960, lines: [] },
+  boxes: [
+    { y: 200, h: 170, main: 1, lines: [["head", "신청"], ["title", "거주지 읍·면·동 주민센터"]] },
+    { y: 460, h: 240, lines: [["title", "시·군·구"], ["text", "소득인정액 조사"], ["text", "부양의무자 기준 조사"], ["em", "대상·1종·2종 결정"]] },
+    { y: 790, h: 170, lines: [["title", "병원·약국"], ["em", "의료급여로 진료"]] } ],
+  arrows: [
+    { type: "in", y: 285, n: 1, label: "신청" },
+    { type: "v", y0: 370, y1: 460, n: 2, label: "소득·재산 조사" },
+    { type: "out", y: 640, n: 3, label: "결정" },
+    { type: "in", y: 875, n: 4, label: "이용하기", sub: ["본인부담 내기"] } ],
+  foot: "2026.11.7 기준 · 출처: 복지로·의료급여법 시행령" };
+</script><script src="flow.js"></script></body></html>
