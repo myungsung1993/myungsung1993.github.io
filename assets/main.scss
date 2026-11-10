@@ -415,3 +415,9 @@ body {
 .post-content .warn-list > li > strong:first-child { color: #c81e1e; }
 .post-content ol.steps.warn-list > li::before { background: #d62828; }
 .post-content blockquote.warn-box { background: #fdf1f1; border-left-color: #d62828; }
+
+/* 11. 맨 아래 하단 윗선에 앉은 새 여섯 마리 (2026-11-10, assets/brand/char/perch.png 977x243) */
+.site-footer { position: relative; margin-top: 70px; }
+.site-footer::before { content: ""; position: absolute; left: 50%; transform: translateX(-50%); top: -61px; width: 257px; height: 64px;
+  background: url("/assets/brand/char/perch.png") center / contain no-repeat; pointer-events: none; }
+@media (max-width: 600px) { .site-footer { margin-top: 56px; } .site-footer::before { top: -46px; width: 193px; height: 48px; } }

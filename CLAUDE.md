@@ -144,12 +144,13 @@ date: YYYY-MM-DD HH:MM:SS +0900
 
 목적: 정책 글의 딱딱함을 덜고 유입을 늘린다. 숫자·조건 칸은 절대 가리지 않고, 빈칸에만 작게 넣는다.
 
-- **캐릭터**: 지도를 든 파란 새 길잡이(구글 바나나로 사용자 제작). 그림은 `assets/brand/char/`(배경 투명): `guide` 안내 · `hello` 인사 · `happy` 기뻐함 · `talk` 말하기 · `welcome` 환영 · `think` 고민 · `map` 지도 든 전신.
+- **캐릭터**: 지도를 든 파란 새 길잡이(구글 바나나로 사용자 제작). 그림은 `assets/brand/char/`(배경 투명): `guide` 안내 · `hello` 인사 · `happy` 기뻐함 · `talk` 말하기 · `welcome` 환영 · `think` 고민 · `map` 지도 든 전신 · `perch` 나란히 앉은 여섯 마리.
   - 로고·프로필: 지도 든 원형 그림(`assets/images/logo-circle.png` + 흰 글자 "지원길", 인스타·쓰레드 프로필 `assets/brand/profile-circle.png`)
   - 요약 카드(쓰레드 링크 카드): `guide` 기본(`_tools/card.html`이 자동으로 넣음, 다른 포즈는 `char:`). 신청기간 만료 도장 카드에는 넣지 않는다
   - 핵심 요약 상자 오른쪽 위: `talk`(좌우 반전, 글 쪽을 봄) — `assets/js/post-enhance.js`가 자동으로 넣음
   - 신청 흐름도 오른쪽 위: `think`
-  - 인스타 카드: 표지 `hello`, "누가·얼마" `talk`, "놓치기 쉬운 점" `think`, 마지막 장 `welcome`, 새 지원·신청 시작 소식 `happy`
+  - 인스타 카드: 표지 `hello`, "누가·얼마" `talk`, "놓치기 쉬운 점" `think`, 마지막 장 아래쪽에 새 여섯 마리 `perch`, 새 지원·신청 시작 소식 `happy` (`_tools/insta.html`이 자동으로 넣음)
+  - 모든 화면 맨 아래 하단 윗선: 새 여섯 마리 `perch`(`assets/main.scss` 11번). 위쪽 바·본문 사이 여백에는 넣지 않는다(어울리지 않아 사용자와 제외)
   - 홈 소개 영역에는 넣지 않는다(사용자 지정: 글만)
 - **신청 흐름도**: 새 글은 "어떻게 신청하나요?" 바로 아래에 1장 넣는다. 틀은 `_tools/flow/<슬러그>.html`(기존 파일 복사), 그림은 `assets/images/flow/<슬러그>.png`.
   - 번호는 본문 단계 번호와 같게, 단계·기관 이름은 본문 그대로 쓴다(새 정보 금지). fact-checker 검토 대상에 넣는다.
