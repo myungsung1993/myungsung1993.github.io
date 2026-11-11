@@ -70,6 +70,7 @@
   .char { position:absolute; top:70px; right:70px; height:250px; width:auto; }
   .char-wrap { position:absolute; top:60px; right:60px; width:270px; height:270px; border-radius:50%; background:#fff; display:flex; align-items:center; justify-content:center; }
   .char-wrap img { height:220px; width:auto; }
+  .char.face-left, .char-wrap.face-left img { transform:scaleX(-1); }
   .has-char h2, .has-char .step, .has-char .label, .has-char .who { max-width:640px; }
   .perch { position:absolute; left:50%; transform:translateX(-50%); bottom:118px; width:620px; height:auto; }
 </style>
@@ -314,6 +315,21 @@ const decks = {
         rows:[["청년 매입임대", "임대료 시세의 40~50%"], ["행복주택", "임대료 시세의 60~80%"], ["만 19~39세", "미혼 무주택 청년 대상"]] },
       { type:"end", title:"제도별 자세한 조건은\n블로그에서", text:"월세 지원, 전세대출, 공공임대,\n청약통장까지 상황별로 정리했어요",
         link:"jiwongil.kr", source:"출처: 국토교통부, 주택도시기금, LH\n개인이 공식 자료를 정리한 정보예요" }
+    ]
+  },
+
+  "newborn-jeonse-loan-2026": {
+    date: "2026.11.10 기준",
+    slides: [
+      { type:"hero", label:"2026 신생아 특례 전세대출", who:"2년 안에 출산·입양한 무주택 세대주", pre:"신생아 특례 버팀목 금리", amt:"연 1.3~4.3%", badge:"최대 2.4억 원" },
+      { type:"rows", step:"01 · 누가", title:"누가 받을 수 있나요?",
+        rows:[["2년 안에 출산·입양", "대출 접수일 기준 · 입양아는 만 2살 미만 · 임신 중 제외"], ["무주택 세대주", "세대원 모두 집이 없어야 해요"], ["부부합산 1.3억 원 이하", "맞벌이 2억 원(각자 1.3억 원 이하) · 순자산 3.45억 원 이하 (2026년)"]] },
+      { type:"rows", step:"02 · 얼마", title:"얼마나 빌리나요?",
+        rows:[["최대 2.4억 원", "보증금 80%·보증 한도 중 작은 금액"], ["보증금 수도권 5억 원 이하", "수도권 외 4억 원 · 전용 85㎡ 이하"], ["기본 2년 이내", "연장해 최장 12년 · 그 뒤 미성년 자녀 1명당 2년 더 (최장 20년)"]] },
+      { type:"rows", step:"03 · 금리", title:"금리는 얼마인가요?",
+        rows:[["특례금리 연 1.3~4.3%", "부부 연소득·보증금에 따라 · 처음 4년"], ["2년 안에 더 낳으면", "1명당 특례금리 4년 연장 · 최장 12년"], ["지방 주택 -0.2%p", "우대금리 최대 0.5%p · 최저 연 1.0%"]] },
+      { type:"end", title:"신청 기한과\n준비 서류는 블로그에서", text:"잔금일·전입일 중 빠른 날부터 3개월 안 신청,\n특례금리가 끝난 뒤 금리까지 정리했어요",
+        link:"jiwongil.kr", source:"출처: 주택도시기금\n개인이 공식 자료를 정리한 정보예요" }
     ]
   },
 
@@ -632,15 +648,17 @@ if (s.type === "cover") {
           <div class="link">${esc(s.link)}</div><div class="source">${esc(s.source)}</div>${foot}</div>`;
 }
 document.getElementById("root").innerHTML = html;
-// 캐릭터: 표지 hello · 누가·얼마 talk · 놓치기 쉬운 점 think · 마지막 장은 아래쪽에 새 여섯 마리(perch) (CLAUDE.md). 슬라이드에 char:"happy" 처럼 바꾸고, char:"" 면 빼기
+// 캐릭터: 표지 hello · 2장 think · 3장 guide · 4장 talk(반전) · 그 뒤 놓치기 쉬운 점 think · 마지막 장은 아래쪽에 새 여섯 마리(perch) (CLAUDE.md, 2026-11-10 사용자 지정). 슬라이드에 char:"happy" 처럼 바꾸고, char:"" 면 빼기
 const autoChar = s.type === "cover" || s.type === "hero" ? "hello" : s.type === "end" ? "perch"
-  : /놓치기/.test(s.title || "") ? "think" : /누가|얼마/.test(s.step || "") ? "talk" : "";
+  : ({2: "think", 3: "guide", 4: "talk"})[Number(n)] ?? (/놓치기/.test(s.title || "") ? "think" : "");
 const ch = s.char ?? autoChar;
 if (ch) {
   const slide = document.querySelector(".slide"), src = `../assets/brand/char/${ch}.png`;
+  // 오른쪽에 놓이는 캐릭터는 글 쪽(왼쪽)을 보게: 원본이 오른쪽을 보는 포즈만 뒤집는다 (2026-11-10 사용자 지정)
+  const flip = ["hello", "talk", "think"].includes(ch) ? " face-left" : "";
   if (ch !== "perch") slide.classList.add("has-char");
-  slide.insertAdjacentHTML("beforeend", s.type === "hero" ? `<div class="char-wrap char-x"><img src="${src}" alt=""></div>`
-    : ch === "perch" ? `<img class="perch char-x" src="${src}" alt="">` : `<img class="char char-x" src="${src}" alt="">`);
+  slide.insertAdjacentHTML("beforeend", s.type === "hero" ? `<div class="char-wrap char-x${flip}"><img src="${src}" alt=""></div>`
+    : ch === "perch" ? `<img class="perch char-x" src="${src}" alt="">` : `<img class="char char-x${flip}" src="${src}" alt="">`);
 }
 // 넘침 검사: 본문 마지막 요소가 아래 표시줄(foot)과 겹치면 제목에 OVERFLOW 표시 (dump-dom으로 확인)
 document.fonts.ready.then(() => {

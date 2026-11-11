@@ -322,7 +322,7 @@ const cards = {
     label: "2026 신생아 특례 전세대출",
     title: "신생아 특례 버팀목대출",
     stats: [["연 1.3~4.3%", "특례금리 · 기본 4년"], ["최대 2.4억 원", "보증금 80% 이내"], ["1.3억 원", "부부 연소득 · 맞벌이 2억"]],
-    foot: "2026.11.09 기준 · 출처: 주택도시기금"
+    foot: "2026.11.11 기준 · 출처: 주택도시기금"
   },
   "youth-dream-didimdol-loan-2026": {
     label: "2026 청년 주택드림 디딤돌 대출",
@@ -413,7 +413,7 @@ document.getElementById("stats").innerHTML = c.stats
 // 캐릭터(2026-11-10~): 기본은 안내하는 모습(guide). 다른 포즈는 char: "happy" 처럼, 빼려면 char: "". 도장 찍힌 카드에는 넣지 않는다
 const ch = c.char ?? "guide";
 if (ch && !c.expired) {
-  const im = document.createElement("img"); im.className = "char"; im.alt = ""; im.src = "../assets/brand/char/" + ch + ".png";
+  const im = document.createElement("img"); im.className = "char"; if (["hello", "talk", "think"].includes(ch)) im.style.transform = "scaleX(-1)"; im.alt = ""; im.src = "../assets/brand/char/" + ch + ".png"; // 반전: 오른쪽에 놓이니 글 쪽을 보게
   document.querySelector(".card").classList.add("has-char"); document.querySelector(".card").appendChild(im);
 }
 if (c.expired) {

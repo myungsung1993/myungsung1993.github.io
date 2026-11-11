@@ -1,0 +1,17 @@
+<!doctype html><html><head><meta charset="utf-8"><title>flow</title></head><body><script>
+// 번호 = 본문 "어떻게 신청하나요?" 1~6
+window.FLOW = { height: 1270, label: "2026 신생아 특례 버팀목",
+  note: { steps: [[1, "조건 확인"], [2, "전세 계약"], [3, "기한 안에 신청"]], sub: "잔금일·전입일 중 빠른 날부터 3개월(갱신은 갱신일부터)" },
+  applicant: { y0: 340, y1: 1130, lines: [] },
+  boxes: [
+    { y: 340, h: 210, main: 1, lines: [["head", "대출 신청 (중 1곳)"], ["title", "기금e든든 비대면"], ["text", "은행 지점 방문"]] },
+    { y: 640, h: 170, lines: [["title", "주택도시보증공사"], ["text", "(HUG)"], ["em", "자산 심사"]] },
+    { y: 900, h: 230, lines: [["title", "은행 지점"], ["text", "소득·담보 심사"], ["em", "대출 실행"]] } ],
+  arrows: [
+    { type: "in", y: 445, n: 4, label: "대출 신청" },
+    { type: "v", y0: 550, y1: 640, n: 5, label: "자산 심사" },
+    { type: "out", y: 725, dash: 1, n: 5, label: "결과 문자" },
+    { type: "in", y: 980, n: 6, label: "서류 제출" },
+    { type: "out", y: 1085, n: 6, label: "대출 실행" } ],
+  foot: "2026.11.11 기준 · 출처: 주택도시기금" };
+</script><script src="flow.js"></script></body></html>
