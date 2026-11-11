@@ -50,7 +50,8 @@
     }
   }
   // 메모: 문자열은 "※ ", [번호, 글]은 동그라미 번호(본문 단계)
-  (F.notes || []).forEach((t, i) => { const y = F.notesY + i * 40;
+  let ny = F.notesY - 40;
+  (F.notes || []).forEach(t => { const y = ny = (Array.isArray(t) && t[2]) || ny + 40;  // [번호, 글, y]: 단계 순서 자리에 따로 놓을 때(뒤 줄은 그 아래로 이어짐)
     s += Array.isArray(t) ? dot(286, y - 8, t[0], BLUE) + T(314, y, 24, t[1], { bold: 700 }) : t.startsWith("+") ? T(296, y, 24, t.slice(1), { fill: "#4a5565" }) : T(270, y, 24, "※ " + t, { fill: "#4a5565" }); });  // "+"로 시작하면 앞 줄에 이어지는 줄
   s += T(56, H - 30, 21, "개인이 정리한 그림", { fill: "#6b7684" }) + T(844, H - 30, 21, F.foot, { fill: "#6b7684", end: 1 });
   document.body.style.cssText = `margin:0;width:${W}px;height:${H}px;background:#fff`;
