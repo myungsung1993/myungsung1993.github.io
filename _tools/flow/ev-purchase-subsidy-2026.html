@@ -1,0 +1,15 @@
+<!doctype html><html><head><meta charset="utf-8"><title>flow</title></head><body><script>
+// 번호 = 본문 "어떻게 신청하나요?" 1~7 (개인 기준). 5는 주체가 본문에 없어 메모, 6·7은 구매자가 하지 않는 단계라 메모
+window.FLOW = { height: 1240, label: "2026 전기차 구매보조금",
+  note: { steps: [[1, "거주지 공고 확인 (ev.or.kr)"]], sub: "지자체마다 기간이 달라요 · 예산 소진 시 조기 마감" },
+  applicant: { y0: 340, y1: 900, lines: [] },
+  boxes: [
+    { y: 340, h: 170, lines: [["head", "구매계약"], ["title", "제작·수입사"]] },
+    { y: 590, h: 310, main: 1, lines: [["head", "지원신청서 접수"], ["title", "거주지 지자체"], ["text", "제작·수입사 대행 가능"], ["em", "7일 이내 가능 여부 통보"]] } ],
+  arrows: [
+    { type: "in", y: 425, n: 2, label: "구매계약" },
+    { type: "in", y: 690, n: 3, label: "신청서 제출" },
+    { type: "out", y: 830, n: 4, label: "가능 여부\n통보" } ],
+  notesY: 990, notes: [[5, "선정 후 2개월 이내(원칙) 차량 출고·등록"], [6, "출고·등록 후 10일 이내 제작·수입사가 청구"], [7, "지자체가 14일 이내(원칙) 제작·수입사에 지급"], "구매자는 차값에서 보조금을 뺀 금액만 내요"],
+  foot: "2026.11.12 기준 · 출처: 기후에너지환경부 지침" };
+</script><script src="flow.js"></script></body></html>
