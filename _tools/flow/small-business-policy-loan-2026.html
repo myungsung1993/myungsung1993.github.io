@@ -1,0 +1,17 @@
+<!doctype html><html><head><meta charset="utf-8"><title>flow</title></head><body><script>
+// 번호 = 본문 "신청 순서" 1~3. 2단계는 본문 "직접대출과 대리대출" 표 그대로(대리대출 경로를 그리고 직접대출은 메모)
+window.FLOW = { height: 1330, label: "2026 소상공인 정책자금",
+  note: { main: "갚아야 하는 대출(융자)이에요", sub: "접수 중인 자금은 누리집 공지에서 확인하세요" },
+  applicant: { y0: 340, y1: 1050, lines: ["(소상공인)"] },
+  boxes: [
+    { y: 340, h: 220, main: 1, lines: [["head", "신청 (중 1곳)"], ["title", "정책자금 누리집"], ["text", "소진공 지역센터"]] },
+    { y: 650, h: 170, lines: [["title", "신용보증재단"], ["text", "보증서 (보증서부 대출)"]] },
+    { y: 900, h: 150, lines: [["title", "은행"], ["em", "대리대출"]] } ],
+  arrows: [
+    { type: "in", y: 450, n: 1, label: "자금 신청" },
+    { type: "v", y0: 560, y1: 650, n: 2, label: "대상 확인" },
+    { type: "v", y0: 820, y1: 900, label: "보증서" },
+    { type: "out", y: 975, label: "대출" } ],
+  notesY: 1140, notes: ["직접대출은 소진공이 직접 심사해서 대출해요", [3, "대출 뒤 용도 점검 · 다른 용도면 조기 회수"], "문의: 1533-0100 · 1357"],
+  foot: "2026.11.12 기준 · 출처: 중소벤처기업부 공고" };
+</script><script src="flow.js"></script></body></html>
