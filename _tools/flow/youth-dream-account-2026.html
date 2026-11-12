@@ -1,0 +1,12 @@
+<!doctype html><html><head><meta charset="utf-8"><title>flow</title></head><body><script>
+// 번호 = 본문 "어떻게 가입하나요?" 1~3
+window.FLOW = { height: 960, label: "2026 청년 주택드림 청약통장",
+  note: { steps: [[1, "조건 확인"], [2, "소득 서류 준비"]], sub: "소득확인증명서 또는 원천징수영수증 · 통장 사본은 안 돼요" },
+  applicant: { y0: 340, y1: 600, lines: ["(만 19~34세)"] },
+  boxes: [
+    { y: 340, h: 260, main: 1, lines: [["head", "가입"], ["title", "취급 은행"], ["text", "주택도시기금 취급 은행"], ["em", "비과세 대상이면 같이 신청"]] } ],
+  arrows: [
+    { type: "in", y: 470, n: 3, label: "통장 가입" } ],
+  notesY: 690, notes: ["청약통장은 1명당 1계좌만 가질 수 있어요", "이미 청약통장이 있으면 새로 만들지 말고 전환", "높은 금리는 전환 뒤 새로 넣은 돈부터 적용"],
+  foot: "2026.11.12 기준 · 출처: 주택도시기금" };
+</script><script src="flow.js"></script></body></html>
