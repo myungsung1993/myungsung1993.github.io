@@ -1,0 +1,12 @@
+<!doctype html><html><head><meta charset="utf-8"><title>flow</title></head><body><script>
+// 번호 = 본문 "신청 순서" 1~5 (2026년 3차 경기남부 청년 매입임대 공고 예시). 발표 주체는 본문에 없어 3~5는 메모
+window.FLOW = { height: 940, label: "2026 청년 매입임대 (공고 예시)",
+  note: { steps: [[1, "공고 확인"]], sub: "LH청약플러스 · 모집 공고가 날 때만 신청" },
+  applicant: { y0: 340, y1: 600, lines: ["(청년·대학생", "·취업준비생)"] },
+  boxes: [
+    { y: 340, h: 260, main: 1, lines: [["head", "인터넷 청약"], ["title", "LH청약플러스"], ["em", "1주택만 신청"]] } ],
+  arrows: [
+    { type: "in", y: 470, n: 2, label: "청약 신청", sub: ["중복 신청은", "모두 무효"] } ],
+  notesY: 690, notes: [[3, "서류 제출 대상자 발표 → 서류 제출"], [4, "당첨자(예비입주자 순번) 발표"], [5, "계약 (순번이 오면 개별 안내)"], "예시(경기남부 3차): 8.27. 공고 → 11.27. 당첨 발표", "소득·자산은 사회보장정보시스템으로 검증"],
+  foot: "2026.11.12 기준 · 출처: LH" };
+</script><script src="flow.js"></script></body></html>
