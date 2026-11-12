@@ -28,6 +28,7 @@ Jekyll(minima 테마) 블로그이며, GitHub Pages로 배포한다. `main` 브�
    - push 후 빌드 결과를 확인한다: `https://api.github.com/repos/myungsung1993/myungsung1993.github.io/actions/runs?per_page=1`의 `conclusion`이 `success`인지 본다.
 4. 다 쓰면 **팩트체크**를 한다: 글의 모든 숫자·조건을 공식 출처 원문 문장과 하나씩 대조하고, 원문에 없는 내용은 고치거나 뺀다.
    - 글쓴이(메인)의 자체 대조가 끝나면, **독립 검토 에이전트 `fact-checker`**(`.claude/agents/fact-checker.md`)에게 초안을 넘겨 한 번 더 검토받는다.
+     팩트체크는 **Fable 5.2 모델**로만 돌린다(에이전트 머리말 `model: fable`, 2026-11-12 사용자 지정). 다른 작업의 모델은 바꾸지 않는다.
    - 검토 보고의 ❌·⚠️ 항목은 모두 원문을 다시 확인해 반영하거나, 반영하지 않은 이유를 사용자 보고에 적는다.
    - 서브 에이전트는 속도가 아니라 **검증**을 위해 쓴다. 여러 글을 동시에 찍어내는 데 쓰지 않는다.
    팩트체크가 끝나면 **사용자 확인 없이 바로 commit, push** 한다. (사용자 지정, 2026-10-16)
