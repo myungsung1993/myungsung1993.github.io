@@ -1,0 +1,17 @@
+<!doctype html><html><head><meta charset="utf-8"><title>flow</title></head><body><script>
+// 번호 = 본문 "어떻게 신청하나요?" 1~6. 1·2는 신청 전 확인이라 위쪽 메모로
+window.FLOW = { height: 1330, label: "전세사기 최소보장제",
+  note: { steps: [[1, "피해자 유형 확인"], [2, "셀프 검증"]], sub: "결정문 확인 → LH 청약플러스 최소보장(전세피해) 메뉴" },
+  applicant: { y0: 340, y1: 1070, lines: [] },
+  boxes: [
+    { y: 340, h: 230, main: 1, lines: [["head", "신청 (중 1곳)"], ["title", "LH 청약플러스"], ["text", "LH 지역본부"]] },
+    { y: 680, h: 390, lines: [["title", "LH"], ["text", "서류 확인·심사"], ["em", "지급 여부·금액 결정"]] } ],
+  arrows: [
+    { type: "in", y: 455, n: 3, label: "신청서 제출", sub: ["온라인 11.10.~", "지역본부 11.13.~"] },
+    { type: "v", y0: 570, y1: 680, label: "" },
+    { type: "out", y: 760, n: 4, label: "결정·통지", sub: ["90일 안(30일 연장)"] },
+    { type: "in", y: 880, n: 5, label: "이의신청", sub: ["통지 후 30일 안"] },
+    { type: "out", y: 1000, n: 6, label: "지급", sub: ["본인 명의 계좌"] } ],
+  notesY: 1130, notes: ["이의신청은 결과에 이의가 있을 때만"],
+  foot: "2026.11.12 기준 · 출처: 국토교통부·LH" };
+</script><script src="flow.js"></script></body></html>
