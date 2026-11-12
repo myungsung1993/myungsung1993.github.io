@@ -1,0 +1,15 @@
+<!doctype html><html><head><meta charset="utf-8"><title>flow</title></head><body><script>
+// 번호 = 본문 "1. 출산전후휴가 급여 > 어떻게 신청하나요?" 1~4. 승인 주체는 본문에 없어 4는 메모
+window.FLOW = { height: 1130, label: "2026 출산전후휴가 급여",
+  note: { main: "휴가 시작 1개월 뒤 ~ 끝난 날부터 12개월 이내 신청", sub: "30일 단위로 나눠서, 또는 휴가가 끝난 뒤 한꺼번에" },
+  applicant: { y0: 340, y1: 900, lines: ["(근로자)"] },
+  boxes: [
+    { y: 340, h: 200, lines: [["head", "휴가 신청 받음"], ["title", "회사"]] },
+    { y: 680, h: 220, main: 1, lines: [["head", "확인서 접수 · 급여 신청"], ["title", "고용24"]] } ],
+  arrows: [
+    { type: "in", y: 440, n: 1, label: "휴가 신청서", sub: ["의료기관의", "임신 확인서 함께"] },
+    { type: "v", y0: 540, y1: 680, n: 2, label: "휴가 확인서" },
+    { type: "in", y: 800, n: 3, label: "급여 신청" } ],
+  notesY: 990, notes: [[4, "승인되면 보통 평일 기준 14일 이내 입금"], "정부 지원은 30일 기준 최대 220만 원"],
+  foot: "2026.11.12 기준 · 출처: 고용24" };
+</script><script src="flow.js"></script></body></html>
