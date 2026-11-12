@@ -245,7 +245,7 @@ apply_name: "LH 청약플러스"
 
 ## 출처
 
-1. [LH 청약플러스 - 안산신길2 A-6블록 신혼희망타운(공공분양) 입주자모집공고](https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=0000061189&ccrCnntSysDsCd=02&uppAisTpCd=39&aisTpCd=39&mi=1027) (공고일: 2026-10-30, 확인일: 2026-11-10)
-2. [LH 청약플러스 - 시흥거모 A-6블록 신혼희망타운(공공분양) 입주자모집공고](https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=0000061204&ccrCnntSysDsCd=02&uppAisTpCd=39&aisTpCd=39&mi=1027) (공고일: 2026-11-06, 확인일: 2026-11-10)
+1. [LH 청약플러스 - 안산신길2 A-6블록 신혼희망타운(공공분양) 입주자모집공고](https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=0000061189&ccrCnntSysDsCd=02&uppAisTpCd=39&aisTpCd=39&mi=1027) (공고일: 2026-10-30, 확인일: 2026-11-12)
+2. [LH 청약플러스 - 시흥거모 A-6블록 신혼희망타운(공공분양) 입주자모집공고](https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=0000061204&ccrCnntSysDsCd=02&uppAisTpCd=39&aisTpCd=39&mi=1027) (공고일: 2026-11-06, 확인일: 2026-11-12)
 
 > 이 글은 2026년 11월 10일 기준입니다. 소득·자산 기준과 일정은 공고마다 다를 수 있으니 신청 전 해당 단지 입주자모집공고문을 꼭 확인하세요.
