@@ -1,17 +1,17 @@
 <!doctype html><html><head><meta charset="utf-8"><title>flow</title></head><body><script>
-// 번호 = 본문 "어떻게 신청하나요?" 1~6. 3(자산심사)은 본문에 주체가 없어 메모로
+// 번호 = 본문 "어떻게 신청하나요?" 1~6. 3(자산심사)은 본문에 주체가 없어 메모로. 번호는 위에서 아래로 한 번씩만(11-14 사용자 지적)
 window.FLOW = { height: 1330, label: "2026 신생아 특례 디딤돌 대출",
   note: { steps: [[1, "대출조건 확인"]], sub: "신청은 소유권이전등기 전 · 이미 등기했다면 등기 접수 후 3개월 안" },
   applicant: { y0: 340, y1: 1140, lines: [] },
   boxes: [
-    { y: 340, h: 300, main: 1, lines: [["head", "온라인 신청"], ["title", "기금e든든"], ["text", "주택도시보증공사"]] },
-    { y: 740, h: 400, lines: [["title", "취급 은행"], ["text", "우리·국민·신한·농협·하나"], ["text", "소득·담보물 심사"], ["em", "대출 실행"]] } ],
+    { y: 340, h: 170, main: 1, lines: [["head", "대출 신청 (중 1곳)"], ["title", "기금e든든 온라인"], ["text", "은행 방문"]] },
+    { y: 590, h: 170, lines: [["title", "주택도시보증공사"], ["em", "자산심사 결과 문자"]] },
+    { y: 840, h: 300, lines: [["title", "취급 은행"], ["text", "우리·국민·신한·농협·하나"], ["text", "소득·담보물 심사"], ["em", "대출 실행"]] } ],
   arrows: [
-    { type: "in", y: 410, n: 2, label: "대출 신청" },
-    { type: "out", y: 610, n: 4, label: "결과 문자", sub: ["자산심사 결과"] },
-    { type: "in", y: 810, n: 2, label: "은행 방문" },
-    { type: "in", y: 955, n: 5, label: "서류 제출" },
+    { type: "in", y: 425, n: 2, label: "대출 신청" },
+    { type: "out", y: 720, n: 4, label: "결과 문자", sub: ["자산심사 결과"] },
+    { type: "in", y: 930, n: 5, label: "서류 제출" },
     { type: "out", y: 1095, n: 6, label: "대출받기", sub: ["한도 확인 후"] } ],
-  notesY: 1200, notes: [[3, "자산심사 받기", 495]],
+  notesY: 1200, notes: [[3, "자산심사 받기", 562]],
   foot: "2026.11.14 기준 · 출처: 주택도시기금" };
 </script><script src="flow.js"></script></body></html>

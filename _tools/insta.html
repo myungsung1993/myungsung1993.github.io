@@ -693,7 +693,7 @@ if (ch) {
   // 오른쪽에 놓이는 캐릭터는 글 쪽(왼쪽)을 보게: 원본이 오른쪽을 보는 포즈만 뒤집는다 (2026-11-10 사용자 지정)
   const flip = ["hello", "talk", "think"].includes(ch) ? " face-left" : "";
   if (ch !== "perch") slide.classList.add("has-char");
-  slide.insertAdjacentHTML("beforeend", s.type === "hero" ? `<div class="char-wrap char-x${flip}"><img src="${src}" alt=""></div>`
+  slide.insertAdjacentHTML("beforeend", s.type === "hero" || s.type === "cover" ? `<div class="char-wrap char-x${flip}"><img src="${src}" alt=""></div>`
     : ch === "perch" ? `<img class="perch char-x" src="${src}" alt="">` : `<img class="char char-x${flip}" src="${src}" alt="">`);
 }
 // 넘침 검사: 본문 마지막 요소가 아래 표시줄(foot)과 겹치면 제목에 OVERFLOW 표시 (dump-dom으로 확인)

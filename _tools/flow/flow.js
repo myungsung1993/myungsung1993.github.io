@@ -59,7 +59,7 @@
   // 넘침 검사: 화살표 라벨·작은 글씨는 x 472, 메모·세로 화살표 글씨는 x 872, 상자 글씨는 상자 안(482~842)을 넘으면 제목에 WIDE 표시
   const bad = [];
   document.querySelectorAll("text").forEach(t => { if (!t.textContent.trim() || +t.getAttribute("y") < F.applicant.y0) return; const b = t.getBBox(), x = +t.getAttribute("x");
-    const lim = x === 662 ? [482, 842] : x === 686 ? [482, 872] : x < 400 && x > 250 ? [0, t.textContent.startsWith("※") || x === 296 || +t.getAttribute("y") > F.applicant.y1 ? 872 : 472] : null;
+    const lim = x === 662 ? [482, 842] : x === 686 ? [482, 872] : x < 400 && x > 250 ? [0, t.textContent.startsWith("※") || x === 296 || +t.getAttribute("y") > F.applicant.y1 || !F.boxes.some(q => +t.getAttribute("y") > q.y - 10 && +t.getAttribute("y") < q.y + q.h + 30) ? 872 : 472] : null;  // 상자 사이 빈칸의 메모는 오른쪽 끝까지
     if (lim && (b.x < lim[0] || b.x + b.width > lim[1])) bad.push(t.textContent); });
   document.title = bad.length ? "WIDE: " + bad.join(" | ") : "OK";
 })();

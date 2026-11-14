@@ -2,14 +2,13 @@
 // 번호 = 본문 "어떻게 신청하나요?" 1~3
 window.FLOW = { height: 1000, label: "2026 가정양육수당",
   note: { main: "기간 없이 상시 신청할 수 있어요", sub: "어린이집·유치원에 보내기 시작하면 변경 신청 필수" },
-  applicant: { y0: 340, y1: 830, lines: [] },
+  applicant: { y0: 340, y1: 890, lines: [] },
   boxes: [
     { y: 340, h: 200, main: 1, lines: [["head", "신청 (중 1곳)"], ["title", "읍·면·동 주민센터"], ["text", "복지로·정부24 온라인"]] },
-    { y: 630, h: 200, lines: [["title", "시·군·구"], ["text", "자격 확인"], ["em", "결정·입금"]] } ],
+    { y: 690, h: 200, lines: [["title", "시·군·구"], ["text", "자격 확인"], ["em", "결정·입금"]] } ],
   arrows: [
     { type: "in", y: 440, n: 1, label: "신청" },
-    { type: "v", y0: 540, y1: 630, label: "" },
-    { type: "out", y: 750, n: 3, label: "결정·입금", sub: ["매월 25일"] } ],
-  notesY: 900, notes: [[2, "서류: 사회보장급여 신청(변경)서, 통장 사본"]],
+    { type: "out", y: 810, n: 3, label: "결정·입금", sub: ["매월 25일"] } ],
+  notesY: 600, notes: [[2, "서류: 사회보장급여 신청(변경)서,", 600], "+통장 사본"],
   foot: "2026.10.28 기준 · 출처: 교육부·복지로·보조금24" };
 </script><script src="flow.js"></script></body></html>

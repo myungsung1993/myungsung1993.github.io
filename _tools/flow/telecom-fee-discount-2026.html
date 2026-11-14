@@ -1,15 +1,15 @@
 <!doctype html><html><head><meta charset="utf-8"><title>flow</title></head><body><script>
 // 번호 = 본문 "어떻게 신청하나요?" 1~4 (3 동의는 메모로)
-window.FLOW = { height: 1110, label: "취약계층 통신요금 감면",
-  applicant: { y0: 200, y1: 920, lines: [] },
+window.FLOW = { height: 1160, label: "취약계층 통신요금 감면",
+  applicant: { y0: 200, y1: 970, lines: [] },
   boxes: [
     { y: 200, h: 240, main: 1, lines: [["head", "신청 (중 편한 곳)"], ["title", "통신사 대리점"], ["text", "주민센터"], ["text", "복지로·정부24 온라인"]] },
     { y: 520, h: 150, lines: [["title", "휴대전화 1523"], ["em", "대상 확인 후 신청"]] },
-    { y: 750, h: 170, lines: [["title", "시·군·구청 또는 통신사"], ["em", "확인 후 감면 적용"]] } ],
+    { y: 800, h: 170, lines: [["title", "시·군·구청 또는 통신사"], ["em", "확인 후 감면 적용"]] } ],
   arrows: [
     { type: "in", y: 320, n: 1, label: "신청할 곳\n고르기" },
     { type: "in", y: 595, n: 2, label: "1523 전화" },
-    { type: "out", y: 835, n: 4, label: "심사·감면" } ],
-  notesY: 980, notes: [[3, "자격 확인 동의: 신청할 때, 자격 정보 조회에 동의"], "문의: 1523(통신사 ARS), 과기정통부 1335"],
+    { type: "out", y: 885, n: 4, label: "심사·감면" } ],
+  notesY: 1030, notes: ["문의: 1523(통신사 ARS), 과기정통부 1335", [3, "자격 확인 동의: 신청할 때,", 718], "+자격 정보 조회에 동의"],
   foot: "2026.11.8 기준 · 출처: 과기정통부 고시·복지로·정부24" };
 </script><script src="flow.js"></script></body></html>
