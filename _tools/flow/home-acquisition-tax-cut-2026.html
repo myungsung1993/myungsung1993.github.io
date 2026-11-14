@@ -1,0 +1,13 @@
+<!doctype html><html><head><meta charset="utf-8"><title>flow</title></head><body><script>
+// 번호 = 본문 "어떻게 신청하나요?" 1~4. 1·2는 신청 전(주황 상자), 3 신고·감면 신청, 4 납부. 위→아래 한 번씩
+window.FLOW = { height: 960, label: "2026 주택 취득세 감면",
+  note: { steps: [[1, "감면 조건 확인"], [2, "주택 취득"]], sub: "생애최초·출산 둘 다 해당하면 감면액이 큰 것 하나만" },
+  applicant: { y0: 340, y1: 760, lines: [] },
+  boxes: [
+    { y: 340, h: 420, main: 1, lines: [["head", "주택이 있는 곳"], ["title", "시·군·구"], ["text", "취득세 신고 접수"], ["text", "감면신청서·증명 서류"], ["em", "감면 적용"]] } ],
+  arrows: [
+    { type: "in", y: 470, n: 3, label: "감면 신청", sub: ["취득세 신고 때", "취득 후 60일 안"] },
+    { type: "in", y: 680, n: 4, label: "세액 납부", sub: ["감면 적용 후"] } ],
+  notesY: 830, notes: ["등기를 먼저 하면 등기 신청 날까지 신고·납부", "3년 안에 팔거나 세를 주면 감면액 추징"],
+  foot: "2026.11.15 기준 · 출처: 지방세특례제한법·지방세법" };
+</script><script src="flow.js"></script></body></html>
