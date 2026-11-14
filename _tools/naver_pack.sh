@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # 네이버 블로그 붙여넣기 묶음 만들기 (2026-11-07 사용자 확정 방식)
 # 사용법: bash _tools/naver_pack.sh <출력 폴더> <슬러그> <폴더 이름> [<슬러그> <폴더 이름> ...]
-#   예) bash _tools/naver_pack.sh "$HOME/OneDrive/바탕 화면/네이버예약_1118-1127" basic-pension-2026 11-18_기초연금
+#   예) bash _tools/naver_pack.sh "$HOME/Desktop/네이버예약_1118-1127" basic-pension-2026 11-18_기초연금
 # 만드는 것: <출력 폴더>/<폴더 이름>/한번에복사.html (제목·태그 복사 버튼 + 사진·본문 한 번에 복사)
 #           사진은 사이트에 올라간 인스타 카드(https://jiwongil.kr/assets/insta/<슬러그>/n.png)를 쓰므로 먼저 push해 둔다.
 # 원고: _naver/<슬러그>/post.txt ([제목] [본문] [태그], 본문 속 [사진 n], 신청 흐름도는 [흐름도 사이트슬러그] 한 줄 — 2026-11-10~)
@@ -16,7 +16,8 @@ while [ $# -ge 2 ]; do
   tags=$(awk '/^\[태그\]/{getline; print; exit}' "$src")
   cat=$(awk '/^\[카테고리\]/{getline; print; exit}' "$src")
   catline=""; [ -n "$cat" ] && catline="<p><b>0. 카테고리</b> <b style=\"color:#c2410c\">$cat</b> (발행 설정에서 선택)</p>"
-  body=$(awk '/^\[본문\]/{f=1;next} /^\[(카테고리|태그)\]/{f=0} f' "$src" | sed -E 's/&/\&amp;/g; s/</\&lt;/g; s#^\[사진 ([0-9]+)\]$#<p><img src="https://jiwongil.kr/assets/insta/'"$s"'/\1.png" width="540"></p>#; t; s#^\[흐름도 ([a-z0-9-]+)\]$#<p><img src="https://jiwongil.kr/assets/images/flow/\1.png" width="540"></p>#; t; s#^$#<p>\&nbsp;</p>#; t; s#(https://[^ ]+)#<a href="\1">\1</a>#g; s#^(.*)$#<p>\1</p>#')
+  body=$(awk '/^\[본문\]/{f=1;next} /^\[(카테고리|태그)\]/{f=0} f' "$src" | sed -E 's/&/\&amp;/g; s/</\&lt;/g; s#^\[사진 ([0-9]+)\]$#<p><img src="https://jiwongil.kr/assets/insta/'"$s"'/\1.png" width="540"></p>#; t; s#^\[흐름도 ([a-z0-9-]+)\]$#<p><img src="https://jiwongil.kr/assets/images/flow/\1.png" width="540"></p>#; t; s#^$#<p>\&nbsp;</p>#; t; s|^■ (.*)$|<p><span style="font-size:19px"><b style="color:#1a6fd1">■ \1</b></span></p>|; t; s#(https://[^ ]+)#<a href="\1">\1</a>#g; s#^(.*)$#<p>\1</p>#; s#^(<p>👉 .*</p>)$#\1<p><a href="https://jiwongil.kr"><img src="https://jiwongil.kr/assets/brand/naver-footer.png" width="540"></a></p>#')
+  # 서식(11-14): "■ 소제목" 줄은 크고 굵은 파란 글씨, 사이트 링크(👉) 줄 아래에 공통 배너(_tools/naver_banner.html → assets/brand/naver-footer.png, 누르면 사이트)
   # 주소를 <a>로 감싼다: HTML로 붙여넣으면 네이버가 글자 주소를 자동으로 링크로 바꾸지 않는다(11-09 확인).
   # 점선 테두리는 복사 영역(#copy) 바깥 .frame에 둔다. 안에 두면 네이버 본문에 테두리가 같이 붙는다(11-07 확인).
   cat > "$d/한번에복사.html" <<EOF
