@@ -1,0 +1,16 @@
+<!doctype html><html><head><meta charset="utf-8"><title>flow</title></head><body><script>
+// 번호 = 본문 "어떻게 신청하나요?" 1~3
+window.FLOW = { height: 1060, label: "2026 어린이집 보육료",
+  note: { main: "상시 신청, 입소 전이나 입소와 동시에", sub: "양육수당·부모급여(현금)·유아학비를 받고 있으면 변경 신청" },
+  applicant: { y0: 340, y1: 990, lines: [] },
+  boxes: [
+    { y: 340, h: 200, main: 1, lines: [["head", "신청 (중 1곳)"], ["title", "복지로 온라인·앱"], ["text", "읍·면·동 주민센터"]] },
+    { y: 590, h: 170, lines: [["title", "시·군·구청"], ["em", "조사·결정"]] },
+    { y: 820, h: 170, lines: [["title", "어린이집"], ["em", "보육료 입금"]] } ],
+  arrows: [
+    { type: "in", y: 440, n: 1, label: "보육료 신청", sub: ["입소 전에"] },
+    { type: "out", y: 675, n: 2, label: "지원 결정" },
+    { type: "in", y: 905, n: 3, label: "카드로 결제", sub: ["국민행복카드"] } ],
+  notesY: 1040, notes: [],
+  foot: "2026.11.15 기준 · 출처: 교육부·복지로·보조금24" };
+</script><script src="flow.js"></script></body></html>
