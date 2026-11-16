@@ -1,0 +1,15 @@
+<!doctype html><html><head><meta charset="utf-8"><title>flow</title></head><body><script>
+// 번호 = 본문 "어떻게 신청하나요?" ①② (②의 고용24는 '한눈에 보기' 신청 칸). 확인서는 회사 발급(근로자 요청 시)이라 번호 없는 out 화살표
+window.FLOW = { height: 1200, label: "2026 육아기 근로시간 단축",
+  note: { main: "회사에는 단축 시작 30일 전까지 신청", sub: "급여는 단축 시작 1개월 후 ~ 끝난 뒤 12개월 안에 신청" },
+  applicant: { y0: 360, y1: 960, lines: ["(근로자)"] },
+  boxes: [
+    { y: 360, h: 260, lines: [["head", "단축 신청 받음"], ["title", "회사"], ["text", "확인서 발급"]] },
+    { y: 740, h: 220, main: 1, lines: [["head", "급여 신청 접수"], ["title", "고용24"]] } ],
+  arrows: [
+    { type: "in", y: 430, n: 1, label: "단축 신청", sub: ["자녀·기간·출퇴근", "시간 적은 문서"] },
+    { type: "out", y: 570, dash: 1, label: "확인서 받기", sub: ["요청하면 발급"] },
+    { type: "in", y: 820, n: 2, label: "급여 신청", sub: ["매달, 그달 몫은", "다음 달 말일까지", "확인서는", "처음 1회만"] } ],
+  notesY: 1050, notes: ["서류 양식: 고용24 → 자료실 → 서식자료실", "문의: 고용노동부 고객상담센터 1350"],
+  foot: "2026.11.16 기준 · 출처: 고용노동부" };
+</script><script src="flow.js"></script></body></html>
