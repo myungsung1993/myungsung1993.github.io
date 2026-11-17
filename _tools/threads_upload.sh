@@ -12,7 +12,7 @@
 #   bash _tools/threads_upload.sh preview <슬러그>  # 보낼 글·링크·글자 수만 보여 줌 (게시하지 않음)
 #   bash _tools/threads_upload.sh post <슬러그>     # 글 + 블로그 링크 카드 게시 (팩트체크 반영 후)
 #   bash _tools/threads_upload.sh views [개수]      # 내 게시물 조회수 많은 순 (주제 고르기용, 기본 최근 100개)
-#   bash _tools/threads_upload.sh comments [개수]   # 최근 게시물(기본 10개)에 달린 남의 댓글 (답글 안 단 것에 * 표시)
+#   bash _tools/threads_upload.sh comments [개수]   # 최근 게시물(기본 10개)에 달린 남의 댓글(답글의 답글까지) (답글 안 단 것에 * 표시)
 #   bash _tools/threads_upload.sh reply <댓글ID>    # ~/.policy-blog/threads_replies/<댓글ID>.txt 를 답글로 게시 (팩트체크 반영 후)
 #   bash _tools/threads_upload.sh home-reply-all   # 예전 게시물 중 홈 링크 댓글이 없는 글에 3분 간격으로 댓글 달기
 #   bash _tools/threads_upload.sh refresh          # 장기 토큰 갱신 (60일 만료 전, 발급 24시간 뒤부터 가능)
@@ -167,7 +167,7 @@ const get=u=>fetch(API+u+(u.includes("?")?"&":"?")+"access_token="+TOKEN).then(r
     r="$(cr -s -m 30 -G "$API/me/threads" --data-urlencode "fields=id" --data-urlencode "limit=$n" --data-urlencode "access_token=$TOKEN")"
     fail_if_error "$r"
     for pid in $(printf '%s' "$r" | grep -o '"id":"[0-9]*"' | cut -d'"' -f4); do
-      cr -s -m 30 -G "$API/$pid/replies" --data-urlencode "fields=id,text,username,timestamp" --data-urlencode "access_token=$TOKEN" |
+      cr -s -m 30 -G "$API/$pid/conversation" --data-urlencode "fields=id,text,username,timestamp" --data-urlencode "access_token=$TOKEN" |
         PID="$pid" ME="$me" DONE="$done_dir" node "$ROOT/_tools/threads_comments.js"
     done
     ;;
