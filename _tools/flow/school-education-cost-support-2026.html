@@ -1,0 +1,19 @@
+<!doctype html><html><head><meta charset="utf-8"><title>flow</title></head><body><script>
+// 번호 = 본문 "어떻게 신청하나요?" 1~5. 위에서 아래로 한 번씩. 온라인 창구(바우처 누리집)와 배정 기관(한국장학재단)은 상자 분리
+window.FLOW = { height: 1560, label: "2026 초중고 교육급여·교육비",
+  note: { main: "연중 신청, 신청한 날부터 지원", sub: "이미 지원받는 학생은 다시 신청 안 해도 돼요" },
+  applicant: { y0: 340, y1: 1440, lines: [] },
+  boxes: [
+    { y: 340, h: 200, main: 1, lines: [["head", "신청 (중 1곳)"], ["title", "읍·면·동 주민센터"], ["text", "복지로 · 교육비 원클릭"]] },
+    { y: 630, h: 150, lines: [["title", "시·군·구"], ["em", "소득·재산 조사"]] },
+    { y: 840, h: 170, lines: [["title", "학교(교육청)"], ["text", "또는 시·군·구"], ["em", "지원 여부 결정"]] },
+    { y: 1070, h: 150, lines: [["title", "교육급여 바우처 누리집"], ["text", "온라인"]] },
+    { y: 1290, h: 150, lines: [["title", "한국장학재단"], ["em", "이용권 배정"]] } ],
+  arrows: [
+    { type: "in", y: 440, n: 1, label: "신청" },
+    { type: "v", y0: 540, y1: 630, n: 2, label: "조사" },
+    { type: "out", y: 925, n: 3, label: "결과 알림" },
+    { type: "in", y: 1145, n: 4, label: "이용권 신청", sub: ["새 교육급여 수급자"] },
+    { type: "out", y: 1365, n: 5, label: "이용권 받기" } ],
+  foot: "2026.11.17 기준 · 출처: 교육부·경기도교육청·복지로" };
+</script><script src="flow.js"></script></body></html>
