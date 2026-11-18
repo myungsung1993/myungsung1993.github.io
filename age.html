@@ -1,0 +1,32 @@
+---
+layout: page
+title: 아이 나이별로 받는 지원
+description: "임신 준비부터 초등학생까지, 아이 나이에 따라 챙길 정부 지원을 순서대로 모았어요."
+permalink: /age/
+---
+{%- comment -%} 단계와 글 목록은 _data/age_timeline.yml. 제목은 글 머리말에서 가져오고 없는 글은 건너뜀 {%- endcomment -%}
+<div class="tool-head">
+  <img src="{{ "/assets/images/tools/age.jpg" | relative_url }}" alt="" width="84" height="84">
+  <p>임신 준비부터 초등학생까지, 그때 챙길 지원을 순서대로 모았어요. 누르면 자세한 글로 가요.</p>
+</div>
+
+<div class="age-timeline">
+{%- for st in site.data.age_timeline %}
+  <section class="age-stage">
+    <h2>{{ st.stage }}</h2>
+    <p class="age-when">{{ st.when }}</p>
+    <div class="age-items">
+    {%- for s in st.slugs %}
+      {%- assign p = site.posts | where: "slug", s | first %}
+      {%- if p %}
+      {%- assign main_title = p.title | split: ": " | first %}
+      {%- assign sub_title = p.title | remove_first: main_title | remove_first: ": " %}
+      <a class="age-item" href="{{ p.url | relative_url }}"><b>{{ main_title | escape }}</b>{% if sub_title != "" %}<span>{{ sub_title | escape }}</span>{% endif %}</a>
+      {%- endif %}
+    {%- endfor %}
+    </div>
+  </section>
+{%- endfor %}
+</div>
+
+<p class="tool-foot">대상과 금액은 글마다 기준일이 달라요. 신청 전에 각 글의 공식 출처를 꼭 확인하세요.</p>

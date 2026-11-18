@@ -1,0 +1,23 @@
+# 아이 나이별 지원(/age/) 단계와 글 목록. slug = _posts 파일명에서 날짜를 뺀 부분.
+# 글 제목·링크는 글 머리말에서 자동으로 가져오고, 아직 없는 글(slug)은 건너뛴다.
+- stage: 임신 준비
+  when: 결혼·나이 조건은 글마다 확인
+  slugs: [preconception-fertility-test-2026, infertility-treatment-support-2026, fertility-preservation-support-2026]
+- stage: 임신 중
+  when: 입원·청소년산모·독감 접종
+  slugs: [high-risk-pregnancy-medical-support-2026, teen-mother-medical-support-2026, flu-vaccination-2026]
+- stage: 출산 직후
+  when: 첫만남이용권·부모급여·출산휴가·육아휴직 급여(육아휴직은 만 8세 이하까지)·검사비·출산·입양 2년 안 대출
+  slugs: [birth-support-2026, leave-pay-2026, uninsured-maternity-benefit-2026, newborn-screening-support-2026, premature-infant-medical-support-2026, newborn-jeonse-loan-2026, newborn-home-loan-2026]
+- stage: 0~2세
+  when: 어린이집·시간제보육·기저귀·분유 (개월 수 조건은 글에서 확인)
+  slugs: [childcare-fee-support-2026, hourly-childcare-2026, diaper-formula-support-2026]
+- stage: 3~5세
+  when: 유치원·어린이집 누리과정·집에서 키울 때(24개월부터)
+  slugs: [kindergarten-tuition-support-2026, childcare-fee-support-2026, home-care-allowance-2026]
+- stage: 초등학생
+  when: 방과후 돌봄·교육비
+  slugs: [ondongne-elementary-care-2026, school-education-cost-support-2026]
+- stage: 여러 나이에 걸쳐
+  when: 만 12세 이하 돌봄·보청기·근로시간 단축, 만 18세 미만 한부모·양육비
+  slugs: [child-care-service-2026, child-hearing-aid-support-2026, reduced-hours-childcare-2026, single-parent-child-support-2026, child-support-advance-payment-2026]

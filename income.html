@@ -1,0 +1,76 @@
+---
+layout: page
+title: 소득 기준표
+description: "가구원 수를 고르면 생계·주거·교육급여, 한부모 아동양육비 등 제도별 소득 기준 금액을 한눈에 볼 수 있어요."
+permalink: /income/
+---
+{%- comment -%} 숫자는 모두 _data/income.yml(공식 원문 대조). 금액표가 없는 제도·연도만 중위소득×비율로 계산하고 "계산값" 표시 {%- endcomment -%}
+<div class="tool-head">
+  <img src="{{ "/assets/images/tools/income.jpg" | relative_url }}" alt="" width="84" height="84">
+  <p>가구원 수를 고르면 제도별 소득 기준 금액이 나와요. 소득을 계산하는 방식은 제도마다 달라요.</p>
+</div>
+
+<div class="inc-ctrl">
+  <label for="inc-size">가구원 수</label>
+  <select id="inc-size">
+    <option value="1">1인 가구</option><option value="2">2인 가구</option><option value="3" selected>3인 가구</option>
+    <option value="4">4인 가구</option><option value="5">5인 가구</option><option value="6">6인 가구</option>
+  </select>
+  <div class="inc-seg" role="group" aria-label="기준 연도">
+    <button type="button" data-year="2026" aria-pressed="true">2026년</button>
+    <button type="button" data-year="2027" aria-pressed="false">2027년</button>
+  </div>
+</div>
+
+<p class="inc-median" id="inc-median"></p>
+<div class="inc-list" id="inc-list"></div>
+
+<p class="inc-note">생계·의료·주거·교육급여와 한부모 아동양육비는 월급만이 아니라 재산을 소득으로 바꾼 금액까지 더한 <b>소득인정액</b>으로 비교해요. 제도마다 소득을 계산하는 방식과 나이·가구 같은 다른 조건이 달라서, 이 표만으로 자격이 정해지지는 않아요. 자세한 조건은 각 글에서, 실제 자격은 주민센터나 복지로에서 확인하세요.</p>
+
+<h2>다른 소득 기준을 쓰는 제도</h2>
+<div class="inc-others" id="inc-others"></div>
+
+<p class="tool-foot">기준 중위소득: 보건복지부 보도자료(2026.7.28.)·고시. 제도별 근거는 각 글의 출처 목록과 공식 고시·공고에 있어요. 공식 금액표가 있으면 그대로 쓰고, 없으면 기준 중위소득에 비율을 곱해 원 단위 미만을 반올림한 값에 "계산값"이라고 적었어요. 확인일 {{ site.data.income.checked }}.</p>
+
+<script>
+  (function () {
+    var D = {{ site.data.income | jsonify }};
+    var postUrl = function (slug) { var m = slug.match(/^(\d{4})-(\d{2})-(\d{2})-(.+)$/); return m ? "{{ "/" | relative_url }}" + m[1] + "/" + m[2] + "/" + m[3] + "/" + m[4] + "/" : "#"; };
+    var won = function (v) { var m = Math.floor(v / 10000), r = v % 10000; return (m ? m.toLocaleString("ko-KR") + "만" + (r ? " " + r.toLocaleString("ko-KR") + "원" : " 원") : r.toLocaleString("ko-KR") + "원"); };
+    var esc = function (s) { return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;"); };
+    var sizeEl = document.getElementById("inc-size"), year = 2026;
+    var segs = document.querySelectorAll(".inc-seg button");
+
+    function render() {
+      var n = +sizeEl.value, med = D.median[year][n - 1];
+      document.getElementById("inc-median").innerHTML = year + "년 <b>" + n + "인 가구</b> 기준 중위소득은 월 <b>" + won(med) + "</b>이에요.";
+      document.getElementById("inc-list").innerHTML = D.programs.map(function (p) {
+        var head = '<a href="' + postUrl(p.slug) + '">' + esc(p.name) + '</a><small>' + esc(p.basis) + (p.note ? " · " + esc(p.note) : "") + '</small>';
+        var amt;
+        if (p.years.indexOf(year) < 0) {
+          amt = '<span class="inc-none">' + year + '년 기준 발표 전</span>';
+        } else {
+          var list = p.amounts && p.amounts[year], v = list ? list[n - 1] : undefined;
+          if (list && v === null) amt = '<span class="inc-none">' + n + '인 기준 없음</span>';
+          else if (list) amt = '월 ' + won(v) + ' 이하';
+          else amt = '월 ' + won(Math.round(med * p.pct / 100)) + ' 이하<em>계산값</em>' + (p.amounts && !p.amounts[year] ? '<small>' + year + '년 사업안내 발표 전</small>' : '');
+        }
+        return '<div class="inc-row"><div class="inc-name">' + head + '</div><div class="inc-amt">' + amt + '<small>중위소득 ' + p.pct + '%</small></div></div>';
+      }).join("");
+      document.getElementById("inc-others").innerHTML = D.others.map(function (o) {
+        var extra = "";
+        if (o.table) extra = '<span class="inc-tbl">' + (n <= 3 ? '3인 이하' : n + '인') + ' 가구: ' + o.table.map(function (t) { return esc(t.label) + " 월 " + won(t.amounts[n - 1]); }).join(" · ") + '</span>';
+        return '<div class="inc-other"><a href="' + postUrl(o.slug) + '">' + esc(o.name) + '</a><span>' + esc(o.rule) + ' (' + o.year + '년)</span>' + extra + (o.note ? '<span>' + esc(o.note) + '</span>' : "") + '</div>';
+      }).join("");
+    }
+    segs.forEach(function (b) {
+      b.addEventListener("click", function () {
+        year = +b.getAttribute("data-year");
+        segs.forEach(function (x) { x.setAttribute("aria-pressed", x === b ? "true" : "false"); });
+        render();
+      });
+    });
+    sizeEl.addEventListener("change", render);
+    render();
+  })();
+</script>

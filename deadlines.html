@@ -1,0 +1,50 @@
+---
+layout: page
+title: 신청 마감 달력
+description: "지원금 신청 마감일을 날짜순으로 모았어요. 가까운 마감부터 보여 줘요."
+permalink: /deadlines/
+---
+{%- comment -%} 글 머리말 deadline·deadline_note에서 자동으로 만듦. 남은 날·지난 모집 구분은 방문자 브라우저 날짜로 {%- endcomment -%}
+<div class="tool-head">
+  <img src="{{ "/assets/images/tools/deadlines.jpg" | relative_url }}" alt="" width="84" height="84">
+  <p>글마다 적어 둔 신청 마감일을 날짜순으로 모았어요. 홈의 "신청 마감 다가와요"는 가까운 것만, 여기는 전부 보여 줘요.</p>
+</div>
+
+{%- assign dl_posts = site.posts | where_exp: "p", "p.deadline" | sort: "deadline" %}
+<div class="dl-list">
+{%- for p in dl_posts %}
+  {%- assign main_title = p.title | split: ": " | first %}
+  <a class="dl-row" href="{{ p.url | relative_url }}" data-deadline="{{ p.deadline | date: '%Y-%m-%d' }}">
+    <span class="dl-date"><b>{{ p.deadline | date: "%-d" }}</b><span>{{ p.deadline | date: "%Y.%-m." }}</span></span>
+    <span class="dl-name"><b>{{ main_title | escape }}</b>{% if p.deadline_open %}<span>{{ p.deadline_open | strip_html }}</span>{% elsif p.deadline_note %}<span>{{ p.deadline_note | escape }}</span>{% endif %}</span>
+    <span class="dday"></span>
+  </a>
+{%- endfor %}
+</div>
+<p class="dl-empty" hidden>지금 마감을 앞둔 모집이 없어요.</p>
+
+<details class="dl-past-box" hidden>
+  <summary>이미 끝난 모집 보기</summary>
+  <div class="dl-past"></div>
+</details>
+
+<p class="tool-foot">마감일은 각 글에서 공식 공고·안내로 확인한 날짜예요. 제도에 따라 예산이 떨어지면 일찍 끝나기도 하니 신청 전에 공고를 꼭 확인하세요.</p>
+
+<script>
+  (function () {
+    var now = new Date(), today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    function left(s) { var d = s.split("-"); return Math.round((new Date(+d[0], +d[1] - 1, +d[2]) - today) / 864e5); }
+    var list = document.querySelector(".dl-list"), past = document.querySelector(".dl-past"), box = document.querySelector(".dl-past-box");
+    var rows = Array.prototype.slice.call(document.querySelectorAll(".dl-row")), open = 0, closed = [];
+    rows.forEach(function (r) {
+      var n = left(r.getAttribute("data-deadline")), b = r.querySelector(".dday");
+      if (n < 0) { b.textContent = "마감"; r.classList.add("is-past"); closed.push(r); return; }
+      b.textContent = n === 0 ? "오늘 마감" : "D-" + n;
+      if (n <= 14) b.classList.add("is-near");
+      open++;
+    });
+    closed.reverse().forEach(function (r) { past.appendChild(r); });
+    box.hidden = closed.length === 0;
+    document.querySelector(".dl-empty").hidden = open > 0;
+  })();
+</script>

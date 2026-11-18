@@ -30,6 +30,12 @@ layout: default
     </nav>
   </section>
 
+  <nav class="tool-tiles" aria-label="지원금 찾기 도구">
+    <a class="tool-tile" href="{{ "/age/" | relative_url }}"><span class="tool-tile-txt"><b>아이 나이별 지원</b><span>임신 준비부터 초등까지</span></span><img src="{{ "/assets/images/tools/age.jpg" | relative_url }}" alt="" width="64" height="64"></a>
+    <a class="tool-tile" href="{{ "/income/" | relative_url }}"><span class="tool-tile-txt"><b>소득 기준표</b><span>가구원 수별 기준 금액</span></span><img src="{{ "/assets/images/tools/income.jpg" | relative_url }}" alt="" width="64" height="64"></a>
+    <a class="tool-tile" href="{{ "/deadlines/" | relative_url }}"><span class="tool-tile-txt"><b>신청 마감 달력</b><span>마감일 날짜순 모음</span></span><img src="{{ "/assets/images/tools/deadlines.jpg" | relative_url }}" alt="" width="64" height="64"></a>
+  </nav>
+
   <div class="home-search" role="search">
     <label for="post-search" class="home-search-label">지원금 검색</label>
     <input type="search" id="post-search" placeholder="예: 월세, 기초생활수급자, 출산" autocomplete="off" enterkeyhint="search">

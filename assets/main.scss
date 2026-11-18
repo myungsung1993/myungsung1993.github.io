@@ -197,6 +197,101 @@ body {
   &.is-active { outline: 3px solid #ffd43b; outline-offset: 2px; }
 }
 
+// 도구 3칸 (분야 타일과 검색 사이, 2026-11-18 사용자 지정: 어미새·계산기·달력 그림)
+// 그림이 흰 배경 JPG라 흰 원 안에 넣음(인스타 표지와 같은 방식)
+.tool-tiles {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  margin: 0 0 22px;
+}
+.tool-tile {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  gap: 6px;
+  padding: 12px 6px;
+  border: 1px solid #d6e2f0;
+  border-radius: 16px;
+  background: #fff;
+  color: #1b2430;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(20, 60, 120, 0.08);
+  &:hover { text-decoration: none; border-color: $brand-color; }
+  b { display: block; font-size: 14px; font-weight: 800; line-height: 1.3; }
+  .tool-tile-txt > span { display: none; }
+  img { width: 60px; height: 60px; border-radius: 50%; object-fit: contain; background: #fff; }
+  @media (min-width: 700px) {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 14px 16px;
+    text-align: left;
+    b { font-size: 17px; }
+    .tool-tile-txt > span { display: block; margin-top: 3px; font-size: 13px; color: #5b6676; }
+    img { width: 68px; height: 68px; }
+  }
+}
+
+// 도구 페이지 공통 (/age/, /income/, /deadlines/)
+.tool-head {
+  display: flex; align-items: center; gap: 14px; margin: 0 0 18px;
+  img { flex: 0 0 auto; width: 84px; height: 84px; border-radius: 50%; object-fit: contain; background: #fff; border: 1px solid #e3e8ef; }
+  p { margin: 0; color: #3a4553; }
+}
+.tool-foot { margin-top: 24px; font-size: 13px; color: #5b6676; }
+.age-stage {
+  position: relative; padding: 0 0 18px 30px;
+  &::before { content: ""; position: absolute; left: 10px; top: 6px; bottom: 0; width: 2px; background: #d6e2f0; }
+  &:last-child::before { bottom: auto; height: 20px; }
+  &::after { content: ""; position: absolute; left: 0; top: 2px; width: 22px; height: 22px; border-radius: 50%; background: $brand-color; box-shadow: 0 0 0 4px #fff; }
+  h2 { margin: 0; font-size: 18px; font-weight: 800; border: 0; padding: 0; }
+  .age-when { margin: 0 0 8px; font-size: 13px; color: #5b6676; }
+}
+.age-items { display: grid; gap: 8px; }
+.age-item {
+  display: block; padding: 10px 12px; border: 1px solid #e3e8ef; border-radius: 12px; background: #fff; color: #1b2430;
+  &:hover { text-decoration: none; border-color: $brand-color; }
+  b { display: block; font-weight: 700; }
+  span { display: block; font-size: 13px; color: #5b6676; }
+}
+.dl-list, .dl-past { display: grid; gap: 8px; }
+.dl-row {
+  display: grid; grid-template-columns: 56px minmax(0, 1fr) auto; gap: 4px 12px; align-items: center;
+  padding: 10px 12px; border: 1px solid #e3e8ef; border-radius: 12px; background: #fff; color: #1b2430;
+  &:hover { text-decoration: none; border-color: $brand-color; }
+  &.is-past { opacity: .6; }
+}
+.dl-date { text-align: center; line-height: 1.15; b { display: block; font-size: 22px; font-weight: 800; } span { font-size: 12px; color: #5b6676; } }
+.dl-name { min-width: 0; b { display: block; font-weight: 700; } span { display: block; font-size: 13px; color: #5b6676; } }
+.dl-past-box { margin-top: 14px; summary { cursor: pointer; font-weight: 700; color: #5b6676; margin-bottom: 8px; } }
+.dl-empty[hidden], .dl-past-box[hidden] { display: none; }
+.inc-ctrl {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 8px 10px; margin: 0 0 12px;
+  label { font-weight: 800; }
+  select { font: inherit; font-size: 16px; padding: 8px 10px; border: 2px solid #c9d8ea; border-radius: 10px; background: #fff; }
+}
+.inc-seg { display: inline-flex; border: 2px solid #c9d8ea; border-radius: 10px; overflow: hidden;
+  button { font: inherit; font-weight: 700; padding: 7px 12px; border: 0; background: #fff; color: #1b2430; cursor: pointer; }
+  button[aria-pressed="true"] { background: $brand-color; color: #fff; }
+}
+.inc-median { background: #eaf2fc; border-radius: 12px; padding: 10px 12px; }
+.inc-list { display: grid; gap: 8px; margin: 10px 0; }
+.inc-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 0 12px; align-items: center; padding: 10px 12px; border: 1px solid #e3e8ef; border-radius: 12px; background: #fff; }
+.inc-name { min-width: 0; a { font-weight: 700; } small { display: block; font-size: 12px; color: #5b6676; } }
+.inc-amt { text-align: right; font-weight: 800; white-space: nowrap;
+  small { display: block; font-size: 12px; font-weight: 600; color: #5b6676; }
+  em { font-style: normal; font-size: 11px; font-weight: 700; color: #c2410c; background: #fff1e6; border-radius: 6px; padding: 1px 6px; margin-left: 4px; }
+}
+.inc-none { color: #8a94a3; font-weight: 600; font-size: 14px; }
+.inc-note { background: #fff6ef; color: #8a4b1f; border-radius: 12px; padding: 10px 12px; font-size: 14px; }
+.inc-others { display: grid; gap: 8px; }
+.inc-other { padding: 10px 12px; border: 1px solid #e3e8ef; border-radius: 12px; background: #fff;
+  a { font-weight: 700; display: block; }
+  span { display: block; font-size: 14px; color: #3a4553; }
+  .inc-tbl { font-size: 13px; color: $brand-color; font-weight: 700; }
+}
+
 // 검색창 (분야 타일 아래)
 .home-search { margin: 0 0 24px; }
 .home-search-label { display: block; font-size: 15px; font-weight: 800; margin-bottom: 6px; color: #1b2430; }
