@@ -122,7 +122,9 @@ const get=u=>fetch(API+u+(u.includes("?")?"&":"?")+"access_token="+TOKEN).then(r
     dir="$ROOT/assets/threads/$slug"
     txt="$dir/post.txt"
     check_text "$txt"
-    link="$(post_url "$slug")"
+    # 블로그 글이 없는 원고(비교 원고 등)는 link.txt 첫 줄에 링크할 글 슬러그를 적는다
+    lslug="$slug"; [ -s "$dir/link.txt" ] && lslug="$(head -1 "$dir/link.txt" | tr -d '\r')"
+    link="$(post_url "$lslug")"
     c="$(curl -s -o /dev/null -w '%{http_code}' -m 30 "$link")"
     [ "$c" = 200 ] || { echo "블로그 글이 아직 사이트에 없습니다($c): $link" >&2; exit 1; }
     topic=""; [ -s "$dir/topic.txt" ] && topic="$(head -1 "$dir/topic.txt" | tr -d '\r')"

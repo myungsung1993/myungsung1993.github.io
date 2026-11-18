@@ -1,0 +1,16 @@
+<!doctype html><html><head><meta charset="utf-8"><title>flow</title></head><body><script>
+// 번호 = 본문 "어떻게 신청하나요?" 1~5. 위에서 아래로 한 번씩. 4·5는 초3 이용권(제로페이 시범 교육청 기준)
+window.FLOW = { height: 1200, label: "2026 온동네 초등돌봄·교육",
+  note: { main: "학교가 신학기 전 수요 조사", sub: "신입생은 예비소집일 무렵 조사할 수 있어요" },
+  applicant: { y0: 340, y1: 1080, lines: [] },
+  boxes: [
+    { y: 340, h: 380, main: 1, lines: [["head", "다니는(입학할)"], ["title", "학교"], ["text", "가정통신문·설명회"], ["text", "신청서 받기"], ["em", "대상자 정하기"]] },
+    { y: 780, h: 300, lines: [["head", "초3 (제로페이 시범)"], ["title", "이용권 운영 시스템"], ["text", "수강신청 뒤 신청"], ["text", "포인트로 받기"], ["em", "매달 수강료 결제"]] } ],
+  arrows: [
+    { type: "out", y: 400, n: 1, label: "수요 조사" },
+    { type: "in", y: 530, n: 2, label: "신청서 내기" },
+    { type: "out", y: 660, n: 3, label: "참여 안내" },
+    { type: "in", y: 850, n: 4, label: "이용권 신청" },
+    { type: "in", y: 1010, n: 5, label: "수강료 결제" } ],
+  foot: "4·5는 운영 체계(안) 기준 · 2026.11.18 · 출처: 교육부" };
+</script><script src="flow.js"></script></body></html>
