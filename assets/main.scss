@@ -248,6 +248,7 @@ body {
   h2 { margin: 0; font-size: 18px; font-weight: 800; border: 0; padding: 0; }
   .age-when { margin: 0 0 8px; font-size: 13px; color: #5b6676; }
 }
+.post-content .age-stage h2 { margin: 0; padding: 0; border: 0; } // 글 소제목 막대·위 여백 끄기
 .age-items { display: grid; gap: 8px; }
 .age-item {
   display: block; padding: 10px 12px; border: 1px solid #e3e8ef; border-radius: 12px; background: #fff; color: #1b2430;
