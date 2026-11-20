@@ -1,0 +1,14 @@
+<!doctype html><html><head><meta charset="utf-8"><title>flow</title></head><body><script>
+// 번호 = 본문 "어떻게 신청하나요?" 1~4
+window.FLOW = { height: 1120, label: "2026 생리용품 바우처",
+  note: { steps: [[1, "자격 확인하기"]], sub: "헷갈리면 주민센터에 물어봐요" },
+  applicant: { y0: 340, y1: 850, lines: ["청소년 본인", "또는 보호자"] },
+  boxes: [
+    { y: 340, h: 200, main: 1, lines: [["head", "신청 (중 1곳)"], ["title", "주민센터"], ["text", "복지로 누리집·앱"]] },
+    { y: 640, h: 210, lines: [["title", "시·군·구"], ["text", "조사"], ["em", "지원 결정"]] } ],
+  arrows: [
+    { type: "in", y: 440, n: 2, label: "신청", sub: ["카드 없으면 함께"] },
+    { type: "v", y0: 540, y1: 640, label: "" } ],
+  notesY: 920, notes: [[3, "결정·바우처 생성 알림 받기"], "+문자·우편으로 와요", [4, "국민행복카드로 생리용품 사기"], "+12월 31일까지 써요"],
+  foot: "2026.11.20 기준 · 출처: 성평등가족부·복지로" };
+</script><script src="flow.js"></script></body></html>
