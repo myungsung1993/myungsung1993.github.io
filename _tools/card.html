@@ -45,7 +45,7 @@
   <h1 id="title"></h1>
   <div class="stats" id="stats"></div>
   <div class="foot"><b>정책 지원금 길잡이</b><span id="foot"></span></div>
-  <div class="stamp" id="stamp" hidden><div class="s1">신청기간 만료</div><div class="s2" id="stamp-sub"></div></div>
+  <div class="stamp" id="stamp" hidden><div class="s1" id="stamp-main">신청기간 만료</div><div class="s2" id="stamp-sub"></div></div>
 </div>
 <script>
 const cards = {
@@ -443,7 +443,14 @@ const cards = {
     label: "2026 문화누리카드",
     title: "수급자·차상위 문화·여행·체육비 지원",
     stats: [["15만 원", "1인당 연간 · 1만 원 추가 대상"], ["11월 30일", "발급 마감"], ["12월 31일", "사용 마감 · 이월 안 됨"]],
-    foot: "2026.10.17 기준 · 출처: 문화누리카드 누리집"
+    foot: "2026.11.20 기준 · 출처: 문화누리카드 누리집",
+    soon: "11월 30일 발급"
+  },
+  "menstrual-product-voucher-2026": {
+    label: "2026 여성청소년 생리용품 바우처",
+    title: "수급자·차상위·한부모 가구 9~24세",
+    stats: [["16만 8천 원", "연간 · 언제 신청해도 전액"], ["상시 신청", "주민센터·복지로"], ["12월 31일", "사용 마감 · 남으면 소멸"]],
+    foot: "2026.11.20 기준 · 출처: 성평등가족부·복지로"
   },
   "youth-public-rental-2026": {
     label: "2026 청년 공공임대",
@@ -466,9 +473,15 @@ document.getElementById("stats").innerHTML = c.stats
   .map(([v, k]) => `<div class="stat"><div class="v">${v}</div><div class="k">${k}</div></div>`).join("");
 // 캐릭터(2026-11-10~): 기본은 안내하는 모습(guide). 다른 포즈는 char: "happy" 처럼, 빼려면 char: "". 도장 찍힌 카드에는 넣지 않는다
 const ch = c.char ?? "guide";
-if (ch && !c.expired) {
+if (ch && !c.expired && !c.soon) {
   const im = document.createElement("img"); im.className = "char"; if (["hello", "talk", "think"].includes(ch)) im.style.transform = "scaleX(-1)"; im.alt = ""; im.src = "../assets/brand/char/" + ch + ".png"; // 반전: 오른쪽에 놓이니 글 쪽을 보게
   document.querySelector(".card").classList.add("has-char"); document.querySelector(".card").appendChild(im);
+}
+// 곧 마감(2026-11-20 사용자 지정: 마감 임박 재게시 링크 카드용): soon: "11월 30일 발급" → 주황 도장. 마감 지나면 expired로 바꾼다
+if (c.soon && !c.expired) {
+  const s = document.getElementById("stamp"); s.hidden = false; s.style.color = s.style.borderColor = "#e8590c";
+  document.getElementById("stamp-main").textContent = "곧 마감";
+  document.getElementById("stamp-sub").textContent = c.soon + " 마감";
 }
 if (c.expired) {
   document.getElementById("stamp").hidden = false;
