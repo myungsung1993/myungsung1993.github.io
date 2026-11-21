@@ -1,0 +1,18 @@
+<!doctype html><html><head><meta charset="utf-8"><title>flow</title></head><body><script>
+// 번호 = 본문 "어떻게 신청하나요?" 1~4
+window.FLOW = { height: 1240, label: "2026 산모·신생아 건강관리",
+  note: { main: "출산 예정일 40일 전 ~ 출산 후 60일", sub: "바우처는 출산일로부터 90일 안에 써요" },
+  applicant: { y0: 340, y1: 1100, lines: ["산모 본인", "친족·법정대리인"] },
+  boxes: [
+    { y: 340, h: 200, main: 1, lines: [["head", "신청 (중 1곳)"], ["title", "보건소"], ["text", "복지로·정부24"]] },
+    { y: 600, h: 170, lines: [["title", "시·군·구 보건소"], ["em", "자격 결정"]] },
+    { y: 840, h: 260, lines: [["title", "제공기관"], ["text", "건강관리사 파견"]] } ],
+  arrows: [
+    { type: "in", y: 440, n: 1, label: "신청", sub: ["주소지 보건소"] },
+    { type: "v", y0: 540, y1: 600, label: "" },
+    { type: "out", y: 685, n: 2, label: "결정 통지", sub: ["3일(평일) 안에"] },
+    { type: "in", y: 910, n: 3, label: "계약", sub: ["본인부담금 내기"] },
+    { type: "out", y: 1040, n: 4, label: "방문 서비스", sub: ["국민행복카드 결제"] } ],
+  notesY: 1180, notes: [],
+  foot: "2026.11.21 기준 · 출처: 보건복지부·복지로" };
+</script><script src="flow.js"></script></body></html>
