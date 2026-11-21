@@ -4,6 +4,7 @@
 #   예) bash _tools/naver_pack.sh "$HOME/Desktop/네이버예약_1118-1127" basic-pension-2026 11-18_기초연금
 # 만드는 것: <출력 폴더>/<폴더 이름>/한번에복사.html (제목·태그 복사 버튼 + 사진·본문 한 번에 복사)
 #           사진은 사이트에 올라간 인스타 카드(https://jiwongil.kr/assets/insta/<슬러그>/n.png)를 쓰므로 먼저 push해 둔다.
+#           인스타 카드가 없는 글은 요약 카드(assets/images/cards/<슬러그>.png)가 대표사진, 나머지 사진은 흐름도 1장뿐(11-21~).
 # 원고: _naver/<슬러그>/post.txt ([제목] [본문] [태그], 본문 속 [사진 n], 신청 흐름도는 [흐름도 사이트슬러그] 한 줄 — 2026-11-10~)
 set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
@@ -13,7 +14,11 @@ while [ $# -ge 2 ]; do
   src="$ROOT/_naver/$s/post.txt"; [ -s "$src" ] || { echo "원고 없음: $src" >&2; exit 1; }
   d="$OUT/$name"; mkdir -p "$d"
   # 붙여넣은 사진은 jiwongil.kr 링크 사진이라 네이버 대표 사진이 될 수 없다(11-16 확인: 목록·검색 썸네일 빈칸). 첫 장은 파일로 올린다.
-  cp "$ROOT/assets/insta/$s/1.png" "$d/대표사진.png"
+  # 인스타 카드가 없는 글은 요약 카드(1200×630)를 대표사진으로 쓴다(11-21 사용자 확정: 요약 카드 + 흐름도). 이런 글 원고는 [사진 1]과 [흐름도 …]만 쓴다.
+  if [ -f "$ROOT/assets/insta/$s/1.png" ]; then cp "$ROOT/assets/insta/$s/1.png" "$d/대표사진.png"
+  else cp "$ROOT/assets/images/cards/$s.png" "$d/대표사진.png"
+    grep -qE '^\[사진 ([2-9]|[0-9]{2,})\]$' "$src" && { echo "인스타 카드 없는 글에 [사진 2~] 있음: $src" >&2; exit 1; }
+  fi
   title=$(awk '/^\[제목\]/{getline; print; exit}' "$src")
   tags=$(awk '/^\[태그\]/{getline; print; exit}' "$src")
   cat=$(awk '/^\[카테고리\]/{getline; print; exit}' "$src")
