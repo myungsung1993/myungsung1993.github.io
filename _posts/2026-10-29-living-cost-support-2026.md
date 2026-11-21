@@ -47,6 +47,7 @@ image: /assets/images/cards/living-cost-support-2026.png
 | 전세사기 피해로 보증금을 3분의 1도 돌려받지 못했다 | [전세사기 최소보장제]({% post_url 2026-11-12-jeonse-fraud-minimum-guarantee-2026 %}) |
 | 일은 하는데 소득이 적다 (근로·자녀장려금, 기한 후 신청 12월 1일까지) | [근로·자녀장려금 기한 후 신청]({% post_url 2026-10-31-eitc-late-application-2026 %}) |
 | 초·중·고 자녀의 교육비가 부담된다 (교육급여·교육비 지원) | [초중고 교육급여·교육비 지원]({% post_url 2026-11-18-school-education-cost-support-2026 %}) |
+| 생리대 등 생리용품 비용이 부담된다 (2001~2017년생 여성청소년) | [여성청소년 생리용품 바우처]({% post_url 2026-11-21-menstrual-product-voucher-2026 %}) |
 | 2027년에 소득 기준 금액이 어떻게 바뀌는지 궁금하다 | [2027 기준 중위소득 정리]({% post_url 2026-11-04-median-income-2027 %}) |
 | 희귀·중증난치질환으로 오래 치료받고 있다 (12월부터 본인부담 10%→7% 예정) | [희귀·중증난치질환 본인부담률 인하]({% post_url 2026-11-06-rare-disease-copay-cut-2026 %}) |
 
