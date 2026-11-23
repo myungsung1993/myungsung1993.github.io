@@ -1,0 +1,15 @@
+<!doctype html><html><head><meta charset="utf-8"><title>flow</title></head><body><script>
+// 번호 = 본문 "어떻게 신청하나요?" 1~4 (한전 사이버지점 대가족/다자녀/출산가구 요금 신청)
+window.FLOW = { height: 1060, label: "출산가구·다자녀·대가족 전기요금 할인",
+  note: { steps: [[1, "주민등록표로 대상인지 확인하기"]], sub: "아기 출생일 · 세대주와 자녀 관계 · 가구원 수" },
+  applicant: { y0: 340, y1: 900, lines: [] },
+  boxes: [
+    { y: 340, h: 280, main: 1, lines: [["head", "신청 (중 1곳)"], ["title", "한전ON 온라인"], ["text", "고객센터 123"], ["text", "한전사업소 방문"], ["text", "아파트는 관리사무소도"]] },
+    { y: 710, h: 190, lines: [["title", "한국전력공사"], ["em", "당일 처리"]] } ],
+  arrows: [
+    { type: "in", y: 480, n: 2, label: "신청서 내기", sub: ["전기요금할인신청서"] },
+    { type: "v", y0: 620, y1: 710, label: "" },
+    { type: "out", y: 820, n: 3, label: "처리", sub: ["당일"] } ],
+  notesY: 960, notes: [[4, "신청한 달 요금부터 30% 할인 (월 1만 6천 원 한도)"]],
+  foot: "2026.11.23 기준 · 출처: 한국전력공사·보조금24" };
+</script><script src="flow.js"></script></body></html>
