@@ -483,6 +483,9 @@ body {
 .toc-box.is-open .toc-title::after { content: "접기 ▴"; }
 .toc-box.toc-js > ul { display: none; padding: 0 16px 12px; margin: 0 0 0 1.2em !important; }
 .toc-box.is-open > ul { display: block; }
+/* 출처 접기 (post-enhance.js 11) */
+.post-content h2.src-fold { cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+.src-fold-btn { font-size: 13px; font-weight: 600; color: #1a6fd1; }
 /* 2. 출처 표시 방법 → 작은 한 줄 */
 .post-content blockquote.src-howto { background: none; border: 0; padding: 0; margin: 0 0 1em; font-size: 12.5px; color: #8a95a3; }
 .post-content blockquote.src-howto strong { font-weight: 600; }

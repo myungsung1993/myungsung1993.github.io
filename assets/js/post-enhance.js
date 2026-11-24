@@ -35,4 +35,16 @@
     tn.nodeValue.split(/(\(출처[①-⑳]+(?:, ?출처[①-⑳]+)*\))/).forEach(function (s) { if (!s) return;
       if (re.test(s)) { var sp = document.createElement("span"); sp.className = "src"; sp.textContent = s; f.appendChild(sp); } else f.appendChild(document.createTextNode(s)); });
     tn.parentNode.replaceChild(f, tn); });
+  // 11. 출처 목록 접기 (2026-11-24 사용자 요청, 목차처럼). 기준일 안내(blockquote)는 그대로 보임
+  c.querySelectorAll("h2").forEach(function (h) { if (h.textContent.trim() !== "출처") return;
+    var ls = [], n = 0;
+    for (var e = h.nextElementSibling; e && !/^(H2|BLOCKQUOTE|HR)$/.test(e.tagName); e = e.nextElementSibling)
+      if (e.tagName === "UL" || e.tagName === "OL") { ls.push(e); n += e.children.length; }
+    if (!ls.length) return;
+    var sp = document.createElement("span"); sp.className = "src-fold-btn"; h.appendChild(sp);
+    h.classList.add("src-fold"); h.setAttribute("role", "button"); h.tabIndex = 0;
+    var set = function (open) { ls.forEach(function (l) { l.hidden = !open; }); h.setAttribute("aria-expanded", open); sp.textContent = n + "개 · " + (open ? "접기 ▴" : "펼치기 ▾"); };
+    set(false);
+    var t = function () { set(h.getAttribute("aria-expanded") !== "true"); };
+    h.addEventListener("click", t); h.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); t(); } }); });
 })();
