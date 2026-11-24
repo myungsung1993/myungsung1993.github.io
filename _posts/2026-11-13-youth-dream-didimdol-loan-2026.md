@@ -4,6 +4,7 @@ title: "2026 청년 주택드림 디딤돌 대출: 금리 연 2.4~4.15%, 미혼 
 description: "청년 주택드림 통장으로 청약에 당첨(당첨 때 만 39세 이하)되고, 통장을 1년 이상 가입해 1천만 원 이상 넣은 무주택 세대주가 신청할 수 있어요."
 date: 2026-11-13 09:50:00 +0900
 topic: 청년
+also: ["주거"]
 who: ["주택드림 통장 당첨자", "당첨 때 만 39세 이하", "무주택 세대주", "미혼 7천만·신혼 1억 원 이하"]
 image: /assets/images/cards/youth-dream-didimdol-loan-2026.png
 apply_url: https://enhuf.molit.go.kr

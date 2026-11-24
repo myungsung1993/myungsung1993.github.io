@@ -4,6 +4,7 @@ title: "2026 신생아 특례 전세대출: 금리 연 1.3~4.3%, 최대 2.4억 �
 description: "대출 접수일 기준 2년 안에 출산·입양한 무주택 세대주, 부부합산 연소득 1.3억 원 이하(맞벌이 2억 원 이하), 순자산 3.45억 원 이하면 신청할 수 있어요."
 date: 2026-11-11 10:00:00 +0900
 topic: 출산·육아
+also: ["주거"]
 who: ["2년 내 출산·입양", "무주택 세대주", "부부 연소득 1.3억 원 이하(맞벌이 2억)"]
 image: /assets/images/cards/newborn-jeonse-loan-2026.png
 apply_url: https://enhuf.molit.go.kr

@@ -4,6 +4,7 @@ title: "전세보증금 반환보증 보증료 지원: 낸 보증료 최대 40�
 description: "전세보증금 3억 원 이하 무주택 세입자가 반환보증에 가입해 낸 보증료를 최대 40만 원까지 돌려받아요. 청년·신혼부부는 낸 보증료 전액, 그 밖의 세입자는 90%예요."
 date: 2026-11-25 08:00:00 +0900
 topic: 청년
+also: ["주거"]
 who: ["무주택", "전세보증금 3억 원 이하", "청년 연소득 5천만 원 이하", "신혼부부 7,500만 원 이하"]
 image: /assets/images/cards/jeonse-guarantee-fee-support-2026.png
 apply_url: https://www.gov.kr/portal/rcvfvrSvc/dtlEx/161300000103

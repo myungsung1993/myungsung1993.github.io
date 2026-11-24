@@ -4,6 +4,7 @@ title: "2026 신혼부부 전세자금대출: 금리 연 1.9~3.3%, 수도권 최
 description: "혼인 7년 이내이거나 3개월 안에 결혼할 무주택 세대주, 부부합산 연소득 7.5천만 원 이하, 순자산 3.45억 원 이하면 신청할 수 있어요."
 date: 2026-11-09 15:00:00 +0900
 topic: 신혼부부
+also: ["주거"]
 who: ["혼인 7년 이내", "결혼 예정 3개월 이내", "무주택 세대주", "부부 연소득 7.5천만 원 이하"]
 image: /assets/images/cards/newlywed-jeonse-loan-2026.png
 apply_url: https://enhuf.molit.go.kr

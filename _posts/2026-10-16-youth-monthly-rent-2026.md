@@ -8,6 +8,7 @@ deadline_note: "2026년 모집"
 noindex: true
 sitemap: false
 topic: 청년
+also: ["주거"]
 who: ["만 19~34세", "무주택", "부모와 따로 거주", "중위소득 60% 이하"]
 image: /assets/images/cards/youth-monthly-rent-2026.png
 ---

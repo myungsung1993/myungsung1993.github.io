@@ -4,6 +4,7 @@ title: "2026 신혼부부 주택구입자금대출: 금리 연 2.55~3.85%, 최�
 description: "혼인 7년 이내이거나 3개월 안에 결혼할 무주택 세대주로, 처음 집을 사는 경우 신청할 수 있어요. 부부합산 연소득 8.5천만 원 이하, 순자산 5.11억 원 이하여야 해요."
 date: 2026-11-10 10:00:00 +0900
 topic: 신혼부부
+also: ["주거"]
 who: ["혼인 7년 이내", "결혼 예정 3개월 이내", "생애최초 구입", "부부 연소득 8.5천만 원 이하"]
 image: /assets/images/cards/newlywed-home-loan-2026.png
 apply_url: https://enhuf.molit.go.kr

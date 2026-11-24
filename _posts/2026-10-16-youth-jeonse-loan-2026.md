@@ -4,6 +4,7 @@ title: "청년 전세자금대출(청년전용 버팀목) 2026: 조건·금리 �
 description: "만 19~34세 무주택 세대주, 부부합산 연소득 5천만 원 이하, 순자산 3.45억 원 이하면 신청할 수 있어요. 금리는 소득에 따라 연 2.2~3.3%이고, 지방 주택은 0.2%p 더 낮아요."
 date: 2026-10-16 15:00:00 +0900
 topic: 청년
+also: ["주거"]
 who: ["만 19~34세", "무주택 세대주", "연소득 5천만 원 이하"]
 image: /assets/images/cards/youth-jeonse-loan-2026.png
 apply_url: https://enhuf.molit.go.kr

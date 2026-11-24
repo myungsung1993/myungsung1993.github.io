@@ -3,7 +3,7 @@ layout: post
 title: "2026 전기차 보조금: 승용 국비 최대 580만 원, 차종별 금액 확인 방법·신청 기간·조건"
 description: "중·대형 전기승용차 국비 최대 580만 원, 타던 내연차를 바꾸면 최대 680만 원 지자체가 국비의 30% 이상을 지방비로 추가 지급"
 date: 2026-10-14 10:00:00 +0900
-topic: 자동차
+topic: 생활비
 who: ["개인·법인", "새 차 구매"]
 image: /assets/images/cards/ev-purchase-subsidy-2026.png
 ---

@@ -4,6 +4,7 @@ title: "전세사기 최소보장제: 보증금 3분의 1까지 국가가 보장
 description: "경매 등으로 돌려받은 보증금이 임차보증금의 3분의 1에 못 미치면, 그 부족분을 현금(최소지원금)으로 받아 최소한 3분의 1을 회복할 수 있어요."
 date: 2026-11-12 11:00:00 +0900
 topic: 생활비
+also: ["주거"]
 who: ["전세사기피해자 결정", "회복액 보증금 1/3 미만"]
 image: /assets/images/cards/jeonse-fraud-minimum-guarantee-2026.png
 apply_url: https://apply.lh.or.kr

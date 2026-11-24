@@ -19,7 +19,9 @@ layout: default
         <img src="{{ "/assets/images/topics/all.png" | relative_url }}" alt="" width="70" height="70">
       </button>
       {%- for t in topics %}
-      {%- assign n = site.posts | where: "topic", t.name | size %}
+      {%- assign n1 = site.posts | where: "topic", t.name | size %}
+      {%- assign n2 = site.posts | where_exp: "p", "p.also contains t.name" | size %}
+      {%- assign n = n1 | plus: n2 %}
       {%- if n > 0 %}
       <button type="button" class="topic-tile" data-topic="{{ t.name }}" style="background:{{ t.tile | default: t.bg }}">
         <b>{{ t.name }}</b><span>글 {{ n }}개</span>
@@ -66,7 +68,7 @@ layout: default
     {%- assign sub_title = post.title | remove_first: main_title | remove_first: ": " %}
     {%- assign tp = topics | where: "name", post.topic | first %}
     {%- capture q %}{{ post.title }} {{ post.topic }} {{ post.who | join: " " }} {{ post.excerpt | strip_html | strip_newlines | truncate: 300, "" }}{% endcapture %}
-    <li class="post-card" data-topic="{{ post.topic | default: '기타' }}" data-q="{{ q | strip | escape }}">
+    <li class="post-card" data-topic="{{ post.topic | default: '기타' }}" data-also="{{ post.also | join: ',' }}" data-q="{{ q | strip | escape }}">
       <a class="post-card-link" href="{{ post.url | relative_url }}">
         <span class="post-card-icon" style="background:{{ tp.bg | default: '#eaf2fc' }}">
           {%- if tp %}<img src="{{ "/assets/images/topics/" | append: tp.icon | append: ".png" | relative_url }}" alt="" width="44" height="44" loading="lazy">{% endif -%}
@@ -107,7 +109,7 @@ layout: default
       var words = box.value.toLowerCase().split(/\s+/).filter(Boolean);
       var shown = 0;
       cards.forEach(function (card) {
-        var on = (topic === "all" || card.getAttribute("data-topic") === topic) &&
+        var on = (topic === "all" || card.getAttribute("data-topic") === topic || card.getAttribute("data-also").split(",").indexOf(topic) >= 0) &&
           words.every(function (w) { return card._q.indexOf(w) >= 0; });
         card.hidden = !on;
         if (on) shown++;
