@@ -10,10 +10,12 @@ layout: default
 {%- endcomment -%}
 <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
 
-  {%- assign tp = site.data.topics | where: "name", page.topic | first %}
+  {%- comment %} 분야: topic + also(예: 주거). 배지와 글 끝 "글 더 보기"를 분야마다 하나씩 {% endcomment %}
+  {%- capture cs %}{{ page.topic }}{% for a in page.also %},{{ a }}{% endfor %}{% endcapture %}
+  {%- assign cats = cs | split: "," %}
   <header class="post-header">
     <p class="post-meta">
-      {%- if page.topic %}<span class="post-topic" style="color:{{ tp.fg | default: '#1a6fd1' }};background:{{ tp.bg | default: '#eaf2fc' }}">{{ page.topic }}</span>{% endif %}
+      {%- for n in cats %}{% assign t = site.data.topics | where: "name", n | first %}<span class="post-topic" style="color:{{ t.fg | default: '#1a6fd1' }};background:{{ t.bg | default: '#eaf2fc' }}">{{ n }}</span>{% endfor %}
       {%- if page.hub %}<span class="post-card-hub">총정리</span>{% endif %}
       <time class="dt-published" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
         {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
@@ -61,10 +63,11 @@ layout: default
     {{ content }}
   </div>
 
-  {%- if page.topic %}
-  {%- assign same = site.posts | where: "topic", page.topic | size %}
-  <a class="post-more" href="{{ "/" | relative_url }}?topic={{ page.topic | url_encode }}" style="color:{{ tp.fg | default: '#1a6fd1' }};background:{{ tp.bg | default: '#eaf2fc' }}">{{ page.topic }} 글 더 보기<span>이 분야 글 {{ same }}개 모아 보기</span></a>
-  {%- endif %}
+  {%- for n in cats %}{% assign t = site.data.topics | where: "name", n | first %}
+  {%- assign n1 = site.posts | where: "topic", n | size %}
+  {%- assign n2 = site.posts | where_exp: "p", "p.also contains n" | size %}
+  <a class="post-more" href="{{ "/" | relative_url }}?topic={{ n | url_encode }}" style="color:{{ t.fg | default: '#1a6fd1' }};background:{{ t.bg | default: '#eaf2fc' }}">{{ n }} 글 더 보기<span>이 분야 글 {{ n1 | plus: n2 }}개 모아 보기</span></a>
+  {%- endfor %}
 
   {%- if site.disqus.shortname -%}
     {%- include disqus_comments.html -%}

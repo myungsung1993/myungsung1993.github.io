@@ -385,6 +385,7 @@ body {
   border-radius: 14px;
   img { width: 44px; height: 44px; }
 }
+.post-card-icon[hidden] { display: none; }
 .post-card-body { min-width: 0; }
 .post-card-meta {
   display: flex;
@@ -463,6 +464,7 @@ body {
 .post-more { display: block; margin: 28px 0 8px; padding: 14px 16px; border-radius: 14px; font-weight: 800; text-align: center; box-sizing: border-box; }
 .post-more:hover { text-decoration: none; filter: brightness(0.97); }
 .post-more span { display: block; margin-top: 2px; font-size: 13px; font-weight: 600; opacity: 0.85; }
+.post-more + .post-more { margin-top: 10px; }
 
 /* 신청하기 버튼 (_layouts/post.html, 머리말 apply_url). 마감 지나면 숨김 */
 .apply-link { display: block; margin: 0 0 22px; padding: 13px 16px; border-radius: 12px; background: #1a6fd1; color: #fff !important; font-weight: 800; text-align: center; box-sizing: border-box; }

@@ -66,16 +66,20 @@ layout: default
     {%- assign parts = post.title | split: ": " %}
     {%- assign main_title = parts | first %}
     {%- assign sub_title = post.title | remove_first: main_title | remove_first: ": " %}
-    {%- assign tp = topics | where: "name", post.topic | first %}
     {%- capture q %}{{ post.title }} {{ post.topic }} {{ post.who | join: " " }} {{ post.excerpt | strip_html | strip_newlines | truncate: 300, "" }}{% endcapture %}
     <li class="post-card" data-topic="{{ post.topic | default: '기타' }}" data-also="{{ post.also | join: ',' }}" data-q="{{ q | strip | escape }}">
       <a class="post-card-link" href="{{ post.url | relative_url }}">
-        <span class="post-card-icon" style="background:{{ tp.bg | default: '#eaf2fc' }}">
-          {%- if tp %}<img src="{{ "/assets/images/topics/" | append: tp.icon | append: ".png" | relative_url }}" alt="" width="44" height="44" loading="lazy">{% endif -%}
+        {%- comment %} 분야 여러 개(topic + also)면 그림·배지를 다 넣고, 누른 칸 것을 앞에 보여 줌(아래 스크립트) {% endcomment %}
+        {%- capture cs %}{{ post.topic }}{% for a in post.also %},{{ a }}{% endfor %}{% endcapture %}
+        {%- assign cats = cs | split: "," %}
+        {%- for n in cats %}{% assign t = topics | where: "name", n | first %}
+        <span class="post-card-icon" data-n="{{ n }}" style="background:{{ t.bg | default: '#eaf2fc' }}"{% unless forloop.first %} hidden{% endunless %}>
+          {%- if t %}<img src="{{ "/assets/images/topics/" | append: t.icon | append: ".png" | relative_url }}" alt="" width="44" height="44" loading="lazy">{% endif -%}
         </span>
+        {%- endfor %}
         <div class="post-card-body">
           <div class="post-card-meta">
-            {%- if post.topic %}<span class="post-card-topic" style="color:{{ tp.fg | default: '#1a6fd1' }};background:{{ tp.bg | default: '#eaf2fc' }}">{{ post.topic }}</span>{% endif %}
+            {%- for n in cats %}{% assign t = topics | where: "name", n | first %}<span class="post-card-topic" data-n="{{ n }}" style="color:{{ t.fg | default: '#1a6fd1' }};background:{{ t.bg | default: '#eaf2fc' }}">{{ n }}</span>{% endfor %}
             {%- if post.hub %}<span class="post-card-hub">총정리</span>{% endif %}
             {%- if post.deadline %}<span class="post-card-dday" data-deadline="{{ post.deadline | date: '%Y-%m-%d' }}" hidden></span>{% endif %}
             <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y.%m.%d" }}</time>
@@ -118,9 +122,23 @@ layout: default
       var name = topic === "all" ? "최신 글" : topic;
       heading.textContent = words.length ? (topic === "all" ? "전체" : topic) + " 검색 결과 " + shown + "개" : name;
     }
+    // 분야가 둘 이상인 글: 누른 칸의 배지를 맨 앞에, 그림도 그 칸 것으로 ("전체"면 원래 순서)
+    function badges() {
+      cards.forEach(function (c) {
+        var meta = c.querySelector(".post-card-meta");
+        var bs = c._b || (c._b = Array.prototype.slice.call(c.querySelectorAll(".post-card-topic")));
+        if (bs.length < 2) return;
+        var sel = bs.filter(function (b) { return b.getAttribute("data-n") === topic; });
+        bs.filter(function (b) { return sel.indexOf(b) < 0; }).concat(sel).reverse().forEach(function (b) { meta.insertBefore(b, meta.firstChild); });
+        var ics = c.querySelectorAll(".post-card-icon"), hit = false;
+        ics.forEach(function (i) { i.hidden = i.getAttribute("data-n") !== topic; if (!i.hidden) hit = true; });
+        if (!hit) ics[0].hidden = false;
+      });
+    }
     tiles.forEach(function (tile) {
       tile.addEventListener("click", function () {
         topic = tile.getAttribute("data-topic");
+        badges();
         tiles.forEach(function (x) { x.classList.toggle("is-active", x === tile); });
         apply();
       });
