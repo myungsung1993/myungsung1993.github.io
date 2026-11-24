@@ -1,0 +1,17 @@
+<!doctype html><html><head><meta charset="utf-8"><title>flow</title></head><body><script>
+// 번호 = 본문 "어떻게 신청하나요?" 1~4 (보건복지부 정신건강 심리상담 바우처사업·복지로)
+window.FLOW = { height: 1200, label: "정신건강 심리상담 바우처",
+  note: { steps: [[1, "증빙 서류 1가지 준비하기"]], sub: "의뢰서 · 진단서·소견서 · 건강검진 결과통보서 등" },
+  applicant: { y0: 350, y1: 1100, lines: [] },
+  boxes: [
+    { y: 350, h: 230, main: 1, lines: [["head", "신청 (중 1곳)"], ["title", "행정복지센터 방문"], ["text", "복지로 온라인"], ["text", "(만 19세 이상 본인)"]] },
+    { y: 660, h: 170, lines: [["title", "시·군·구청 · 보건소"], ["em", "조사 · 결정"]] },
+    { y: 910, h: 190, lines: [["title", "상담 제공기관"], ["text", "전자바우처 포털에서 찾기"]] } ],
+  arrows: [
+    { type: "in", y: 465, n: 2, label: "신청", sub: [] },
+    { type: "v", y0: 580, y1: 660, label: "" },
+    { type: "out", y: 760, n: 3, label: "결정", sub: [] },
+    { type: "in", y: 1010, n: 4, label: "상담 8회", sub: ["120일 안에 사용"] } ],
+  notesY: 1150, notes: [],
+  foot: "2026.11.24 기준 · 출처: 보건복지부·복지로" };
+</script><script src="flow.js"></script></body></html>

@@ -1,0 +1,17 @@
+<!doctype html><html><head><meta charset="utf-8"><title>flow</title></head><body><script>
+// 번호 = 본문 "어떻게 신청하나요?" 1~4 (보조금24·경기주거복지포털 보증료 지원)
+window.FLOW = { height: 1210, label: "전세보증금 반환보증 보증료 지원",
+  applicant: { y0: 200, y1: 1060, lines: [] },
+  boxes: [
+    { y: 200, h: 190, lines: [["head", "보증기관 (중 1곳)"], ["title", "HUG · HF · SGI"]] },
+    { y: 470, h: 260, main: 1, lines: [["head", "신청 (중 1곳)"], ["title", "시·군·구청·주민센터"], ["text", "정부24 온라인"], ["text", "안심전세포털 온라인"]] },
+    { y: 820, h: 240, lines: [["title", "시·군·구"], ["em", "심사 · 지급"]] } ],
+  arrows: [
+    { type: "in", y: 300, n: 1, label: "보증 가입", sub: ["보증료 내기"] },
+    { type: "in", y: 600, n: 2, label: "지원 신청", sub: [] },
+    { type: "v", y0: 730, y1: 820, label: "" },
+    { type: "out", y: 900, n: 3, label: "결과 통지", sub: ["신청일부터 30일 안"] },
+    { type: "out", y: 1010, n: 4, label: "지원금 입금", sub: ["통지 후 15일 안"] } ],
+  notesY: 1100, notes: ["처리 기간은 경기도 안내 기준", "+지역마다 다를 수 있어요"],
+  foot: "2026.11.24 기준 · 출처: 보조금24·경기도" };
+</script><script src="flow.js"></script></body></html>
