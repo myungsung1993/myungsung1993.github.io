@@ -10,8 +10,8 @@
   when: 첫만남이용권·부모급여·출산휴가·육아휴직 급여(육아휴직은 만 8세 이하까지)·검사비·출산·입양 2년 안 대출
   slugs: [birth-support-2026, leave-pay-2026, uninsured-maternity-benefit-2026, newborn-screening-support-2026, premature-infant-medical-support-2026, maternal-newborn-care-2026, newborn-jeonse-loan-2026, newborn-home-loan-2026]
 - stage: 0~2세
-  when: 어린이집·시간제보육·기저귀·분유 (개월 수 조건은 글에서 확인)
-  slugs: [childcare-fee-support-2026, hourly-childcare-2026, diaper-formula-support-2026]
+  when: 어린이집·시간제보육·기저귀·분유·전기요금 할인(출생 3년 미만) (개월 수 조건은 글에서 확인)
+  slugs: [childcare-fee-support-2026, hourly-childcare-2026, diaper-formula-support-2026, birth-family-electricity-discount-2026]
 - stage: 3~5세
   when: 유치원·어린이집 누리과정·집에서 키울 때(24개월부터)
   slugs: [kindergarten-tuition-support-2026, childcare-fee-support-2026, home-care-allowance-2026]

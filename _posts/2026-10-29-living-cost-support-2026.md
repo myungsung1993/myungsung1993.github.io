@@ -40,6 +40,7 @@ image: /assets/images/cards/living-cost-support-2026.png
 | 18세 이상 중증장애인이다 | [장애인연금 총정리]({% post_url 2026-10-25-disability-pension-2026 %}) |
 | 실직·질병·폐업으로 갑자기 어려워졌다 | [긴급복지지원 총정리]({% post_url 2026-10-22-emergency-welfare-support-2026 %}) |
 | 겨울 난방비·여름 냉방비가 걱정이다 | [에너지바우처 총정리]({% post_url 2026-10-16-energy-voucher-2026 %}) |
+| 출생 3년 안 된 아기가 있거나 자녀 3명 이상·5인 이상 가구라 전기요금이 부담된다 (소득 무관) | [출산가구·다자녀·대가족 전기요금 할인]({% post_url 2026-11-24-birth-family-electricity-discount-2026 %}) |
 | 공연·여행 등 문화생활비가 부담된다 | [문화누리카드 총정리]({% post_url 2026-10-17-culture-nuri-card-2026 %}) |
 | 아이 운동 수강료가 부담된다 | [스포츠강좌이용권 총정리]({% post_url 2026-10-20-sports-voucher-2026 %}) |
 | 휴대전화 요금이 부담된다 (수급자·차상위·기초연금·장애인) | [취약계층 통신요금 감면]({% post_url 2026-11-08-telecom-fee-discount-2026 %}) |
