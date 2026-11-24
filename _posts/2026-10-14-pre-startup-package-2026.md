@@ -5,6 +5,8 @@ description: "사업화 자금 평균 4천만 원을 지원하고, 자기부담�
 date: 2026-10-14 13:10:00 +0900
 deadline: 2026-03-26
 deadline_note: "2026년 모집"
+noindex: true
+sitemap: false
 topic: 창업
 who: ["예비창업자"]
 image: /assets/images/cards/pre-startup-package-2026.png

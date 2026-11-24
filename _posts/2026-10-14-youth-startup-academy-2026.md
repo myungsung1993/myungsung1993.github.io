@@ -5,6 +5,8 @@ description: "대표자가 39세 이하이고 창업 3년 이내(경험창업자
 date: 2026-10-14 13:30:00 +0900
 deadline: 2026-02-13
 deadline_note: "2026년 모집"
+noindex: true
+sitemap: false
 topic: 창업
 who: ["대표자 39세 이하", "예비·창업 3년 이내"]
 image: /assets/images/cards/youth-startup-academy-2026.png

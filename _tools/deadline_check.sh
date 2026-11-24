@@ -5,6 +5,7 @@
 #
 # 보여 주는 것
 #   마감 지남  : 블로그 카드 "신청기간 만료" 도장(_tools/card.html expired)이 없으면 [도장 필요]
+#                머리말에 noindex: true(+ sitemap: false)가 없으면 [검색 제외 필요] (2026-11-24, 글은 지우지 않음)
 #                인스타·쓰레드에 올린 글인데 마감 안내 댓글을 안 달았으면 [인스타 안내 필요] [쓰레드 안내 필요]
 #   곧 마감    : N일 안에 마감되는 글 (SNS에 한 번 더 알릴지 판단용)
 # 블로그 본문의 마감 안내 상자·홈 배지는 deadline 값으로 자동 표시되므로(_layouts/post.html) 따로 할 일이 없다.
@@ -43,6 +44,7 @@ for (const f of fs.readdirSync(path.join(root, "_posts")).sort()) {
   const todo = [];
   if (days < 0) {
     if (!(cards[slug] && cards[slug].expired)) todo.push("[도장 필요]");
+    if (!/^noindex: *true/m.test(fm)) todo.push("[검색 제외 필요]");
     if (insta.includes(slug) && !marks.includes("insta " + slug + " ")) todo.push("[인스타 안내 필요]");
     if (threads.includes(slug) && !marks.includes("threads " + slug + " ")) todo.push("[쓰레드 안내 필요]");
   }
