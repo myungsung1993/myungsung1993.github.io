@@ -19,5 +19,5 @@
   when: 방과후 돌봄·교육비
   slugs: [ondongne-elementary-care-2026, school-education-cost-support-2026]
 - stage: 여러 나이에 걸쳐
-  when: 6세 미만 건강검진, 만 12세 이하 돌봄·보청기·근로시간 단축, 만 18세 미만 한부모·양육비
-  slugs: [infant-health-checkup-2026, child-care-service-2026, child-hearing-aid-support-2026, reduced-hours-childcare-2026, single-parent-child-support-2026, child-support-advance-payment-2026]
+  when: 6세 미만 건강검진, 만 12세 이하 예방접종·돌봄·보청기·근로시간 단축, 만 18세 미만 한부모·양육비
+  slugs: [infant-health-checkup-2026, child-vaccination-2026, child-care-service-2026, child-hearing-aid-support-2026, reduced-hours-childcare-2026, single-parent-child-support-2026, child-support-advance-payment-2026]
