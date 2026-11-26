@@ -1,0 +1,16 @@
+<!doctype html><html><head><meta charset="utf-8"><title>flow</title></head><body><script>
+// 번호 = 본문 "어떻게 신청하나요?" 1~5 (예방접종도우미 이용 절차 STEP 01~05)
+window.FLOW = { height: 1210, label: "어린이 국가예방접종",
+  applicant: { y0: 200, y1: 1060, lines: [] },
+  boxes: [
+    { y: 200, h: 190, lines: [["title", "예방접종도우미"], ["text", "누리집"]] },
+    { y: 470, h: 590, main: 1, lines: [["head", "(중 1곳)"], ["title", "보건소"], ["title", "위탁의료기관"], ["em", "예진 · 접종"]] } ],
+  arrows: [
+    { type: "in", y: 300, n: 1, label: "병원 찾기", sub: ["접종 백신 확인"] },
+    { type: "in", y: 560, n: 2, label: "방문", sub: ["신분증", "예방접종수첩"] },
+    { type: "in", y: 720, n: 3, label: "예진표 쓰기", sub: ["알림 문자 동의"] },
+    { type: "out", y: 860, n: 4, label: "접종", sub: ["의사 예진 후"] },
+    { type: "out", y: 990, n: 5, label: "일정 안내", sub: ["다음 접종"] } ],
+  notesY: 1100, notes: ["따로 신청서를 내지 않아요"],
+  foot: "2026.11.26 기준 · 출처: 질병관리청 예방접종도우미" };
+</script><script src="flow.js"></script></body></html>

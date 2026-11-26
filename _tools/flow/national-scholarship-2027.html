@@ -1,0 +1,18 @@
+<!doctype html><html><head><meta charset="utf-8"><title>flow</title></head><body><script>
+// 번호 = 본문 "어떻게 신청하나요?" 1~5 (교육부 보도자료 2026.11.24.·한국장학재단 안내)
+window.FLOW = { height: 1330, label: "2027 1학기 국가장학금",
+  applicant: { y0: 200, y1: 1180, lines: [] },
+  boxes: [
+    { y: 200, h: 190, lines: [["head", "전자서명 (중 1가지)"], ["title", "공동·금융·간편인증"]] },
+    { y: 470, h: 330, main: 1, lines: [["title", "한국장학재단"], ["text", "누리집 · 앱"]] },
+    { y: 880, h: 300, lines: [["title", "한국장학재단"], ["em", "구간 산정 · 지급"]] } ],
+  arrows: [
+    { type: "in", y: 300, n: 1, label: "인증 준비", sub: [] },
+    { type: "in", y: 530, n: 2, label: "장학금 신청", sub: ["학생 본인이", "1월 7일 18시까지"] },
+    { type: "in", y: 720, n: 3, label: "가구원 동의", sub: ["서류 제출", "1월 14일 18시까지"] },
+    { type: "v", y0: 800, y1: 880, label: "" },
+    { type: "out", y: 960, n: 4, label: "결과 통지", sub: ["문자 · 이메일"] },
+    { type: "out", y: 1080, n: 5, label: "장학금 받기", sub: ["재단이 대학에 지급", "3월 중순부터 격주"] } ],
+  notesY: 1220, notes: ["처음 구간을 정하면 8주 안팎", "+걸려요"],
+  foot: "2026.11.26 기준 · 출처: 교육부·한국장학재단" };
+</script><script src="flow.js"></script></body></html>
