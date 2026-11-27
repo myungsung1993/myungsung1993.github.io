@@ -1,4 +1,4 @@
-# 네이버 블로그 전용 글 「상황별 추천」 첫 편 (홈페이지에 없는 글 · _naver 폴더는 Jekyll이 사이트에 올리지 않음)
+# 네이버 블로그 전용 글 「상황별 지원 모음」 첫 편 (홈페이지에 없는 글 · _naver 폴더는 Jekyll이 사이트에 올리지 않음)
 # 사진: assets/insta/reco-newborn-checklist/1.png ~ 6.png (네이버용 카드, 인스타에는 올리지 않음 · 2026.11.28 기준)
 # 근거(모두 공식 출처로 팩트체크된 사이트 글): birth-support-2026, maternal-newborn-care-2026, birth-family-electricity-discount-2026,
 #   newborn-screening-support-2026, infant-health-checkup-2026, child-vaccination-2026, diaper-formula-support-2026,
@@ -75,7 +75,7 @@ A. 아니요. 입원 중 받은 선별검사는 본인부담금이 없어서 신
 ※ 2026년 11월 28일 기준, 보건복지부·질병관리청·고용노동부·한국전력공사 등 공식 자료를 개인이 정리한 글이에요. 신청 전에 주민센터나 보건복지상담센터(129)에서 꼭 확인하세요.
 
 [카테고리]
-상황별 추천
+상황별 지원 모음
 
 [태그]
 출산지원금, 부모급여, 첫만남이용권, 신생아
