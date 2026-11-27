@@ -1,0 +1,13 @@
+<!doctype html><html><head><meta charset="utf-8"><title>flow</title></head><body><script>
+// 번호 = 본문 "어떻게 신청하나요?" 1~4 (보조금24: 노령연금 청구 시 확인 후 인정, 시행규칙 제12조 합의서)
+window.FLOW = { height: 980, label: "국민연금 출산크레딧",
+  applicant: { y0: 200, y1: 800, lines: [] },
+  boxes: [
+    { y: 200, h: 600, main: 1, lines: [["title", "국민연금공단"], ["title", "지사"], ["em", "노령연금 청구 접수"], ["text", "크레딧은 따로 신청 없음"]] } ],
+  arrows: [
+    { type: "in", y: 300, n: 1, label: "노령연금\n청구", sub: ["방문·우편·온라인"] },
+    { type: "in", y: 480, n: 2, label: "서류 내기", sub: ["가족관계증명서 등"] },
+    { type: "in", y: 640, n: 3, label: "합의서 내기", dash: 1, sub: ["한 사람에게 넣을 때", "청구 뒤 1개월 안"] } ],
+  notesY: 870, notes: [[4, "확인 뒤 가입기간에 추가 인정"]],
+  foot: "2026.11.27 기준 · 출처: 보조금24·국민연금법 시행규칙" };
+</script><script src="flow.js"></script></body></html>
