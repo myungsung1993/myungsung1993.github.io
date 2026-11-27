@@ -51,7 +51,7 @@ image: /assets/images/cards/living-cost-support-2026.png
 | 생리대 등 생리용품 비용이 부담된다 (2001~2017년생 여성청소년) | [여성청소년 생리용품 바우처]({% post_url 2026-11-21-menstrual-product-voucher-2026 %}) |
 | 우울·불안으로 심리상담이 필요하다 (나이·소득 무관, 8회) | [정신건강 심리상담 바우처]({% post_url 2026-11-25-mental-health-counseling-voucher-2026 %}) |
 | 2027년에 소득 기준 금액이 어떻게 바뀌는지 궁금하다 | [2027 기준 중위소득 정리]({% post_url 2026-11-04-median-income-2027 %}) |
-| 희귀·중증난치질환으로 오래 치료받고 있다 (12월부터 본인부담 10%→7% 예정) | [희귀·중증난치질환 본인부담률 인하]({% post_url 2026-11-06-rare-disease-copay-cut-2026 %}) |
+| 희귀·중증난치질환으로 오래 치료받고 있다 (12월 1일 진료분부터 본인부담 10%→7%) | [희귀·중증난치질환 본인부담률 인하]({% post_url 2026-11-06-rare-disease-copay-cut-2026 %}) |
 
 ---
 
