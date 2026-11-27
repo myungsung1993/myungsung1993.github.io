@@ -3,7 +3,7 @@
 # 근거(모두 공식 출처로 팩트체크된 사이트 글): birth-support-2026, maternal-newborn-care-2026, birth-family-electricity-discount-2026,
 #   newborn-screening-support-2026, infant-health-checkup-2026, child-vaccination-2026, diaper-formula-support-2026,
 #   premature-infant-medical-support-2026, leave-pay-2026, uninsured-maternity-benefit-2026
-# 예약 발행: 미정(다음 주)
+# 예약 발행: 2026-11-28(토) 오전 10시 (사용자 지정)
 
 [제목]
 아기 태어나면 신청할 정부 지원 총정리: 출생 60일·1년 안에 챙길 것 (2026)
