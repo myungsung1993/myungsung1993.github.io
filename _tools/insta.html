@@ -10,6 +10,7 @@
     rows : { type:"rows", step, title, rows:[[큰 글씨, 작은 글씨], ...], note }
     hero : { type:"hero", label, who, pre, amt, badge }  ← 표지 A안(2026-10-22~): 대상 한 줄 + 큰 금액 + 마감(없으면 핵심 조건) 배지
     end  : { type:"end", title, text, source }
+  덱 색: 덱에 theme:"yellow"(네이버 정부정책뉴스) 또는 theme:"green"(네이버 상황별 지원 모음)을 넣으면 파랑 대신 그 색(2026-11-27)
 -->
 <html lang="ko">
 <head>
@@ -81,7 +82,7 @@
 const decks = {
   // 네이버 전용 「상황별 추천」 카드(인스타에는 올리지 않음, 2026-11-28 기준, 근거는 _naver/reco-newborn-checklist/post.txt 주석의 사이트 글)
   "reco-newborn-checklist": {
-    date: "2026.11.28 기준",
+    date: "2026.11.28 기준", theme: "green",
     slides: [
       { type:"hero", label:"아기 태어나면 챙길 정부 지원", who:"출산 직후 가정 · 기한 순서로", pre:"부모급여·아동수당은", amt:"출생 60일 안", badge:"검사비·출산급여는 1년 안" },
       { type:"rows", step:"01 · 바로", title:"출생신고 하면서 바로",
@@ -1030,7 +1031,7 @@ const decks = {
 
   // 네이버 전용 「정부정책뉴스」 카드(인스타에는 올리지 않음). 근거는 _naver/weekly-policy-news-2026-11-4/post.txt 주석의 보도자료
   "weekly-policy-news-2026-11-4": {
-    date: "2026.11.27 기준",
+    date: "2026.11.27 기준", theme: "yellow",
     slides: [
       { type:"cover", label:"정부정책뉴스", title:"이번 주\n복지 정책 소식", badge:"11월 넷째 주",
         sub:"생계급여 · 희귀질환 의료비\n모두의카드 · 수도권 공공주택" },
@@ -1055,6 +1056,9 @@ const [slug, n] = decodeURIComponent(location.hash.slice(1)).split("/");
 const deck = decks[slug];
 const s = deck.slides[(Number(n) || 1) - 1];
 const total = deck.slides.length;
+// 네이버 전용 카테고리 색(2026-11-27 사용자): 정부정책뉴스 yellow, 상황별 지원 모음 green. 없으면 기본 파랑
+const THEMES = { yellow: ["#b7860b", "#fdf6e3"], green: ["#2e8b57", "#eef7f1"] };
+if (deck.theme && THEMES[deck.theme]) { const r = document.documentElement.style; r.setProperty("--brand", THEMES[deck.theme][0]); r.setProperty("--soft", THEMES[deck.theme][1]); }
 const esc = t => String(t).replace(/[&<>]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
 const foot = `<div class="foot"><b>@jiwongil.kr</b><span>${esc(deck.date)} · <span class="page">${n}/${total}</span></span></div>`;
 let html = "";
