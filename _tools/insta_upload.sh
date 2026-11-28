@@ -7,13 +7,13 @@
 #
 # 사용법
 #   bash _tools/insta_upload.sh check            # 계정·게시 가능 횟수 확인 (게시하지 않음)
-#   bash _tools/insta_upload.sh post <슬러그>     # 캐러셀 게시 (반드시 사용자 확인 후 실행)
-#   bash _tools/insta_upload.sh reel <슬러그> [nofeed]  # 릴스 게시: assets/insta/<슬러그>/reel.mp4 (_tools/insta_reel.sh로 만듦, 사용자 확인 후 실행)
+#   bash _tools/insta_upload.sh post <슬러그>     # 캐러셀 게시 (게시 시점 규칙: CLAUDE.md "게시 주기"·"인스타그램 카드뉴스")
+#   bash _tools/insta_upload.sh reel <슬러그> [nofeed]  # 릴스 게시: assets/insta/<슬러그>/reel.mp4 (_tools/insta_reel.sh로 만듦)
 #                                    nofeed: 프로필 격자에는 안 보이고 릴스 탭에만 (같은 세트 슬라이드와 겹치지 않게)
 #                                    표지는 영상 첫 장면(thumb_offset=0). 카드 이미지(4:5)를 표지로 주면 세로 화면에서 잘려 보인다.
 #   bash _tools/insta_upload.sh refresh          # 장기 토큰 갱신 (60일 만료 전에 실행)
 #
-# 규칙: CLAUDE.md — 카드뉴스는 독립 팩트체크를 거치고, 사용자가 "올려"라고 한 뒤에만 post 를 실행한다.
+# 규칙: CLAUDE.md "인스타그램 카드뉴스"(팩트체크 반영 뒤 사용자 확인 없이 게시)와 "게시 주기"(예약해줘 때 저녁 예약)가 원본.
 # 중복 방지: 게시한 슬러그는 ~/.policy-blog/insta_posted.txt 에 "날짜 시각 슬러그 post|reel 링크"로 남고,
 #           같은 슬러그·종류는 다시 올리지 않는다(종료 코드 3). 일부러 다시 올릴 때만 INSTA_REPOST=1 을 붙인다.
 

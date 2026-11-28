@@ -11,7 +11,7 @@
 # 블로그 본문의 마감 안내 상자·홈 배지는 deadline 값으로 자동 표시되므로(_layouts/post.html) 따로 할 일이 없다.
 #
 # 기록: SNS에 단 마감 안내는 ~/.policy-blog/deadline_marks.txt 에 "insta|threads <슬러그> <날짜> <링크>" 한 줄씩 남긴다.
-# 규칙: CLAUDE.md "신청기간 만료 표시" — 안내 댓글도 fact-checker 검토 후 게시한다.
+# 규칙: CLAUDE.md "요약 카드 이미지" > 신청기간 만료 도장·마감일 기록과 점검 — 안내 댓글도 fact-checker 검토 후 게시한다.
 
 set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"

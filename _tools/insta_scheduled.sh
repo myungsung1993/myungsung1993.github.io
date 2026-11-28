@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# 인스타 대기열 게시 — 사용자가 "올려"라고 할 때 직접 실행한다. (2026-10-22 예약 작업 없앰)
+# 인스타 대기열 게시 — 예전(10-22) 방식. 지금은 publish_evening.sh(CLAUDE.md "게시 주기")를 쓴다. 필요할 때만 직접 실행.
 #   INSTA_FORCE=1 bash _tools/insta_scheduled.sh
 #
 # 대기열: ~/.policy-blog/insta_queue.txt  (한 줄에 슬러그 하나, 위에서부터 차례로 게시)
