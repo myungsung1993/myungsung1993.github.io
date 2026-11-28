@@ -1,0 +1,12 @@
+<!doctype html><html><head><meta charset="utf-8"><title>flow</title></head><body><script>
+// 번호 = 본문 "어떻게 신청하나요?" 1~5 (3~5는 양육비이행관리원 안에서 진행돼 메모로, 위→아래 순서)
+window.FLOW = { height: 940, label: "양육비 이행확보 지원",
+  applicant: { y0: 200, y1: 640, lines: [] },
+  boxes: [
+    { y: 200, h: 440, main: 1, lines: [["title", "양육비이행관리원"], ["em", "상담 1644-6621"], ["text", "평일 9~18시"], ["text", "누리집 · 우편(등기) · 방문"]] } ],
+  arrows: [
+    { type: "in", y: 320, n: 1, label: "상담", sub: ["전화·온라인·방문"] },
+    { type: "in", y: 520, n: 2, label: "신청서·서류", sub: ["온라인·우편·방문", "법원 서류는 원본"] } ],
+  notesY: 720, notes: [[3, "접수·배당: 고유번호 붙이고 담당부서 배당"], [4, "지원 진행: 협의·소송·추심·제재조치"], [5, "이행 모니터링: 자녀가 성인이 될 때까지"], "다시 안 주면 소송 등으로 연계"],
+  foot: "2026.11.28 기준 · 출처: 양육비이행관리원" };
+</script><script src="flow.js"></script></body></html>
